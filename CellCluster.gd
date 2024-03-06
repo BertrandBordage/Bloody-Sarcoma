@@ -2,10 +2,31 @@ extends Node2D
 
 
 const COHESION: float = 100.0
+const MOVEMENT_SMOOTHING: float = 0.1  # 0 < and < 1.
 
 
 @export var cell_scene: PackedScene
 var cells: Array[RigidBody2D] = []
+@onready var smoothed_position: Vector2 = position
+var movement_force: Vector2 = Vector2.ZERO
+
+
+func avg(values: Array):
+    return values.reduce(func (a, b): return a + b) / len(cells)
+
+
+func get_cells_average_position():
+    return avg(
+        cells.map(func (cell): return cell.position)
+    )
+
+
+func get_exponential_moving_average_position():
+    var new_smoothed_position = get_cells_average_position()
+    return (
+        MOVEMENT_SMOOTHING * smoothed_position
+        + (1.0 - MOVEMENT_SMOOTHING) * new_smoothed_position
+    )
 
 
 func on_cell_created(new_cell: RigidBody2D):
@@ -30,15 +51,26 @@ func _ready():
     cells.append(first_cell)
 
 
+func set_cells_animation():
+    var defaultAnimation: String
+    if movement_force == Vector2.ZERO:
+        defaultAnimation = "Idle"
+    elif abs(movement_force.y) >= abs(movement_force.x):
+        defaultAnimation = "Forward" if movement_force.y > 0 else "Backwards"
+    else:
+        defaultAnimation = "Right" if movement_force.x > 0 else "Left"
+    for cell in cells:
+        if cell.animation in ["Idle", "Forward", "Backwards", "Left", "Right"]:
+            cell.animation = defaultAnimation
+
+
 func _process(delta):
-    if Input.is_action_just_pressed("ui_accept"):
-        add_cell()
+    set_cells_animation()
 
 
 func _physics_process(delta):
+    smoothed_position = get_exponential_moving_average_position()
+    var average_position = get_cells_average_position()
     for cell in cells:
-        cell.apply_force(-cell.position * COHESION)
-
-
-func get_average_position():
-    return cells.map(func (cell): return cell.global_position).reduce(func (a, b): return a + b) / len(cells)
+        cell.apply_force(movement_force)
+        cell.apply_force(COHESION * (average_position - (position + cell.position)))

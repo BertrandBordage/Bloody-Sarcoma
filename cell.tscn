@@ -1842,8 +1842,6 @@ radius = 4.0
 height = 10.0
 
 [node name="Cell" type="RigidBody2D"]
-linear_damp = 10.0
-angular_damp = 10.0
 script = ExtResource("1_onwjd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

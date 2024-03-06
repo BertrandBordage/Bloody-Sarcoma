@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://11qi1e3xb58u"]
+
+[ext_resource type="Script" path="res://PlayableCellCluster.gd" id="1_xxuoo"]
+[ext_resource type="PackedScene" uid="uid://coyr0uw66cmlm" path="res://cell_cluster.tscn" id="2_8edd7"]
+[ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://fps.tscn" id="3_nwi2t"]
+
+[node name="PlayableCellCluster" type="Node2D"]
+script = ExtResource("1_xxuoo")
+
+[node name="CellCluster" parent="." instance=ExtResource("2_8edd7")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+zoom = Vector2(2, 2)
+
+[node name="FPS" parent="Camera2D" instance=ExtResource("3_nwi2t")]
+offset_left = 96.0
+offset_top = -120.0
+offset_right = 160.0
+offset_bottom = -96.0
+text = "?? FPS"
+horizontal_alignment = 2
