@@ -39,6 +39,7 @@ func _physics_process(_delta):
     )
     %Camera2D.zoom = smoothed_zoom
     %SpawningPath.scale = initial_zoom / smoothed_zoom
+    %LoadedArea.scale = initial_zoom / smoothed_zoom
 
 
 func _on_loaded_area_body_exited(body):
