@@ -15,8 +15,9 @@ func _physics_process(_delta):
     var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
     %CellCluster.movement_force = ACCELERATION * direction
     var smoothed_position = %CellCluster.smoothed_position
-    if direction != Vector2.ZERO:
-        %CellCluster.look_at = direction
+    var viewport = get_viewport()
+    var viewport_size = viewport.get_visible_rect().size
+    %CellCluster.look_at = ((viewport.get_mouse_position() - viewport_size / 2) / viewport_size).normalized()
     %Camera2D.position = smoothed_position
     smoothed_zoom = (
         ZOOM_SMOOTHING * smoothed_zoom
