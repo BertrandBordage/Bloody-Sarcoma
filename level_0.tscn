@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://blxa6cowlkfxu"]
+[gd_scene load_steps=6 format=3 uid="uid://blxa6cowlkfxu"]
 
 [ext_resource type="Script" path="res://level_0.gd" id="1_6mmf6"]
 [ext_resource type="PackedScene" uid="uid://dm0f3yccbu33i" path="res://blood_vessel.tscn" id="1_061b8"]
 [ext_resource type="PackedScene" uid="uid://cbkcwlw0kc3nk" path="res://lymphocyte.tscn" id="3_e17wh"]
+[ext_resource type="PackedScene" uid="uid://d4fbq3qboenqe" path="res://red_blood_cell.tscn" id="5_3x6tl"]
 [ext_resource type="PackedScene" uid="uid://11qi1e3xb58u" path="res://playable_cell_cluster.tscn" id="6_1ntlw"]
 
 [node name="Level0" type="Node2D"]
@@ -30,3 +31,39 @@ position = Vector2(960, 144)
 
 [node name="PlayableCellCluster" parent="." instance=ExtResource("6_1ntlw")]
 position = Vector2(1016, 24)
+
+[node name="RedBloodCell" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(984, 24)
+
+[node name="RedBloodCell2" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(968, 4)
+
+[node name="RedBloodCell3" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(1072, 40)
+
+[node name="RedBloodCell4" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(1040, 56)
+
+[node name="RedBloodCell5" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(960, 64)
+
+[node name="RedBloodCell6" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(960, 40)
+
+[node name="RedBloodCell7" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(936, 96)
+
+[node name="RedBloodCell8" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(984, 48)
+
+[node name="RedBloodCell9" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(1032, 88)
+
+[node name="RedBloodCell10" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(1016, 72)
+
+[node name="RedBloodCell11" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(976, 72)
+
+[node name="RedBloodCell12" parent="." instance=ExtResource("5_3x6tl")]
+position = Vector2(1016, 104)

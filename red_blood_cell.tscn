@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4fbq3qboenqe"]
+
+[ext_resource type="Texture2D" uid="uid://cxc2qsrg7x4t3" path="res://sprites/red-blood-cell.png" id="1_tv380"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5lub"]
+radius = 1.5
+height = 8.0
+
+[node name="RedBloodCell" type="RigidBody2D"]
+mass = 0.01
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tv380")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("CapsuleShape2D_h5lub")
