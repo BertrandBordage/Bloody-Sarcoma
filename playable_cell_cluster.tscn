@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=6 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://PlayableCellCluster.gd" id="1_xxuoo"]
 [ext_resource type="PackedScene" uid="uid://coyr0uw66cmlm" path="res://cell_cluster.tscn" id="2_8edd7"]
-[ext_resource type="PackedScene" uid="uid://cbkcwlw0kc3nk" path="res://lymphocyte.tscn" id="2_g8sba"]
 [ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://fps.tscn" id="3_nwi2t"]
-[ext_resource type="PackedScene" uid="uid://d4fbq3qboenqe" path="res://red_blood_cell.tscn" id="3_yaxnn"]
 
 [sub_resource type="Curve2D" id="Curve2D_pckr6"]
 _data = {
@@ -17,8 +15,6 @@ size = Vector2(640, 480)
 
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_xxuoo")
-spawnable_scenes = Array[PackedScene]([ExtResource("2_g8sba"), ExtResource("3_yaxnn")])
-spawnable_probabilities = Array[float]([1.0, 30.0])
 
 [node name="CellCluster" parent="." instance=ExtResource("2_8edd7")]
 unique_name_in_owner = true
@@ -52,5 +48,9 @@ unique_name_in_owner = true
 [node name="LoadedAreaShape" type="CollisionShape2D" parent="Camera2D/LoadedArea"]
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_0i2i1")
+
+[node name="SpawnExclusionShape" type="CollisionPolygon2D" parent="Camera2D"]
+unique_name_in_owner = true
+polygon = PackedVector2Array(-192, -152, -192, 152, 192, 152, 192, -152)
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]

@@ -1,34 +1,18 @@
 extends Node2D
 
-@export var spawnable_scenes: Array[PackedScene]
-@export var spawnable_probabilities: Array[float]
 const ACCELERATION = 1.0
 const ZOOM_SMOOTHING = 0.995  # 0 < and < 1.
 const MIN_ZOOM = Vector2(0.5, 0.5)
 const MAX_ZOOM = Vector2(3.0, 3.0)
-const MAX_SPAWNED = 500
 @onready var initial_zoom = %Camera2D.zoom
 @onready var smoothed_zoom: Vector2 = initial_zoom
+@onready var spawn_exclusion_global_transform: Transform2D
+@onready var spawn_exclusion_polygon: PackedVector2Array
 
 
-func spawn_random(initial: bool = false):
-    var spawned = Math.choice(spawnable_scenes, spawnable_probabilities).instantiate()
-    spawned.rotation = randf_range(-PI, PI)
-    %Spawned.add_child(spawned)
-    if initial:
-        var area_size: Vector2 = %LoadedAreaShape.shape.get_rect().size
-        spawned.global_position = (
-            %LoadedAreaShape.global_position
-            + Vector2(randf() - 0.5, randf() - 0.5) * area_size
-        )
-    else:
-        %SpawnerPathFollow.progress_ratio = randf()
-        spawned.global_position = %SpawnerPathFollow.global_position
-
-
-func _ready():
-    for _i in range(MAX_SPAWNED):
-        spawn_random(true)
+func _process(_delta):
+    spawn_exclusion_global_transform = %SpawnExclusionShape.global_transform
+    spawn_exclusion_polygon = spawn_exclusion_global_transform * %SpawnExclusionShape.polygon
 
 
 func _physics_process(_delta):
@@ -39,7 +23,7 @@ func _physics_process(_delta):
     var smoothed_position = %CellCluster.smoothed_position
     var viewport = get_viewport()
     var viewport_size = viewport.get_visible_rect().size
-    %CellCluster.look_at = (
+    %CellCluster.rotation_vector = (
         (viewport.get_mouse_position() - viewport_size / 2) / viewport_size
     ).normalized()
     %Camera2D.position = smoothed_position
@@ -50,9 +34,8 @@ func _physics_process(_delta):
     )
     %Camera2D.zoom = smoothed_zoom
     %SpawningPath.scale = initial_zoom / smoothed_zoom
-    %LoadedArea.scale = initial_zoom / smoothed_zoom
+    %SpawnExclusionShape.scale = initial_zoom / smoothed_zoom
 
 
 func _on_loaded_area_body_exited(body):
     body.queue_free()
-    spawn_random()

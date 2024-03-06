@@ -8,6 +8,8 @@
 script = ExtResource("1_6mmf6")
 
 [node name="BloodVessel" parent="." instance=ExtResource("1_061b8")]
+unique_name_in_owner = true
 
 [node name="PlayableCellCluster" parent="." instance=ExtResource("6_1ntlw")]
+unique_name_in_owner = true
 position = Vector2(1016, 24)

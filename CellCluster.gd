@@ -12,7 +12,7 @@ const TORQUE_STRENGTH: float = 500.0
 @onready var cells: Array[RigidBody2D] = [first_cell]
 @onready var smoothed_position: Vector2 = position
 var movement_force: Vector2 = Vector2.ZERO
-var look_at: Vector2 = Vector2.UP
+var rotation_vector: Vector2 = Vector2.UP
 
 
 func get_cells_average_position():
@@ -34,7 +34,7 @@ func on_cell_created(new_cell: RigidBody2D):
 
 
 func add_cell():
-    var candidate_cells = cells.filter(func (cell): return cell.can_perform_mitosis())
+    var candidate_cells = cells.filter(func (c): return c.can_perform_mitosis())
     if len(candidate_cells) == 0:
         return
     var cell = candidate_cells[randi_range(0, len(candidate_cells) - 1)]
@@ -55,6 +55,6 @@ func _physics_process(_delta):
         cell.apply_torque(
             ROTATION_SMOOTHING * cell.constant_torque
             + (1.0 - ROTATION_SMOOTHING) * TORQUE_STRENGTH * (
-                Vector2.RIGHT.rotated(cell.rotation).dot(look_at)
+                Vector2.RIGHT.rotated(cell.rotation).dot(rotation_vector)
             )
         )
