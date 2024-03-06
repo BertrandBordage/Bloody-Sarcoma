@@ -49,7 +49,8 @@ position = Vector2(-200, -160)
 [node name="LoadedArea" type="Area2D" parent="Camera2D"]
 unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/LoadedArea"]
+[node name="LoadedAreaShape" type="CollisionShape2D" parent="Camera2D/LoadedArea"]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_0i2i1")
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]

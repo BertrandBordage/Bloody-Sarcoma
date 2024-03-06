@@ -11,13 +11,24 @@ const MAX_SPAWNED = 500
 @onready var smoothed_zoom: Vector2 = initial_zoom
 
 
-func _process(delta):
-    if %Spawned.get_child_count() < MAX_SPAWNED:
+func spawn_random(initial: bool = false):
+    var spawned = Math.choice(spawnable_scenes, spawnable_probabilities).instantiate()
+    spawned.rotation = randf_range(-PI, PI)
+    %Spawned.add_child(spawned)
+    if initial:
+        var area_size: Vector2 = %LoadedAreaShape.shape.get_rect().size
+        spawned.global_position = (
+            %LoadedAreaShape.global_position
+            + Vector2(randf() - 0.5, randf() - 0.5) * area_size
+        )
+    else:
         %SpawnerPathFollow.progress_ratio = randf()
-        var spawned = Math.choice(spawnable_scenes, spawnable_probabilities).instantiate()
-        spawned.rotation = randf_range(-PI, PI)
-        %Spawned.add_child(spawned)
         spawned.global_position = %SpawnerPathFollow.global_position
+
+
+func _ready():
+    for _i in range(MAX_SPAWNED):
+        spawn_random(true)
 
 
 func _physics_process(_delta):
@@ -44,3 +55,4 @@ func _physics_process(_delta):
 
 func _on_loaded_area_body_exited(body):
     body.queue_free()
+    spawn_random()
