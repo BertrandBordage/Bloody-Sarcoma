@@ -15,14 +15,8 @@ var movement_force: Vector2 = Vector2.ZERO
 var look_at: Vector2 = Vector2.UP
 
 
-func avg(values: Array):
-    return values.reduce(func (a, b): return a + b) / len(cells)
-
-
 func get_cells_average_position():
-    return avg(
-        cells.map(func (cell): return cell.position)
-    )
+    return Math.avg(cells.map(func (cell): return cell.position))
 
 
 func get_exponential_moving_average_position():
@@ -54,7 +48,6 @@ func _ready():
 func _physics_process(_delta):
     smoothed_position = get_exponential_moving_average_position()
     var average_position = get_cells_average_position()
-    var look_at_angle = 0 if look_at == Vector2.ZERO else look_at.angle() + PI / 2
     for cell in cells:
         var total_movement = movement_force + COHESION * (average_position - (position + cell.position))
         cell.apply_force(total_movement)

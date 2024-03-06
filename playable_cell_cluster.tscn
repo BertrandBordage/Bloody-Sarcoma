@@ -1,13 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=8 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://PlayableCellCluster.gd" id="1_xxuoo"]
 [ext_resource type="PackedScene" uid="uid://coyr0uw66cmlm" path="res://cell_cluster.tscn" id="2_8edd7"]
+[ext_resource type="PackedScene" uid="uid://cbkcwlw0kc3nk" path="res://lymphocyte.tscn" id="2_g8sba"]
 [ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://fps.tscn" id="3_nwi2t"]
+[ext_resource type="PackedScene" uid="uid://d4fbq3qboenqe" path="res://red_blood_cell.tscn" id="3_yaxnn"]
+
+[sub_resource type="Curve2D" id="Curve2D_pckr6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -200, -160, 0, 0, 0, 0, 200, -160, 0, 0, 0, 0, 200, 160, 0, 0, 0, 0, -200, 160, 0, 0, 0, 0, -200, -160)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
+size = Vector2(640, 480)
 
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_xxuoo")
+spawnable_scenes = Array[PackedScene]([ExtResource("2_g8sba"), ExtResource("3_yaxnn")])
+spawnable_probabilities = Array[float]([1.0, 30.0])
 
 [node name="CellCluster" parent="." instance=ExtResource("2_8edd7")]
+unique_name_in_owner = true
+
+[node name="Spawned" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -21,3 +37,18 @@ offset_right = 160.0
 offset_bottom = -96.0
 text = "?? FPS"
 horizontal_alignment = 2
+
+[node name="SpawningPath" type="Path2D" parent="Camera2D"]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_pckr6")
+
+[node name="SpawnerPathFollow" type="PathFollow2D" parent="Camera2D/SpawningPath"]
+unique_name_in_owner = true
+position = Vector2(-200, -160)
+
+[node name="LoadedArea" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/LoadedArea"]
+shape = SubResource("RectangleShape2D_0i2i1")
+
+[connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]

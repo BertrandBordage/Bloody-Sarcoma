@@ -141,7 +141,7 @@ _data = {
 radius = 15.0
 
 [node name="Lymphocyte" type="RigidBody2D"]
-mass = 0.02
+mass = 0.05
 angular_damp = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

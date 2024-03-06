@@ -1846,7 +1846,7 @@ radius = 4.0
 height = 10.0
 
 [node name="Cell" type="RigidBody2D"]
-mass = 0.01
+mass = 0.02
 physics_material_override = SubResource("PhysicsMaterial_x0u02")
 script = ExtResource("1_onwjd")
 

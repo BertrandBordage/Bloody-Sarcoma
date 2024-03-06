@@ -1,12 +1,23 @@
 extends Node2D
 
-
+@export var spawnable_scenes: Array[PackedScene]
+@export var spawnable_probabilities: Array[float]
 const ACCELERATION = 1.0
 const ZOOM_SMOOTHING = 0.995  # 0 < and < 1.
-const MIN_ZOOM = Vector2(1.0, 1.0)
+const MIN_ZOOM = Vector2(0.5, 0.5)
 const MAX_ZOOM = Vector2(3.0, 3.0)
+const MAX_SPAWNED = 500
 @onready var initial_zoom = %Camera2D.zoom
 @onready var smoothed_zoom: Vector2 = initial_zoom
+
+
+func _process(delta):
+    if %Spawned.get_child_count() < MAX_SPAWNED:
+        %SpawnerPathFollow.progress_ratio = randf()
+        var spawned = Math.choice(spawnable_scenes, spawnable_probabilities).instantiate()
+        spawned.rotation = randf_range(-PI, PI)
+        %Spawned.add_child(spawned)
+        spawned.global_position = %SpawnerPathFollow.global_position
 
 
 func _physics_process(_delta):
@@ -27,3 +38,8 @@ func _physics_process(_delta):
             initial_zoom / (1.0 + %CellCluster.movement_force.length())).clamp(MIN_ZOOM, MAX_ZOOM)
     )
     %Camera2D.zoom = smoothed_zoom
+    %SpawningPath.scale = initial_zoom / smoothed_zoom
+
+
+func _on_loaded_area_body_exited(body):
+    body.queue_free()
