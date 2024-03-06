@@ -17,7 +17,9 @@ func _physics_process(_delta):
     var smoothed_position = %CellCluster.smoothed_position
     var viewport = get_viewport()
     var viewport_size = viewport.get_visible_rect().size
-    %CellCluster.look_at = ((viewport.get_mouse_position() - viewport_size / 2) / viewport_size).normalized()
+    %CellCluster.look_at = (
+        (viewport.get_mouse_position() - viewport_size / 2) / viewport_size
+    ).normalized()
     %Camera2D.position = smoothed_position
     smoothed_zoom = (
         ZOOM_SMOOTHING * smoothed_zoom

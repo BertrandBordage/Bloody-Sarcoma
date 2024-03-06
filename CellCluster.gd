@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const COHESION: float = 1.0
+const COHESION: float = 0.1
 const MOVEMENT_SMOOTHING: float = 0.1  # 0 < and < 1.
 const ROTATION_SMOOTHING: float = 0.99  # 0 < and < 1.
 const TORQUE_STRENGTH: float = 500.0

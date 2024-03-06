@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://diy5ievb8rif" path="res://sprites/sarcoma-cell.top-flow-control.png" id="5_4h60p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x0u02"]
-friction = 0.01
+friction = 0.05
 bounce = 0.1
 
 [sub_resource type="Animation" id="Animation_anod3"]
