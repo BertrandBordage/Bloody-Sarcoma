@@ -1,0 +1,755 @@
+{ "frames": {
+   "sarcoma-cell (Top flagellum) #Idle 0.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 1.aseprite": {
+    "frame": { "x": 21, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 2, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 2.aseprite": {
+    "frame": { "x": 21, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 3.aseprite": {
+    "frame": { "x": 21, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 4.aseprite": {
+    "frame": { "x": 21, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 2, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 5.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 6.aseprite": {
+    "frame": { "x": 46, "y": 6, "w": 14, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 4, "w": 14, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 7.aseprite": {
+    "frame": { "x": 0, "y": 6, "w": 16, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 16, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 8.aseprite": {
+    "frame": { "x": 0, "y": 6, "w": 16, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 16, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Idle 9.aseprite": {
+    "frame": { "x": 46, "y": 6, "w": 14, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 4, "w": 14, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Forward 0.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 1.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 2.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 3.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 4.aseprite": {
+    "frame": { "x": 46, "y": 6, "w": 14, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 4, "w": 14, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 5.aseprite": {
+    "frame": { "x": 46, "y": 6, "w": 14, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 4, "w": 14, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 6.aseprite": {
+    "frame": { "x": 0, "y": 6, "w": 16, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 16, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 7.aseprite": {
+    "frame": { "x": 0, "y": 6, "w": 16, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 16, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 8.aseprite": {
+    "frame": { "x": 0, "y": 6, "w": 16, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 16, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 9.aseprite": {
+    "frame": { "x": 0, "y": 6, "w": 16, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 16, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 10.aseprite": {
+    "frame": { "x": 46, "y": 6, "w": 14, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 4, "w": 14, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Forward 11.aseprite": {
+    "frame": { "x": 46, "y": 6, "w": 14, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 4, "w": 14, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 0.aseprite": {
+    "frame": { "x": 44, "y": 0, "w": 12, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 1.aseprite": {
+    "frame": { "x": 16, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 2, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 2.aseprite": {
+    "frame": { "x": 44, "y": 0, "w": 12, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 3.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 4.aseprite": {
+    "frame": { "x": 16, "y": 0, "w": 14, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 3, "w": 14, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 5.aseprite": {
+    "frame": { "x": 0, "y": 3, "w": 12, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 6.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 16, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 3, "w": 16, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 7.aseprite": {
+    "frame": { "x": 0, "y": 6, "w": 16, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 4, "w": 16, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 16, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 3, "w": 16, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 9.aseprite": {
+    "frame": { "x": 30, "y": 0, "w": 14, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 3, "w": 14, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 10.aseprite": {
+    "frame": { "x": 16, "y": 0, "w": 14, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 3, "w": 14, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Backwards 11.aseprite": {
+    "frame": { "x": 46, "y": 6, "w": 14, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 1, "y": 4, "w": 14, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 0.aseprite": {
+    "frame": { "x": 12, "y": 3, "w": 12, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 1.aseprite": {
+    "frame": { "x": 36, "y": 3, "w": 11, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 11, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 2.aseprite": {
+    "frame": { "x": 12, "y": 3, "w": 12, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 3.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 4.aseprite": {
+    "frame": { "x": 26, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 5.aseprite": {
+    "frame": { "x": 0, "y": 8, "w": 9, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 9, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 6.aseprite": {
+    "frame": { "x": 26, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 7.aseprite": {
+    "frame": { "x": 21, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 8.aseprite": {
+    "frame": { "x": 26, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 9.aseprite": {
+    "frame": { "x": 0, "y": 8, "w": 9, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 9, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 10.aseprite": {
+    "frame": { "x": 26, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Left 11.aseprite": {
+    "frame": { "x": 21, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 2, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 0.aseprite": {
+    "frame": { "x": 24, "y": 3, "w": 12, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 1.aseprite": {
+    "frame": { "x": 47, "y": 3, "w": 11, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 2, "w": 11, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 2.aseprite": {
+    "frame": { "x": 24, "y": 3, "w": 12, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 3.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 4.aseprite": {
+    "frame": { "x": 36, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 5.aseprite": {
+    "frame": { "x": 46, "y": 8, "w": 9, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 1, "w": 9, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 6.aseprite": {
+    "frame": { "x": 36, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 7.aseprite": {
+    "frame": { "x": 21, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 8.aseprite": {
+    "frame": { "x": 36, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 0, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 9.aseprite": {
+    "frame": { "x": 46, "y": 8, "w": 9, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 0, "w": 9, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 10.aseprite": {
+    "frame": { "x": 36, "y": 6, "w": 10, "h": 3 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 1, "w": 10, "h": 3 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Right 11.aseprite": {
+    "frame": { "x": 21, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 2, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 0.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 1.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 2.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 3.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 4.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 5.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 6.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 7.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 8.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 9.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 10.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Mitosis 11.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 0.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 1.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 2.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 1, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 3.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 4.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 5.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 6.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 7.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 8.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 9.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Top regrowing 10.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 0.aseprite": {
+    "frame": { "x": 56, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 1.aseprite": {
+    "frame": { "x": 56, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 2.aseprite": {
+    "frame": { "x": 56, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 3.aseprite": {
+    "frame": { "x": 56, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 4.aseprite": {
+    "frame": { "x": 56, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 5.aseprite": {
+    "frame": { "x": 56, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 6.aseprite": {
+    "frame": { "x": 56, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 7.aseprite": {
+    "frame": { "x": 56, "y": 0, "w": 8, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 4, "y": 4, "w": 8, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 8.aseprite": {
+    "frame": { "x": 31, "y": 9, "w": 10, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 3, "y": 3, "w": 10, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Top flagellum) #Bottom regrowing 9.aseprite": {
+    "frame": { "x": 9, "y": 9, "w": 12, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 12, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.5-x64",
+  "image": "sarcoma-cell.top-flagellum.png",
+  "format": "I8",
+  "size": { "w": 64, "h": 11 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 9, "direction": "forward", "color": "#000000ff" },
+   { "name": "Forward", "from": 10, "to": 21, "direction": "forward", "color": "#000000ff" },
+   { "name": "Backwards", "from": 22, "to": 33, "direction": "forward", "color": "#000000ff" },
+   { "name": "Left", "from": 34, "to": 45, "direction": "forward", "color": "#000000ff" },
+   { "name": "Right", "from": 46, "to": 57, "direction": "forward", "color": "#000000ff" },
+   { "name": "Mitosis", "from": 58, "to": 69, "direction": "forward", "color": "#000000ff" },
+   { "name": "Top regrowing", "from": 70, "to": 80, "direction": "forward", "color": "#000000ff" },
+   { "name": "Bottom regrowing", "from": 81, "to": 90, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Surface mutations" },
+   { "name": "Top flagellum", "group": "Surface mutations", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

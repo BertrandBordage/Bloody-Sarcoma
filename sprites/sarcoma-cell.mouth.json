@@ -1,0 +1,755 @@
+{ "frames": {
+   "sarcoma-cell (Mouth) #Idle 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 1.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 2.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 3.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 4.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 5.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 6.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 7.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Idle 9.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Forward 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 1.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 2.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 3.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 4.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 5.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 6.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 7.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 9.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 10.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Forward 11.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 1.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 2.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 3.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 4.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 5.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 6.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 7.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 9.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 4, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 10.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Backwards 11.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 3, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 1.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 2.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 3.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 4.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 5.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 6.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 7.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 9.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 10.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Left 11.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 1.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 2.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 3.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 4.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 5.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 6.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 7.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 9.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 10.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Right 11.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 150
+   },
+   "sarcoma-cell (Mouth) #Mitosis 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 1.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 2.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 3.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 4.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 5.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 6.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 7.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 9.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 10.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Mitosis 11.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 0.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 1.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 2.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 0, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 3.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 4.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 1, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 5.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 6.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 7.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 9.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Top regrowing 10.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 0.aseprite": {
+    "frame": { "x": 10, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 1.aseprite": {
+    "frame": { "x": 10, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 2.aseprite": {
+    "frame": { "x": 10, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 3.aseprite": {
+    "frame": { "x": 10, "y": 1, "w": 1, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 4.aseprite": {
+    "frame": { "x": 10, "y": 0, "w": 2, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 3, "w": 2, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 5.aseprite": {
+    "frame": { "x": 10, "y": 0, "w": 2, "h": 1 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 7, "y": 2, "w": 2, "h": 1 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 6.aseprite": {
+    "frame": { "x": 6, "y": 0, "w": 4, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 6, "y": 2, "w": 4, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 7.aseprite": {
+    "frame": { "x": 6, "y": 0, "w": 4, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 6, "y": 2, "w": 4, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 8.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   },
+   "sarcoma-cell (Mouth) #Bottom regrowing 9.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 6, "h": 2 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 5, "y": 2, "w": 6, "h": 2 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 300
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.5-x64",
+  "image": "sarcoma-cell.mouth.png",
+  "format": "I8",
+  "size": { "w": 12, "h": 2 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Idle", "from": 0, "to": 9, "direction": "forward", "color": "#000000ff" },
+   { "name": "Forward", "from": 10, "to": 21, "direction": "forward", "color": "#000000ff" },
+   { "name": "Backwards", "from": 22, "to": 33, "direction": "forward", "color": "#000000ff" },
+   { "name": "Left", "from": 34, "to": 45, "direction": "forward", "color": "#000000ff" },
+   { "name": "Right", "from": 46, "to": 57, "direction": "forward", "color": "#000000ff" },
+   { "name": "Mitosis", "from": 58, "to": 69, "direction": "forward", "color": "#000000ff" },
+   { "name": "Top regrowing", "from": 70, "to": 80, "direction": "forward", "color": "#000000ff" },
+   { "name": "Bottom regrowing", "from": 81, "to": 90, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Surface mutations" },
+   { "name": "Mouth", "group": "Surface mutations", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

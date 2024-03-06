@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm0f3yccbu33i"]
+
+[ext_resource type="Script" path="res://blood_vessel.gd" id="1_nhmg3"]
+
+[sub_resource type="Curve2D" id="Curve2D_eceop"]
+_data = {
+"points": PackedVector2Array(13.1366, -78.8196, -13.1366, 78.8196, 1016, 8, 13.6621, -36.7825, -13.6621, 36.7825, 1000, 72, 31.5139, -22.3758, -31.5139, 22.3758, 880, 192, 66.6412, -7.30943, -66.6412, 7.30943, 632, 264, 49.6363, -2.11218, -49.6363, 2.11218, 368, 264, 91.0981, 36.2268, -91.0981, -36.2268, 0, 216)
+}
+point_count = 6
+
+[node name="BloodVessel" type="Area2D"]
+script = ExtResource("1_nhmg3")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(2.24242, 0)
+scale = Vector2(0.280303, 0.280303)
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-8, 599.351, -8, 941.838, 163.243, 998.919, 1276.32, 1113.08, 2246.7, 1113.08, 3188.54, 856.216, 3816.43, 256.865, 3873.51, 0, 3416.87, 0, 3359.78, 228.324, 3045.84, 542.27, 2218.16, 770.595, 1276.32, 799.135, 163.243, 656.432)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(8, 0)
+scale = Vector2(0.279711, 0.279711)
+polygon = PackedVector2Array(143.005, 1001.03, 1258.44, 1115.44, 2230.87, 1115.44, 3174.71, 858.028, 3803.93, 257.409, 3861.13, 0, 3403.51, 0, 3346.31, 228.808, 3031.7, 543.418, 2202.27, 772.226, 1258.44, 800.826, 143.005, 657.822, -28.601, 600.62, -28.601, 943.831)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_eceop")
+
+[node name="UpperMembrane" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="UpperMembrane"]
+color = Color(0.603922, 0.117647, 0.0745098, 1)
+polygon = PackedVector2Array(0, 160, 0, 168, 48, 184, 360, 224, 624, 216, 856, 152, 944, 64, 960, 0, 944, 0, 928, 64, 848, 144, 624, 208, 360, 216, 48, 176)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpperMembrane"]
+polygon = PackedVector2Array(0, 168, 48, 184, 360, 224, 624, 216, 856, 152, 944, 64, 960, 0, 944, 0, 928, 64, 848, 144, 624, 208, 360, 216, 48, 176, 0, 160)
+
+[node name="UpperMembraneArea" type="Area2D" parent="UpperMembrane"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpperMembrane/UpperMembraneArea"]
+polygon = PackedVector2Array(0, 168, 48, 184, 360, 224, 624, 216, 856, 152, 944, 64, 960, 0, 944, 0, 928, 64, 848, 144, 624, 208, 360, 216, 48, 176, 0, 160)
+
+[node name="LowerMembrane" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="LowerMembrane"]
+color = Color(0.658824, 0, 0, 1)
+polygon = PackedVector2Array(0, 264, 48, 280, 360, 312, 632, 312, 896, 240, 1072, 72, 1088, 0, 1096, 0, 1080, 72, 904, 248, 640, 320, 360, 320, 48, 288, 0, 272)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LowerMembrane"]
+polygon = PackedVector2Array(0, 264, 48, 280, 360, 312, 632, 312, 896, 240, 1072, 72, 1088, 0, 1096, 0, 1080, 72, 904, 248, 640, 320, 360, 320, 48, 288, 0, 272)
+
+[node name="LowerMembraneArea" type="Area2D" parent="LowerMembrane"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LowerMembrane/LowerMembraneArea"]
+polygon = PackedVector2Array(0, 264, 48, 280, 360, 312, 632, 312, 896, 240, 1072, 72, 1088, 0, 1096, 0, 1080, 72, 904, 248, 640, 320, 360, 320, 48, 288, 0, 272)
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="UpperMembrane/UpperMembraneArea" to="." method="_on_membrane_area_body_entered"]
+[connection signal="body_exited" from="UpperMembrane/UpperMembraneArea" to="." method="_on_membrane_area_body_exited"]
+[connection signal="body_entered" from="LowerMembrane/LowerMembraneArea" to="." method="_on_membrane_area_body_entered"]
+[connection signal="body_exited" from="LowerMembrane/LowerMembraneArea" to="." method="_on_membrane_area_body_exited"]

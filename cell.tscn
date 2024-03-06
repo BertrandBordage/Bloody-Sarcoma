@@ -1,0 +1,1912 @@
+[gd_scene load_steps=20 format=3 uid="uid://cgk3nyqwam4my"]
+
+[ext_resource type="Texture2D" uid="uid://b6kfi51waww8v" path="res://sprites/sarcoma-cell.cell.png" id="1_egcbd"]
+[ext_resource type="Script" path="res://cell.gd" id="1_onwjd"]
+[ext_resource type="Texture2D" uid="uid://c5qotjk7byteg" path="res://sprites/sarcoma-cell.light.png" id="2_dtvq6"]
+[ext_resource type="Texture2D" uid="uid://cqggdexphnhfl" path="res://sprites/sarcoma-cell.bottom-flagellum.png" id="2_hifam"]
+[ext_resource type="Texture2D" uid="uid://bnissws3oerv5" path="res://sprites/sarcoma-cell.top-flagellum.png" id="3_m68hu"]
+[ext_resource type="Texture2D" uid="uid://cns3y6scanyk4" path="res://sprites/sarcoma-cell.mouth.png" id="4_716yp"]
+[ext_resource type="Texture2D" uid="uid://baf0su4m37k4e" path="res://sprites/sarcoma-cell.bottom-flow-control.png" id="4_qeskb"]
+[ext_resource type="Texture2D" uid="uid://diy5ievb8rif" path="res://sprites/sarcoma-cell.top-flow-control.png" id="5_4h60p"]
+
+[sub_resource type="Animation" id="Animation_anod3"]
+length = 1.8
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cell:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 30, 12, 8), Rect2(24, 30, 12, 8), Rect2(36, 30, 14, 6), Rect2(36, 30, 14, 6), Rect2(36, 30, 14, 6), Rect2(36, 30, 14, 6), Rect2(24, 30, 12, 8), Rect2(24, 30, 12, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cell:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomFlagellum:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(44, 0, 12, 3), Rect2(44, 0, 12, 3), Rect2(16, 0, 14, 3), Rect2(16, 0, 14, 3), Rect2(16, 0, 14, 3), Rect2(16, 0, 14, 3), Rect2(44, 0, 12, 3), Rect2(44, 0, 12, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomFlagellum:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TopFlagellum:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(44, 0, 12, 3), Rect2(16, 6, 10, 3), Rect2(44, 0, 12, 3), Rect2(9, 9, 12, 2), Rect2(16, 0, 14, 3), Rect2(0, 3, 12, 3), Rect2(0, 0, 16, 3), Rect2(0, 6, 16, 2), Rect2(0, 0, 16, 3), Rect2(30, 0, 14, 3), Rect2(16, 0, 14, 3), Rect2(46, 6, 14, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopFlagellum:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mouth:region_rect")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:offset")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -4), Vector2(0, -4), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -4), Vector2(0, -4)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Light:region_rect")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(0, 0, 4, 1), Rect2(0, 0, 4, 1), Rect2(0, 0, 4, 1), Rect2(0, 0, 4, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -2.5), Vector2(0, -2.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -2.5), Vector2(0, -2.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BottomFlowControl:region_rect")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(0, 0, 10, 2), Rect2(0, 0, 10, 2), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(0, 0, 10, 2), Rect2(0, 0, 10, 2)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BottomFlowControl:offset")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 2), Vector2(0, 2), Vector2(0, 1.5), Vector2(0, 1.5), Vector2(0, 1.5), Vector2(0, 1.5), Vector2(0, 2), Vector2(0, 2)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TopFlowControl:region_rect")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(0, 0, 10, 2), Rect2(0, 0, 10, 2), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(0, 0, 10, 2), Rect2(0, 0, 10, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TopFlowControl:offset")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -2), Vector2(0, -2), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -2), Vector2(0, -2)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape2D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6, 0.75, 0.9, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 5.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CollisionShape2D:shape:height")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6, 0.75, 0.9, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 10.0, 12.0, 12.0, 14.0, 14.0, 12.0, 12.0]
+}
+
+[sub_resource type="Animation" id="Animation_t2rt1"]
+length = 3.0
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cell:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 46, 8, 6), Rect2(8, 45, 8, 7), Rect2(16, 42, 8, 8), Rect2(44, 44, 8, 8), Rect2(36, 36, 8, 9), Rect2(30, 20, 10, 10), Rect2(40, 20, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cell:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(0, 3.5), Vector2(0, 3), Vector2(0, 2), Vector2(0, 0.5), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomFlagellum:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomFlagellum:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 6.5), Vector2(0, 6.5), Vector2(0, 6.5), Vector2(0, 5.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TopFlagellum:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(56, 1, 1, 1), Rect2(56, 1, 1, 1), Rect2(56, 1, 1, 1), Rect2(56, 1, 1, 1), Rect2(56, 1, 1, 1), Rect2(56, 1, 1, 1), Rect2(56, 1, 1, 1), Rect2(56, 0, 8, 1), Rect2(31, 9, 10, 2), Rect2(9, 9, 12, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopFlagellum:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(0, -3.5), Vector2(0, -4), Vector2(0, -4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mouth:region_rect")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 1, 1, 1), Rect2(10, 1, 1, 1), Rect2(10, 1, 1, 1), Rect2(10, 1, 1, 1), Rect2(10, 0, 2, 1), Rect2(10, 0, 2, 1), Rect2(6, 0, 4, 2), Rect2(6, 0, 4, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:offset")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(0, -4.5), Vector2(0, -5.5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Light:region_rect")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(6, 0, 1, 1), Rect2(6, 0, 1, 1), Rect2(6, 0, 1, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(0, -0.5), Vector2(0, -2.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BottomFlowControl:region_rect")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BottomFlowControl:offset")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 5), Vector2(0, 5), Vector2(0, 5), Vector2(0, 4), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TopFlowControl:region_rect")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(6, 3, 6, 1), Rect2(10, 0, 8, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TopFlowControl:offset")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(0, -3.5), Vector2(0, -3)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape2D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.0, 5.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CollisionShape2D:shape:height")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, 10.0]
+}
+
+[sub_resource type="Animation" id="Animation_xx4my"]
+length = 1.8
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cell:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 30, 12, 8), Rect2(24, 30, 12, 8), Rect2(36, 30, 14, 6), Rect2(36, 30, 14, 6), Rect2(36, 30, 14, 6), Rect2(36, 30, 14, 6), Rect2(24, 30, 12, 8), Rect2(24, 30, 12, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cell:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomFlagellum:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 3, 12, 3), Rect2(9, 9, 12, 2), Rect2(0, 3, 12, 3), Rect2(16, 6, 10, 3), Rect2(30, 0, 14, 3), Rect2(26, 6, 14, 2), Rect2(0, 0, 16, 3), Rect2(16, 0, 14, 3), Rect2(0, 0, 16, 3), Rect2(0, 6, 16, 2), Rect2(30, 0, 14, 3), Rect2(44, 0, 12, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomFlagellum:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4.5), Vector2(0, 4), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 3.5), Vector2(0, 3), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3), Vector2(0, 3.5), Vector2(0, 3.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TopFlagellum:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(46, 6, 14, 2), Rect2(46, 6, 14, 2), Rect2(0, 6, 16, 2), Rect2(0, 6, 16, 2), Rect2(0, 6, 16, 2), Rect2(0, 6, 16, 2), Rect2(46, 6, 14, 2), Rect2(46, 6, 14, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopFlagellum:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mouth:region_rect")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:offset")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -4), Vector2(0, -4), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -4), Vector2(0, -4)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Light:region_rect")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(0, 0, 4, 1), Rect2(0, 0, 4, 1), Rect2(0, 0, 4, 1), Rect2(0, 0, 4, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -2.5), Vector2(0, -2.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -2.5), Vector2(0, -2.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BottomFlowControl:region_rect")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(0, 0, 10, 2), Rect2(0, 0, 10, 2), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(0, 0, 10, 2), Rect2(0, 0, 10, 2)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BottomFlowControl:offset")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 2), Vector2(0, 2), Vector2(0, 1.5), Vector2(0, 1.5), Vector2(0, 1.5), Vector2(0, 1.5), Vector2(0, 2), Vector2(0, 2)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TopFlowControl:region_rect")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(0, 0, 10, 2), Rect2(0, 0, 10, 2), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(0, 0, 10, 2), Rect2(0, 0, 10, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TopFlowControl:offset")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -2), Vector2(0, -2), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -2), Vector2(0, -2)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape2D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6, 0.75, 0.9, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 5.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CollisionShape2D:shape:height")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6, 0.75, 0.9, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 10.0, 12.0, 12.0, 14.0, 14.0, 12.0, 12.0]
+}
+
+[sub_resource type="Animation" id="Animation_lpvcp"]
+length = 3.0
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cell:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 0, 10, 10), Rect2(16, 30, 8, 12), Rect2(50, 20, 6, 14), Rect2(50, 20, 6, 14), Rect2(16, 30, 8, 12), Rect2(24, 0, 10, 10), Rect2(24, 30, 12, 8), Rect2(36, 30, 14, 6), Rect2(36, 30, 14, 6), Rect2(24, 30, 12, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cell:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomFlagellum:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(16, 6, 10, 3), Rect2(56, 0, 8, 3), Rect2(56, 0, 8, 3), Rect2(56, 0, 8, 3), Rect2(56, 0, 8, 3), Rect2(16, 6, 10, 3), Rect2(44, 0, 12, 3), Rect2(16, 0, 14, 3), Rect2(16, 0, 14, 3), Rect2(44, 0, 12, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomFlagellum:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4.5), Vector2(0, 5.5), Vector2(0, 6.5), Vector2(0, 6.5), Vector2(0, 5.5), Vector2(0, 4.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5), Vector2(0, 3.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TopFlagellum:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(9, 9, 12, 2), Rect2(21, 9, 10, 2), Rect2(21, 9, 10, 2), Rect2(21, 9, 10, 2), Rect2(21, 9, 10, 2), Rect2(9, 9, 12, 2), Rect2(46, 6, 14, 2), Rect2(0, 6, 16, 2), Rect2(0, 6, 16, 2), Rect2(46, 6, 14, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopFlagellum:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -5), Vector2(0, -6), Vector2(0, -6), Vector2(0, -5), Vector2(0, -4), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mouth:region_rect")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:offset")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -6), Vector2(0, -7), Vector2(0, -7), Vector2(0, -6), Vector2(0, -5), Vector2(0, -4), Vector2(0, -3), Vector2(0, -3), Vector2(0, -4)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Light:region_rect")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(0, 0, 4, 1), Rect2(0, 0, 4, 1), Rect2(4, 0, 2, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -2.5), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -2.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BottomFlowControl:region_rect")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(0, 2, 6, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(0, 2, 6, 2), Rect2(10, 0, 8, 2), Rect2(0, 0, 10, 2), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(0, 0, 10, 2)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BottomFlowControl:offset")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 3), Vector2(0, 2), Vector2(0, 1.5), Vector2(0, 1.5), Vector2(0, 2)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TopFlowControl:region_rect")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(0, 2, 6, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(0, 2, 6, 2), Rect2(10, 0, 8, 2), Rect2(0, 0, 10, 2), Rect2(6, 2, 10, 1), Rect2(6, 2, 10, 1), Rect2(0, 0, 10, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TopFlowControl:offset")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -3), Vector2(0, -2), Vector2(0, -1.5), Vector2(0, -1.5), Vector2(0, -2)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.6, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.5708, 1.5708]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape2D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 4.0, 3.0, 4.0, 5.0, 4.0, 3.0, 3.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CollisionShape2D:shape:height")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1.2, 1.5, 1.8, 2.1, 2.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 12.0, 14.0, 12.0, 10.0, 12.0, 14.0, 14.0]
+}
+
+[sub_resource type="Animation" id="Animation_v10ra"]
+length = 1.8
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cell:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(16, 30, 8, 12), Rect2(16, 30, 8, 12), Rect2(50, 20, 6, 14), Rect2(50, 20, 6, 14), Rect2(50, 20, 6, 14), Rect2(50, 20, 6, 14), Rect2(16, 30, 8, 12), Rect2(16, 30, 8, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cell:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomFlagellum:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(12, 3, 11, 3), Rect2(23, 3, 11, 3), Rect2(12, 3, 11, 3), Rect2(16, 6, 10, 3), Rect2(40, 6, 9, 3), Rect2(49, 6, 9, 3), Rect2(40, 6, 9, 3), Rect2(56, 0, 8, 3), Rect2(40, 6, 9, 3), Rect2(49, 6, 9, 3), Rect2(40, 6, 9, 3), Rect2(56, 0, 8, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomFlagellum:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 4.5), Vector2(0.5, 4.5), Vector2(0.5, 4.5), Vector2(0, 4.5), Vector2(0.5, 5.5), Vector2(0.5, 5.5), Vector2(0.5, 6.5), Vector2(0, 6.5), Vector2(0.5, 6.5), Vector2(0.5, 6.5), Vector2(0.5, 5.5), Vector2(0, 5.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TopFlagellum:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(12, 3, 12, 3), Rect2(36, 3, 11, 3), Rect2(12, 3, 12, 3), Rect2(9, 9, 12, 2), Rect2(26, 6, 10, 3), Rect2(0, 8, 9, 3), Rect2(26, 6, 10, 3), Rect2(21, 9, 10, 2), Rect2(26, 6, 10, 3), Rect2(0, 8, 9, 3), Rect2(26, 6, 10, 3), Rect2(21, 9, 10, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopFlagellum:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4.5), Vector2(-0.5, -4.5), Vector2(0, -4.5), Vector2(0, -4), Vector2(0, -5.5), Vector2(-0.5, -5.5), Vector2(0, -6.5), Vector2(0, -6), Vector2(0, -6.5), Vector2(-0.5, -6.5), Vector2(0, -5.5), Vector2(0, -5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mouth:region_rect")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:offset")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -6), Vector2(0, -6), Vector2(0, -7), Vector2(0, -7), Vector2(0, -7), Vector2(0, -7), Vector2(0, -6), Vector2(0, -6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Light:region_rect")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -3.5), Vector2(0, -3.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BottomFlowControl:region_rect")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(0, 2, 6, 2), Rect2(0, 2, 6, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(0, 2, 6, 2), Rect2(0, 2, 6, 2)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BottomFlowControl:offset")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TopFlowControl:region_rect")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(0, 2, 6, 2), Rect2(0, 2, 6, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(0, 2, 6, 2), Rect2(0, 2, 6, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TopFlowControl:offset")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape2D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6, 0.75, 0.9, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 5.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CollisionShape2D:shape:height")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6, 0.75, 0.9, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 10.0, 12.0, 12.0, 14.0, 14.0, 12.0, 12.0]
+}
+
+[sub_resource type="Animation" id="Animation_icdyr"]
+length = 3.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cell:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 0, 10, 10), Rect2(34, 0, 10, 10), Rect2(44, 0, 10, 10), Rect2(24, 10, 10, 10), Rect2(34, 10, 10, 10), Rect2(44, 10, 10, 10), Rect2(0, 14, 10, 10), Rect2(0, 24, 8, 12), Rect2(8, 24, 8, 12), Rect2(16, 0, 8, 13), Rect2(8, 0, 8, 14), Rect2(0, 0, 8, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cell:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, -0.5), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomFlagellum:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3), Rect2(16, 6, 10, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomFlagellum:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 4.5), Vector2(0, 5.5), Vector2(0, 5.5), Vector2(0, 5.5), Vector2(0, 6.5), Vector2(0, 6.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TopFlagellum:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopFlagellum:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -5), Vector2(0, -5), Vector2(0, -6), Vector2(0, -6), Vector2(0, -6)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mouth:region_rect")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:offset")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -6), Vector2(0, -6), Vector2(0, -7), Vector2(0, -7), Vector2(0, -7)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Light:region_rect")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -5.5), Vector2(0, -5.5), Vector2(0, -6.5), Vector2(0, -6.5), Vector2(0, -6.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BottomFlowControl:region_rect")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BottomFlowControl:offset")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 5), Vector2(0, 5)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TopFlowControl:region_rect")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TopFlowControl:offset")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -4), Vector2(0, -4), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape2D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [5.0, 5.0, 4.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CollisionShape2D:shape:height")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.1, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 10.0, 12.0, 14.0]
+}
+
+[sub_resource type="Animation" id="Animation_6d86l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:shape:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g5eud"]
+length = 1.8
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cell:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(16, 30, 8, 12), Rect2(16, 30, 8, 12), Rect2(50, 20, 6, 14), Rect2(50, 20, 6, 14), Rect2(50, 20, 6, 14), Rect2(50, 20, 6, 14), Rect2(16, 30, 8, 12), Rect2(16, 30, 8, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cell:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomFlagellum:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(34, 3, 11, 3), Rect2(45, 3, 11, 3), Rect2(34, 3, 11, 3), Rect2(16, 6, 10, 3), Rect2(0, 8, 9, 3), Rect2(26, 8, 9, 3), Rect2(0, 8, 9, 3), Rect2(56, 0, 8, 3), Rect2(0, 8, 9, 3), Rect2(26, 8, 9, 3), Rect2(0, 8, 9, 3), Rect2(56, 0, 8, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomFlagellum:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.5, 4.5), Vector2(-0.5, 4.5), Vector2(-0.5, 4.5), Vector2(0, 4.5), Vector2(-0.5, 5.5), Vector2(-0.5, 5.5), Vector2(-0.5, 6.5), Vector2(0, 6.5), Vector2(-0.5, 6.5), Vector2(-0.5, 6.5), Vector2(-0.5, 5.5), Vector2(0, 5.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TopFlagellum:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(24, 3, 12, 3), Rect2(47, 3, 11, 3), Rect2(24, 3, 12, 3), Rect2(9, 9, 12, 2), Rect2(36, 6, 10, 3), Rect2(46, 8, 9, 3), Rect2(36, 6, 10, 3), Rect2(21, 9, 10, 2), Rect2(36, 6, 10, 3), Rect2(46, 8, 9, 3), Rect2(36, 6, 10, 3), Rect2(21, 9, 10, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopFlagellum:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4.5), Vector2(0.5, -4.5), Vector2(0, -4.5), Vector2(0, -4), Vector2(0, -5.5), Vector2(0.5, -5.5), Vector2(0, -6.5), Vector2(0, -6), Vector2(0, -6.5), Vector2(0.5, -6.5), Vector2(0, -5.5), Vector2(0, -5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mouth:region_rect")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:offset")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -6), Vector2(0, -6), Vector2(0, -7), Vector2(0, -7), Vector2(0, -7), Vector2(0, -7), Vector2(0, -6), Vector2(0, -6)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Light:region_rect")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -3.5), Vector2(0, -3.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BottomFlowControl:region_rect")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(0, 2, 6, 2), Rect2(0, 2, 6, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(0, 2, 6, 2), Rect2(0, 2, 6, 2)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BottomFlowControl:offset")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 3), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4), Vector2(0, 4)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TopFlowControl:region_rect")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(0, 2, 6, 2), Rect2(0, 2, 6, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(16, 2, 4, 2), Rect2(0, 2, 6, 2), Rect2(0, 2, 6, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TopFlowControl:offset")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape2D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6, 0.75, 0.9, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 5.0, 4.0, 4.0, 3.0, 3.0, 4.0, 4.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CollisionShape2D:shape:height")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.6, 0.75, 0.9, 1.35, 1.5, 1.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10.0, 10.0, 12.0, 12.0, 14.0, 14.0, 12.0, 12.0]
+}
+
+[sub_resource type="Animation" id="Animation_dtg0r"]
+length = 3.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cell:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(32, 45, 8, 6), Rect2(0, 45, 8, 7), Rect2(44, 36, 8, 8), Rect2(24, 38, 8, 8), Rect2(0, 36, 8, 9), Rect2(8, 36, 8, 9), Rect2(10, 14, 10, 10), Rect2(20, 20, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10), Rect2(24, 0, 10, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cell:offset")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -3.5), Vector2(0, -3), Vector2(0, -2), Vector2(0, -1.5), Vector2(0, -0.5), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomFlagellum:region_rect")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(56, 4, 1, 1), Rect2(56, 4, 1, 1), Rect2(56, 4, 1, 1), Rect2(56, 4, 1, 1), Rect2(56, 4, 1, 1), Rect2(56, 4, 1, 1), Rect2(56, 4, 1, 1), Rect2(56, 4, 1, 1), Rect2(56, 3, 8, 1), Rect2(35, 9, 10, 2), Rect2(16, 6, 10, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomFlagellum:offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(0, 3.5), Vector2(0, 4), Vector2(0, 4.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TopFlagellum:region_rect")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2), Rect2(9, 9, 12, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TopFlagellum:offset")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -6), Vector2(0, -6), Vector2(0, -6), Vector2(0, -5), Vector2(0, -5), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4), Vector2(0, -4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mouth:region_rect")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2), Rect2(0, 0, 6, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mouth:offset")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -7), Vector2(0, -7), Vector2(0, -7), Vector2(0, -6), Vector2(0, -6), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Light:region_rect")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1), Rect2(4, 0, 2, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -6.5), Vector2(0, -6.5), Vector2(0, -6.5), Vector2(0, -5.5), Vector2(0, -5.5), Vector2(0, -4.5), Vector2(0, -4.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5), Vector2(0, -3.5)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("BottomFlowControl:region_rect")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(18, 0, 1, 1), Rect2(6, 3, 6, 1), Rect2(10, 0, 8, 2)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("BottomFlowControl:offset")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(-7.5, -7.5), Vector2(0, 3.5), Vector2(0, 3)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TopFlowControl:region_rect")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2), Rect2(10, 0, 8, 2)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("TopFlowControl:offset")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -5), Vector2(0, -5), Vector2(0, -4), Vector2(0, -4), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3), Vector2(0, -3)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CollisionShape2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape2D:shape:radius")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.0, 5.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("CollisionShape2D:shape:height")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, 10.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgbpj"]
+_data = {
+"Backwards": SubResource("Animation_anod3"),
+"Bottom regrowing": SubResource("Animation_t2rt1"),
+"Forward": SubResource("Animation_xx4my"),
+"Idle": SubResource("Animation_lpvcp"),
+"Left": SubResource("Animation_v10ra"),
+"Mitosis": SubResource("Animation_icdyr"),
+"RESET": SubResource("Animation_6d86l"),
+"Right": SubResource("Animation_g5eud"),
+"Top regrowing": SubResource("Animation_dtg0r")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_30hdq"]
+radius = 4.0
+height = 10.0
+
+[node name="Cell" type="RigidBody2D"]
+linear_damp = 10.0
+angular_damp = 10.0
+script = ExtResource("1_onwjd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_vgbpj")
+}
+autoplay = "Bottom regrowing"
+
+[node name="Cell" type="Sprite2D" parent="."]
+texture = ExtResource("1_egcbd")
+region_enabled = true
+region_rect = Rect2(24, 0, 10, 10)
+
+[node name="Light" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("2_dtvq6")
+offset = Vector2(0, -3.5)
+region_enabled = true
+region_rect = Rect2(4, 0, 2, 1)
+
+[node name="Mouth" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("4_716yp")
+offset = Vector2(0, -5)
+region_enabled = true
+region_rect = Rect2(0, 0, 6, 2)
+
+[node name="TopFlowControl" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("5_4h60p")
+offset = Vector2(0, -3)
+region_enabled = true
+region_rect = Rect2(10, 0, 8, 2)
+
+[node name="BottomFlowControl" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("4_qeskb")
+offset = Vector2(0, 3)
+region_enabled = true
+region_rect = Rect2(10, 0, 8, 2)
+
+[node name="TopFlagellum" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("3_m68hu")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(9, 9, 12, 2)
+
+[node name="BottomFlagellum" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+texture = ExtResource("2_hifam")
+offset = Vector2(0, 4.5)
+region_enabled = true
+region_rect = Rect2(16, 6, 10, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_30hdq")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

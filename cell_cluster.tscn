@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://coyr0uw66cmlm"]
+
+[ext_resource type="Script" path="res://CellCluster.gd" id="1_f4u8e"]
+[ext_resource type="PackedScene" uid="uid://cgk3nyqwam4my" path="res://cell.tscn" id="2_mwtwv"]
+
+[node name="CellCluster" type="Node2D"]
+script = ExtResource("1_f4u8e")
+cell_scene = ExtResource("2_mwtwv")

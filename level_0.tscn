@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://blxa6cowlkfxu"]
+
+[ext_resource type="Script" path="res://level_0.gd" id="1_6mmf6"]
+[ext_resource type="PackedScene" uid="uid://dm0f3yccbu33i" path="res://blood_vessel.tscn" id="1_061b8"]
+[ext_resource type="PackedScene" uid="uid://cjd45vcm8081" path="res://playable_cell.tscn" id="2_uqavf"]
+[ext_resource type="PackedScene" uid="uid://cbkcwlw0kc3nk" path="res://lymphocyte.tscn" id="3_e17wh"]
+[ext_resource type="PackedScene" uid="uid://coyr0uw66cmlm" path="res://cell_cluster.tscn" id="6_65mwr"]
+[ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://fps.tscn" id="7_dix6j"]
+
+[node name="Level0" type="Node2D"]
+script = ExtResource("1_6mmf6")
+
+[node name="BloodVessel" parent="." instance=ExtResource("1_061b8")]
+
+[node name="PlayableCell" parent="." instance=ExtResource("2_uqavf")]
+position = Vector2(1000, 32)
+
+[node name="Lymphocyte" parent="." instance=ExtResource("3_e17wh")]
+position = Vector2(1064, 16)
+
+[node name="Lymphocyte2" parent="." instance=ExtResource("3_e17wh")]
+position = Vector2(792, 208)
+
+[node name="Lymphocyte3" parent="." instance=ExtResource("3_e17wh")]
+position = Vector2(344, 288)
+
+[node name="Lymphocyte4" parent="." instance=ExtResource("3_e17wh")]
+position = Vector2(160, 232)
+
+[node name="Lymphocyte5" parent="." instance=ExtResource("3_e17wh")]
+position = Vector2(592, 272)
+
+[node name="Lymphocyte6" parent="." instance=ExtResource("3_e17wh")]
+position = Vector2(960, 144)
+
+[node name="CellCluster" parent="." instance=ExtResource("6_65mwr")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[node name="FPS" parent="Camera2D" instance=ExtResource("7_dix6j")]
