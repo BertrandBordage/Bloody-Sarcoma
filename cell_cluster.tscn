@@ -6,3 +6,8 @@
 [node name="CellCluster" type="Node2D"]
 script = ExtResource("1_f4u8e")
 cell_scene = ExtResource("2_mwtwv")
+
+[node name="FirstCell" parent="." instance=ExtResource("2_mwtwv")]
+unique_name_in_owner = true
+
+[connection signal="sibling_created" from="FirstCell" to="." method="on_cell_created"]

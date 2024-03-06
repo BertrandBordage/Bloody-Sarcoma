@@ -6,7 +6,8 @@ const MOVEMENT_SMOOTHING: float = 0.1  # 0 < and < 1.
 
 
 @export var cell_scene: PackedScene
-var cells: Array[RigidBody2D] = []
+@onready var first_cell: RigidBody2D = %FirstCell
+@onready var cells: Array[RigidBody2D] = [first_cell]
 @onready var smoothed_position: Vector2 = position
 var movement_force: Vector2 = Vector2.ZERO
 
@@ -44,11 +45,7 @@ func add_cell():
 
 
 func _ready():
-    var first_cell = cell_scene.instantiate()
-    first_cell.sibling_created.connect(on_cell_created)
     first_cell.animation = "Idle"
-    add_child(first_cell)
-    cells.append(first_cell)
 
 
 func set_cells_animation():

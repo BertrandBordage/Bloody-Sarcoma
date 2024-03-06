@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-signal sibling_created
+signal sibling_created(new_cell: RigidBody2D)
 
 
 @export var has_light: bool = false:
