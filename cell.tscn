@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cgk3nyqwam4my"]
+[gd_scene load_steps=21 format=3 uid="uid://cgk3nyqwam4my"]
 
 [ext_resource type="Texture2D" uid="uid://b6kfi51waww8v" path="res://sprites/sarcoma-cell.cell.png" id="1_egcbd"]
 [ext_resource type="Script" path="res://cell.gd" id="1_onwjd"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cns3y6scanyk4" path="res://sprites/sarcoma-cell.mouth.png" id="4_716yp"]
 [ext_resource type="Texture2D" uid="uid://baf0su4m37k4e" path="res://sprites/sarcoma-cell.bottom-flow-control.png" id="4_qeskb"]
 [ext_resource type="Texture2D" uid="uid://diy5ievb8rif" path="res://sprites/sarcoma-cell.top-flow-control.png" id="5_4h60p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x0u02"]
+friction = 0.01
+bounce = 0.1
 
 [sub_resource type="Animation" id="Animation_anod3"]
 length = 1.8
@@ -1842,6 +1846,8 @@ radius = 4.0
 height = 10.0
 
 [node name="Cell" type="RigidBody2D"]
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_x0u02")
 script = ExtResource("1_onwjd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1854,13 +1860,13 @@ autoplay = "Bottom regrowing"
 [node name="Cell" type="Sprite2D" parent="."]
 texture = ExtResource("1_egcbd")
 region_enabled = true
-region_rect = Rect2(24, 0, 10, 10)
+region_rect = Rect2(24, 30, 12, 8)
 
 [node name="Light" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("2_dtvq6")
-offset = Vector2(0, -3.5)
+offset = Vector2(0, -2.5)
 region_enabled = true
 region_rect = Rect2(4, 0, 2, 1)
 
@@ -1868,7 +1874,7 @@ region_rect = Rect2(4, 0, 2, 1)
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("4_716yp")
-offset = Vector2(0, -5)
+offset = Vector2(0, -4)
 region_enabled = true
 region_rect = Rect2(0, 0, 6, 2)
 
@@ -1876,33 +1882,33 @@ region_rect = Rect2(0, 0, 6, 2)
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("5_4h60p")
-offset = Vector2(0, -3)
+offset = Vector2(0, -2)
 region_enabled = true
-region_rect = Rect2(10, 0, 8, 2)
+region_rect = Rect2(0, 0, 10, 2)
 
 [node name="BottomFlowControl" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("4_qeskb")
-offset = Vector2(0, 3)
+offset = Vector2(0, 2)
 region_enabled = true
-region_rect = Rect2(10, 0, 8, 2)
+region_rect = Rect2(0, 0, 10, 2)
 
 [node name="TopFlagellum" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("3_m68hu")
-offset = Vector2(0, -4)
+offset = Vector2(0, -3)
 region_enabled = true
-region_rect = Rect2(9, 9, 12, 2)
+region_rect = Rect2(46, 6, 14, 2)
 
 [node name="BottomFlagellum" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("2_hifam")
-offset = Vector2(0, 4.5)
+offset = Vector2(0, 3.5)
 region_enabled = true
-region_rect = Rect2(16, 6, 10, 3)
+region_rect = Rect2(44, 0, 12, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_30hdq")

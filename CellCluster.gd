@@ -1,8 +1,10 @@
 extends Node2D
 
 
-const COHESION: float = 100.0
+const COHESION: float = 1.0
 const MOVEMENT_SMOOTHING: float = 0.1  # 0 < and < 1.
+const ROTATION_SMOOTHING: float = 0.99  # 0 < and < 1.
+const TORQUE_STRENGTH: float = 500.0
 
 
 @export var cell_scene: PackedScene
@@ -10,6 +12,7 @@ const MOVEMENT_SMOOTHING: float = 0.1  # 0 < and < 1.
 @onready var cells: Array[RigidBody2D] = [first_cell]
 @onready var smoothed_position: Vector2 = position
 var movement_force: Vector2 = Vector2.ZERO
+var look_at: Vector2 = Vector2.UP
 
 
 func avg(values: Array):
@@ -48,26 +51,17 @@ func _ready():
     first_cell.animation = "Idle"
 
 
-func set_cells_animation():
-    var defaultAnimation: String
-    if movement_force == Vector2.ZERO:
-        defaultAnimation = "Idle"
-    elif abs(movement_force.y) >= abs(movement_force.x):
-        defaultAnimation = "Forward" if movement_force.y > 0 else "Backwards"
-    else:
-        defaultAnimation = "Right" if movement_force.x > 0 else "Left"
-    for cell in cells:
-        if cell.animation in ["Idle", "Forward", "Backwards", "Left", "Right"]:
-            cell.animation = defaultAnimation
-
-
-func _process(delta):
-    set_cells_animation()
-
-
-func _physics_process(delta):
+func _physics_process(_delta):
     smoothed_position = get_exponential_moving_average_position()
     var average_position = get_cells_average_position()
+    var look_at_angle = 0 if look_at == Vector2.ZERO else look_at.angle() + PI / 2
     for cell in cells:
-        cell.apply_force(movement_force)
-        cell.apply_force(COHESION * (average_position - (position + cell.position)))
+        var total_movement = movement_force + COHESION * (average_position - (position + cell.position))
+        cell.apply_force(total_movement)
+        cell.set_animation_for_movement(total_movement)
+        cell.apply_torque(
+            ROTATION_SMOOTHING * cell.constant_torque
+            + (1.0 - ROTATION_SMOOTHING) * TORQUE_STRENGTH * (
+                Vector2.RIGHT.rotated(cell.rotation).dot(look_at)
+            )
+        )

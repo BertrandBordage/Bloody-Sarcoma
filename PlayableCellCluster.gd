@@ -1,7 +1,12 @@
 extends Node2D
 
 
-const ACCELERATION = 500.0
+const ACCELERATION = 1.0
+const ZOOM_SMOOTHING = 0.995  # 0 < and < 1.
+const MIN_ZOOM = Vector2(1.0, 1.0)
+const MAX_ZOOM = Vector2(3.0, 3.0)
+@onready var initial_zoom = %Camera2D.zoom
+@onready var smoothed_zoom: Vector2 = initial_zoom
 
 
 func _physics_process(_delta):
@@ -9,4 +14,13 @@ func _physics_process(_delta):
         %CellCluster.add_cell()
     var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
     %CellCluster.movement_force = ACCELERATION * direction
-    %Camera2D.position = %CellCluster.smoothed_position
+    var smoothed_position = %CellCluster.smoothed_position
+    if direction != Vector2.ZERO:
+        %CellCluster.look_at = direction
+    %Camera2D.position = smoothed_position
+    smoothed_zoom = (
+        ZOOM_SMOOTHING * smoothed_zoom
+        + (1.0 - ZOOM_SMOOTHING) * (
+            initial_zoom / (1.0 + %CellCluster.movement_force.length())).clamp(MIN_ZOOM, MAX_ZOOM)
+    )
+    %Camera2D.zoom = smoothed_zoom

@@ -46,6 +46,23 @@ func _ready():
     animation = animation
 
 
+func set_animation_for_movement(movement: Vector2) -> void:
+    if animation in ["Idle", "Forward", "Backwards", "Left", "Right"]:
+        var relative_movement = movement.rotated(-rotation)
+        if relative_movement == Vector2.ZERO:
+            animation = "Idle"
+        else:
+            var angle = relative_movement.angle()
+            if angle > -PI / 4 and angle <= PI / 4:
+                animation = "Right"
+            elif angle > PI / 4 and angle <= 3 * PI / 4:
+                animation = "Backwards"
+            elif angle > 3 * PI / 4 or angle < -3 * PI / 4:
+                animation = "Left"
+            else:
+                animation = "Forward"
+
+
 func can_perform_mitosis():
     return not separating and not growing
 
