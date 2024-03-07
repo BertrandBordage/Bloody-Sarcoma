@@ -12,6 +12,7 @@ signal sibling_created(new_cell: RigidBody2D)
     set(value):
         has_mouth = value
         %Mouth.visible = has_mouth
+        %MouthArea.process_mode = Node.PROCESS_MODE_INHERIT if has_mouth else PROCESS_MODE_DISABLED
 @export var has_flow_control: bool = false:
     set(value):
         has_flow_control = value
@@ -29,6 +30,7 @@ signal sibling_created(new_cell: RigidBody2D)
         %BottomFlowControl.visible = has_flow_control and has_bottom_flagellum
 
 
+var type: String = "CancerCell"
 var animation: String = "Bottom regrowing":
     set(value):
         animation = value
@@ -101,3 +103,7 @@ func _on_animation_player_animation_finished(anim_name):
     if anim_name in ["Top regrowing", "Bottom regrowing"]:
         growing = false
         animation = "Idle"
+
+
+func _on_mouth_area_body_entered(body):
+    print(body)

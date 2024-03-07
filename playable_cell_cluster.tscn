@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://PlayableCellCluster.gd" id="1_xxuoo"]
-[ext_resource type="PackedScene" uid="uid://coyr0uw66cmlm" path="res://cell_cluster.tscn" id="2_8edd7"]
+[ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
 
 [sub_resource type="Curve2D" id="Curve2D_pckr6"]
 _data = {
@@ -15,7 +15,7 @@ size = Vector2(640, 480)
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_xxuoo")
 
-[node name="CellCluster" parent="." instance=ExtResource("2_8edd7")]
+[node name="CancerCellCluster" parent="." instance=ExtResource("2_h8kyo")]
 unique_name_in_owner = true
 
 [node name="Spawned" type="Node2D" parent="."]

@@ -17,20 +17,20 @@ func _process(_delta):
 
 func _physics_process(_delta):
     if Input.is_action_just_pressed("ui_accept"):
-        %CellCluster.add_cell()
+        %CancerCellCluster.add_cell()
     var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-    %CellCluster.movement_force = ACCELERATION * direction
-    var smoothed_position = %CellCluster.smoothed_position
+    %CancerCellCluster.movement_force = ACCELERATION * direction
+    var smoothed_position = %CancerCellCluster.smoothed_position
     var viewport = get_viewport()
     var viewport_size = viewport.get_visible_rect().size
-    %CellCluster.rotation_vector = (
+    %CancerCellCluster.rotation_vector = (
         (viewport.get_mouse_position() - viewport_size / 2) / viewport_size
     ).normalized()
     %Camera2D.position = smoothed_position
     smoothed_zoom = (
         ZOOM_SMOOTHING * smoothed_zoom
         + (1.0 - ZOOM_SMOOTHING) * (
-            initial_zoom / (1.0 + %CellCluster.movement_force.length())).clamp(MIN_ZOOM, MAX_ZOOM)
+            initial_zoom / (1.0 + %CancerCellCluster.movement_force.length())).clamp(MIN_ZOOM, MAX_ZOOM)
     )
     %Camera2D.zoom = smoothed_zoom
     %SpawningPath.scale = initial_zoom / smoothed_zoom

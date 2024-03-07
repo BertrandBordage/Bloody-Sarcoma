@@ -235,6 +235,7 @@ spawnable_scenes = Array[PackedScene]([ExtResource("2_jfo2s"), ExtResource("3_wq
 spawnable_probabilities = Array[float]([1.0, 50.0])
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-1, 0)
 tile_set = SubResource("TileSet_1jqf0")
 format = 2
 layer_0/name = "Background"
