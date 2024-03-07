@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://blxa6cowlkfxu"]
+[gd_scene load_steps=5 format=3 uid="uid://blxa6cowlkfxu"]
 
 [ext_resource type="Script" path="res://level_0.gd" id="1_6mmf6"]
 [ext_resource type="PackedScene" uid="uid://dm0f3yccbu33i" path="res://blood_vessel.tscn" id="1_061b8"]
+[ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://fps.tscn" id="4_pmgej"]
 [ext_resource type="PackedScene" uid="uid://11qi1e3xb58u" path="res://playable_cell_cluster.tscn" id="6_1ntlw"]
 
 [node name="Level0" type="Node2D"]
@@ -13,3 +14,14 @@ unique_name_in_owner = true
 [node name="PlayableCellCluster" parent="." instance=ExtResource("6_1ntlw")]
 unique_name_in_owner = true
 position = Vector2(1016, 24)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FPS" parent="CanvasLayer" instance=ExtResource("4_pmgej")]
+top_level = true
+offset_left = 568.0
+offset_top = 0.0
+offset_right = 632.0
+offset_bottom = 24.0
+text = "?? FPS"
+horizontal_alignment = 2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dadn2caneuudr"
-path="res://.godot/imported/blood-vessel.png-0ecda621c181f7c143cd70e3182090c1.ctex"
+uid="uid://bqtdaj8yrredf"
+path="res://.godot/imported/muscle-cells.png-003994727e37e7246fe45168aedf2307.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/blood-vessel.png"
-dest_files=["res://.godot/imported/blood-vessel.png-0ecda621c181f7c143cd70e3182090c1.ctex"]
+source_file="res://sprites/muscle-cells.png"
+dest_files=["res://.godot/imported/muscle-cells.png-003994727e37e7246fe45168aedf2307.ctex"]
 
 [params]
 
