@@ -33,14 +33,6 @@ func on_cell_created(new_cell: RigidBody2D):
     cells.append(new_cell)
 
 
-func add_cell():
-    var candidate_cells = cells.filter(func (c): return c.can_perform_mitosis())
-    if len(candidate_cells) == 0:
-        return
-    var cell = candidate_cells[randi_range(0, len(candidate_cells) - 1)]
-    cell.start_mitosis()
-
-
 func _ready():
     first_cell.animation = "Idle"
 

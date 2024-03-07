@@ -54,9 +54,10 @@ func _process(_delta):
     for body in %MouthArea.get_overlapping_bodies():
         if "TYPE" in body and body.TYPE != "CancerCell" and body.has_method("take_damage"):
             food += body.take_damage(1)
-            if food >= FOOD_FOR_MITOSIS:
-                food -= FOOD_FOR_MITOSIS
-                start_mitosis()
+            break
+    if food >= FOOD_FOR_MITOSIS and can_perform_mitosis():
+        food -= FOOD_FOR_MITOSIS
+        start_mitosis()
 
 
 func set_animation_for_movement(movement: Vector2) -> void:

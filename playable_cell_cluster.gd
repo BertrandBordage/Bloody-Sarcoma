@@ -16,8 +16,6 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
-    if Input.is_action_just_pressed("ui_accept"):
-        %CancerCellCluster.add_cell()
     var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
     %CancerCellCluster.movement_force = ACCELERATION * direction
     var smoothed_position = %CancerCellCluster.smoothed_position
