@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbkcwlw0kc3nk"]
+[gd_scene load_steps=9 format=3 uid="uid://cbkcwlw0kc3nk"]
 
 [ext_resource type="Texture2D" uid="uid://cmtpdedm1ey8g" path="res://sprites/lymphocyte.membrane.png" id="1_au5ra"]
+[ext_resource type="Script" path="res://lymphocyte.gd" id="1_ph5vg"]
 [ext_resource type="Texture2D" uid="uid://dhyfdaq4qinyv" path="res://sprites/lymphocyte.nucleus.png" id="2_cssrb"]
+[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://health_component.tscn" id="4_27mus"]
 
 [sub_resource type="Animation" id="Animation_i4frn"]
 length = 2.4
@@ -10,7 +12,7 @@ step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Membrane:region_rect")
+tracks/0/path = NodePath("Sprites/Membrane:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Membrane:offset")
+tracks/1/path = NodePath("Sprites/Membrane:offset")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -34,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Nucleus:region_rect")
+tracks/2/path = NodePath("Sprites/Nucleus:region_rect")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -46,7 +48,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Nucleus:offset")
+tracks/3/path = NodePath("Sprites/Nucleus:offset")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -143,6 +145,7 @@ radius = 15.0
 [node name="Lymphocyte" type="RigidBody2D"]
 mass = 0.05
 angular_damp = 1.0
+script = ExtResource("1_ph5vg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -150,12 +153,14 @@ libraries = {
 }
 autoplay = "Idle"
 
-[node name="Membrane" type="Sprite2D" parent="."]
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Membrane" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("1_au5ra")
 region_enabled = true
 region_rect = Rect2(0, 0, 34, 34)
 
-[node name="Nucleus" type="Sprite2D" parent="."]
+[node name="Nucleus" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_cssrb")
 region_enabled = true
 region_rect = Rect2(0, 0, 34, 34)
@@ -163,3 +168,10 @@ region_rect = Rect2(0, 0, 34, 34)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xjfjl")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("4_27mus")]
+initial_health = 20.0
+sprite = NodePath("../Sprites")
+invulnerability_duration = 0.5
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

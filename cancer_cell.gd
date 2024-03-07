@@ -30,11 +30,13 @@ signal sibling_created(new_cell: RigidBody2D)
         %BottomFlowControl.visible = has_flow_control and has_bottom_flagellum
 
 
-var type: String = "CancerCell"
+const TYPE: String = "CancerCell"
+const FOOD_FOR_MITOSIS: float = 10.0
 var animation: String = "Bottom regrowing":
     set(value):
         animation = value
         %AnimationPlayer.current_animation = animation
+var food: float = 0.0
 var separating: bool = false
 var growing: bool = false
 
@@ -46,6 +48,15 @@ func _ready():
     has_top_flagellum = has_top_flagellum
     has_bottom_flagellum = has_bottom_flagellum
     animation = animation
+
+
+func _process(_delta):
+    for body in %MouthArea.get_overlapping_bodies():
+        if "TYPE" in body and body.TYPE != "CancerCell" and body.has_method("take_damage"):
+            food += body.take_damage(1)
+            if food >= FOOD_FOR_MITOSIS:
+                food -= FOOD_FOR_MITOSIS
+                start_mitosis()
 
 
 func set_animation_for_movement(movement: Vector2) -> void:
@@ -76,7 +87,7 @@ func start_mitosis():
 
 
 func spawn_new_sibling():
-    var new_cell: RigidBody2D = load("res://cell.tscn").instantiate()
+    var new_cell: RigidBody2D = load("res://cancer_cell.tscn").instantiate()
     separating = false
     growing = true
     new_cell.growing = true
@@ -103,7 +114,3 @@ func _on_animation_player_animation_finished(anim_name):
     if anim_name in ["Top regrowing", "Bottom regrowing"]:
         growing = false
         animation = "Idle"
-
-
-func _on_mouth_area_body_entered(body):
-    print(body)

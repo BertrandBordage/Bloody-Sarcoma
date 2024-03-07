@@ -232,7 +232,7 @@ point_count = 6
 [node name="BloodVessel" type="Area2D"]
 script = ExtResource("1_nhmg3")
 spawnable_scenes = Array[PackedScene]([ExtResource("2_jfo2s"), ExtResource("3_wqr8a")])
-spawnable_probabilities = Array[float]([1.0, 50.0])
+spawnable_probabilities = Array[float]([1.0, 100.0])
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 0)

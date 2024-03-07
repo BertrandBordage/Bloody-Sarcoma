@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4fbq3qboenqe"]
+[gd_scene load_steps=5 format=3 uid="uid://d4fbq3qboenqe"]
 
 [ext_resource type="Texture2D" uid="uid://cxc2qsrg7x4t3" path="res://sprites/red-blood-cell.png" id="1_tv380"]
+[ext_resource type="Script" path="res://red_blood_cell.gd" id="1_y4inn"]
+[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://health_component.tscn" id="3_pr0ae"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5lub"]
 radius = 1.5
@@ -8,6 +10,7 @@ height = 8.0
 
 [node name="RedBloodCell" type="RigidBody2D"]
 mass = 0.01
+script = ExtResource("1_y4inn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tv380")
@@ -15,3 +18,10 @@ texture = ExtResource("1_tv380")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("CapsuleShape2D_h5lub")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_pr0ae")]
+unique_name_in_owner = true
+initial_health = 3.0
+sprite = NodePath("../Sprite2D")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
