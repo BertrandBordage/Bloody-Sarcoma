@@ -37,3 +37,31 @@ func _physics_process(_delta):
 
 func _on_loaded_area_body_exited(body):
     body.queue_free()
+
+
+func _on_top_flagellum_pressed():
+    for cell in %CancerCellCluster.get_children():
+        if not cell.has_top_flagellum:
+            cell.has_top_flagellum = true
+            return
+
+
+func _on_bottom_flagellum_pressed():
+    for cell in %CancerCellCluster.get_children():
+        if not cell.has_bottom_flagellum:
+            cell.has_bottom_flagellum = true
+            return
+
+
+func _on_mouth_pressed():
+    for cell in %CancerCellCluster.get_children():
+        if not cell.has_mouth:
+            cell.has_mouth = true
+            return
+
+
+func _on_flow_control_pressed():
+    for cell in %CancerCellCluster.get_children():
+        if not cell.has_flow_control:
+            cell.has_flow_control = true
+            return

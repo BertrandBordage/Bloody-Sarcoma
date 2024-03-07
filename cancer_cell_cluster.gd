@@ -28,9 +28,10 @@ func get_exponential_moving_average_position():
     )
 
 
-func on_cell_created(new_cell: RigidBody2D):
+func on_cell_created(new_cell: RigidBody2D, from_cell: RigidBody2D):
     new_cell.sibling_created.connect(on_cell_created)
-    new_cell.set_random_mutations()
+    new_cell.has_bottom_flagellum = from_cell.has_bottom_flagellum
+    from_cell.has_bottom_flagellum = false
 
 
 func _ready():

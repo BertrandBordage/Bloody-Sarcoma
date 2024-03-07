@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 
-signal sibling_created(new_cell: RigidBody2D)
+signal sibling_created(new_cell: RigidBody2D, from_cell: RigidBody2D)
 
 
 @export var has_light: bool = false:
@@ -87,15 +87,7 @@ func spawn_new_sibling():
     new_cell.linear_velocity = linear_velocity
     new_cell.angular_velocity = angular_velocity
     add_sibling(new_cell)
-    sibling_created.emit(new_cell)
-
-
-func set_random_mutations():
-    has_light = randf() >= 0.5
-    has_mouth = randf() >= 0.5
-    has_flow_control = randf() >= 0.5
-    has_top_flagellum = randf() >= 0.5
-    has_bottom_flagellum = randf() >= 0.5
+    sibling_created.emit(new_cell, self)
 
 
 func _on_animation_player_animation_finished(anim_name):
