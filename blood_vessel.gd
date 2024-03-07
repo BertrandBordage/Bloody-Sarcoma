@@ -1,7 +1,7 @@
 extends Area2D
 
 
-const MAX_SPAWNED = 1000
+const MAX_SPAWNED = 500
 @export var spawnable_scenes: Array[PackedScene]
 @export var spawnable_probabilities: Array[float]
 var spawn_exclusion_global_transform: Transform2D
