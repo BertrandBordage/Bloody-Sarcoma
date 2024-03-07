@@ -2135,6 +2135,7 @@ shape = SubResource("CapsuleShape2D_30hdq")
 
 [node name="MouthArea" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouthArea"]
 position = Vector2(0, -8)

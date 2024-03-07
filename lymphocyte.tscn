@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbkcwlw0kc3nk"]
+[gd_scene load_steps=10 format=3 uid="uid://cbkcwlw0kc3nk"]
 
 [ext_resource type="Texture2D" uid="uid://cmtpdedm1ey8g" path="res://sprites/lymphocyte.membrane.png" id="1_au5ra"]
 [ext_resource type="Script" path="res://lymphocyte.gd" id="1_ph5vg"]
@@ -142,6 +142,9 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjfjl"]
 radius = 15.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8nlcw"]
+radius = 64.0
+
 [node name="Lymphocyte" type="RigidBody2D"]
 mass = 0.05
 angular_damp = 1.0
@@ -173,5 +176,12 @@ shape = SubResource("CapsuleShape2D_xjfjl")
 initial_health = 20.0
 sprite = NodePath("../Sprites")
 invulnerability_duration = 0.5
+
+[node name="ThreadDetectionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThreadDetectionArea"]
+shape = SubResource("CircleShape2D_8nlcw")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

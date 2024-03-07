@@ -35,6 +35,7 @@ position = Vector2(-200, -160)
 
 [node name="LoadedArea" type="Area2D" parent="Camera2D"]
 unique_name_in_owner = true
+collision_layer = 0
 
 [node name="LoadedAreaShape" type="CollisionShape2D" parent="Camera2D/LoadedArea"]
 unique_name_in_owner = true
