@@ -44,7 +44,7 @@ func _process(_delta):
     for body in get_overlapping_bodies():
         if body is RigidBody2D:
             if body not in in_membrane_bodies:
-                body.collision_mask |= 0b10
+                body.collision_mask |= 0b10000
             var offset = curve.get_closest_offset(body.global_position)
             var flow_rotation: float = curve.sample_baked_with_rotation(offset).get_rotation()
             body.apply_force(
@@ -54,7 +54,7 @@ func _process(_delta):
 
 func _on_body_exited(body):
     if body is RigidBody2D:
-        body.collision_mask &= ~0b10
+        body.collision_mask &= ~0b10000
 
 
 func _on_membrane_area_body_entered(body):

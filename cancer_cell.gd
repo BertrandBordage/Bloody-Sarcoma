@@ -12,7 +12,7 @@ signal sibling_created(new_cell: RigidBody2D)
     set(value):
         has_mouth = value
         %Mouth.visible = has_mouth
-        %MouthArea.process_mode = Node.PROCESS_MODE_INHERIT if has_mouth else PROCESS_MODE_DISABLED
+        %AttackArea.process_mode = Node.PROCESS_MODE_INHERIT if has_mouth else PROCESS_MODE_DISABLED
 @export var has_flow_control: bool = false:
     set(value):
         has_flow_control = value
@@ -30,7 +30,6 @@ signal sibling_created(new_cell: RigidBody2D)
         %BottomFlowControl.visible = has_flow_control and has_bottom_flagellum
 
 
-const TYPE: String = "CancerCell"
 const FOOD_FOR_MITOSIS: float = 10.0
 var animation: String = "Bottom regrowing":
     set(value):
@@ -48,16 +47,6 @@ func _ready():
     has_top_flagellum = has_top_flagellum
     has_bottom_flagellum = has_bottom_flagellum
     animation = animation
-
-
-func _process(_delta):
-    for body in %MouthArea.get_overlapping_bodies():
-        if "TYPE" in body and body.TYPE != "CancerCell" and body.has_method("take_damage"):
-            food += body.take_damage(1)
-            break
-    if food >= FOOD_FOR_MITOSIS and can_perform_mitosis():
-        food -= FOOD_FOR_MITOSIS
-        start_mitosis()
 
 
 func set_animation_for_movement(movement: Vector2) -> void:
@@ -115,3 +104,18 @@ func _on_animation_player_animation_finished(anim_name):
     if anim_name in ["Top regrowing", "Bottom regrowing"]:
         growing = false
         animation = "Idle"
+
+
+func _on_attack_area_damage_dealt(earned_food):
+    food += earned_food
+    if food >= FOOD_FOR_MITOSIS and can_perform_mitosis():
+        food -= FOOD_FOR_MITOSIS
+        start_mitosis()
+
+
+func take_damage(damage: float) -> float:
+    return %HealthComponent.take_damage(damage)
+
+
+func _on_health_component_died():
+    queue_free()

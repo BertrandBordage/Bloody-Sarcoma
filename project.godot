@@ -32,6 +32,14 @@ window/dpi/allow_hidpi=false
 
 enabled=PackedStringArray("res://addons/aseprite_importer/plugin.cfg")
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Vessel membranes"
+2d_physics/layer_3="Lymphocytes"
+2d_physics/layer_4="Red blood cells"
+2d_physics/layer_5="Permeable vessel membranes"
+
 [physics]
 
 2d/default_gravity=0.0

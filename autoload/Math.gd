@@ -2,11 +2,15 @@ extends Node
 
 
 func sum(values: Array):
+    if values.size() == 0:
+        return null
     return values.reduce(func (a, b): return a + b)
 
 
 func avg(values: Array):
-    return values.reduce(func (a, b): return a + b) / len(values)
+    if values.size() == 0:
+        return null
+    return values.reduce(func (a, b): return a + b) / values.size()
 
 
 func choice(choices: Array, weights: Array[float]):
