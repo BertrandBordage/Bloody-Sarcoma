@@ -2099,6 +2099,7 @@ region_rect = Rect2(4, 0, 2, 1)
 
 [node name="Mouth" type="Sprite2D" parent="HealthComponent"]
 unique_name_in_owner = true
+visible = false
 texture = ExtResource("4_trc7a")
 offset = Vector2(0, -5)
 region_enabled = true

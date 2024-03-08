@@ -18,8 +18,7 @@ func get_cells_average_position():
     return Math.avg(get_children().map(func (cell): return cell.position))
 
 
-func get_exponential_moving_average_position():
-    var new_smoothed_position = get_cells_average_position()
+func get_exponential_moving_average_position(new_smoothed_position):
     if new_smoothed_position == null:
         return smoothed_position
     return (
@@ -39,8 +38,8 @@ func _ready():
 
 
 func _physics_process(_delta):
-    smoothed_position = get_exponential_moving_average_position()
     var average_position = get_cells_average_position()
+    smoothed_position = get_exponential_moving_average_position(average_position)
     for cell in get_children():
         var total_movement = movement_force + COHESION * (average_position - (position + cell.position))
         cell.apply_force(total_movement)

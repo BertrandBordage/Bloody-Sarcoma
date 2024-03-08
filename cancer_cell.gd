@@ -3,31 +3,38 @@ extends RigidBody2D
 
 signal sibling_created(new_cell: RigidBody2D, from_cell: RigidBody2D)
 
+var cancer_cell_scene: PackedScene = load("res://cancer_cell.tscn")
+
+
+func toggle_node(node: Node2D, enabled: bool):
+    node.visible = enabled
+    node.process_mode = PROCESS_MODE_INHERIT if enabled else PROCESS_MODE_DISABLED
+
 
 @export var has_light: bool = false:
     set(value):
         has_light = value
-        %Light.visible = has_light
+        toggle_node(%Light, has_light)
 @export var has_mouth: bool = false:
     set(value):
         has_mouth = value
-        %Mouth.visible = has_mouth
-        %AttackArea.process_mode = Node.PROCESS_MODE_INHERIT if has_mouth else PROCESS_MODE_DISABLED
+        toggle_node(%Mouth, has_mouth)
+        toggle_node(%AttackArea, has_mouth)
 @export var has_flow_control: bool = false:
     set(value):
         has_flow_control = value
-        %TopFlowControl.visible = has_flow_control and has_top_flagellum
-        %BottomFlowControl.visible = has_flow_control and has_bottom_flagellum
+        toggle_node(%TopFlowControl, has_flow_control and has_top_flagellum)
+        toggle_node(%BottomFlowControl, has_flow_control and has_bottom_flagellum)
 @export var has_top_flagellum: bool = false:
     set(value):
         has_top_flagellum = value
-        %TopFlagellum.visible = has_top_flagellum
-        %TopFlowControl.visible = has_flow_control and has_top_flagellum
+        toggle_node(%TopFlagellum, has_top_flagellum)
+        toggle_node(%TopFlowControl, has_flow_control and has_top_flagellum)
 @export var has_bottom_flagellum: bool = false:
     set(value):
         has_bottom_flagellum = value
-        %BottomFlagellum.visible = has_bottom_flagellum
-        %BottomFlowControl.visible = has_flow_control and has_bottom_flagellum
+        toggle_node(%BottomFlagellum, has_bottom_flagellum)
+        toggle_node(%BottomFlowControl, has_flow_control and has_bottom_flagellum)
 
 
 const FOOD_FOR_MITOSIS: float = 10.0
@@ -99,7 +106,7 @@ func start_mitosis():
 
 
 func spawn_new_sibling():
-    var new_cell: RigidBody2D = load("res://cancer_cell.tscn").instantiate()
+    var new_cell: RigidBody2D = cancer_cell_scene.instantiate()
     separating = false
     growing = true
     new_cell.growing = true
