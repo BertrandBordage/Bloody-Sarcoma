@@ -75,7 +75,10 @@ func _on_sacrifice_pressed():
     var cell = get_least_mutated_cell()
     if cell == null:
         return
-    %Spawned.add_child(cell.duplicate())
+    var sacrificed_cell = cell.duplicate()
+    create_tween().tween_property(sacrificed_cell, "modulate:v", 0.75, 1.0)
+    sacrificed_cell.animation = "Idle"
+    %Spawned.add_child(sacrificed_cell)
     cell.queue_free()
     available_mutations += 1
 

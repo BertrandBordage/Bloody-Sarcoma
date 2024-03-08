@@ -168,12 +168,12 @@ invulnerability_duration = 0.5
 [node name="Membrane" type="Sprite2D" parent="HealthComponent"]
 texture = ExtResource("1_au5ra")
 region_enabled = true
-region_rect = Rect2(34, 0, 34, 34)
+region_rect = Rect2(0, 0, 34, 34)
 
 [node name="Nucleus" type="Sprite2D" parent="HealthComponent"]
 texture = ExtResource("2_cssrb")
 region_enabled = true
-region_rect = Rect2(34, 0, 34, 34)
+region_rect = Rect2(0, 0, 34, 34)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
