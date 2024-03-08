@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=5 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
-[ext_resource type="Texture2D" uid="uid://bnissws3oerv5" path="res://sprites/sarcoma-cell.top-flagellum.png" id="3_kcppd"]
-[ext_resource type="Texture2D" uid="uid://cns3y6scanyk4" path="res://sprites/sarcoma-cell.mouth.png" id="4_x5lk4"]
 
 [sub_resource type="Curve2D" id="Curve2D_pckr6"]
 _data = {
@@ -13,14 +11,6 @@ point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
 size = Vector2(640, 480)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_30eao"]
-atlas = ExtResource("4_x5lk4")
-region = Rect2(0, 0, 6, 2)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4tpnv"]
-atlas = ExtResource("3_kcppd")
-region = Rect2(0, 0, 16, 3)
 
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_0yc8o")
@@ -55,18 +45,52 @@ shape = SubResource("RectangleShape2D_0i2i1")
 unique_name_in_owner = true
 polygon = PackedVector2Array(-192, -152, -192, 152, 192, 152, 192, -152)
 
+[node name="SacrificeUI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="SacrificeUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="SacrificeUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SacrificeUI/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SacrificeButton" type="Button" parent="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Sacrifice
+one cell"
+
+[node name="Label" type="Label" parent="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Gives one mutation"
+
 [node name="MutateUI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
 
 [node name="PanelContainer" type="PanelContainer" parent="MutateUI"]
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -253.0
 offset_top = -119.0
-offset_right = 253.0
-grow_horizontal = 2
+offset_right = 506.0
 grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MutateUI/PanelContainer"]
@@ -95,11 +119,11 @@ alignment = 1
 [node name="MouthContainer" type="VBoxContainer" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Mouth" type="Button" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MouthContainer"]
+[node name="MouthButton" type="Button" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MouthContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Mouth"
-icon = SubResource("AtlasTexture_30eao")
 
 [node name="Label" type="Label" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MouthContainer"]
 layout_mode = 2
@@ -110,7 +134,8 @@ reproduce faster"
 [node name="BottomFlagellumContainer" type="VBoxContainer" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="BottomFlagellum" type="Button" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BottomFlagellumContainer"]
+[node name="BottomFlagellumButton" type="Button" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BottomFlagellumContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Bottom Flagellum
@@ -125,11 +150,11 @@ horizontal_alignment = 1
 [node name="TopFlagellumContainer" type="VBoxContainer" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TopFlagellum" type="Button" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TopFlagellumContainer"]
+[node name="TopFlagellumButton" type="Button" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TopFlagellumContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Top Flagellum"
-icon = SubResource("AtlasTexture_4tpnv")
 
 [node name="Label" type="Label" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TopFlagellumContainer"]
 layout_mode = 2
@@ -140,7 +165,8 @@ horizontal_alignment = 1
 [node name="FlowControlContainer" type="VBoxContainer" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="FlowControl" type="Button" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FlowControlContainer"]
+[node name="FlowControlButton" type="Button" parent="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FlowControlContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Flow Control
@@ -153,7 +179,8 @@ text = "Cancels out blood flow,
 if propulsion is enough"
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
-[connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MouthContainer/Mouth" to="." method="_on_mouth_pressed"]
-[connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BottomFlagellumContainer/BottomFlagellum" to="." method="_on_bottom_flagellum_pressed"]
-[connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TopFlagellumContainer/TopFlagellum" to="." method="_on_top_flagellum_pressed"]
-[connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FlowControlContainer/FlowControl" to="." method="_on_flow_control_pressed"]
+[connection signal="pressed" from="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer/SacrificeButton" to="." method="_on_sacrifice_pressed"]
+[connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MouthContainer/MouthButton" to="." method="_on_mouth_pressed"]
+[connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BottomFlagellumContainer/BottomFlagellumButton" to="." method="_on_bottom_flagellum_pressed"]
+[connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/TopFlagellumContainer/TopFlagellumButton" to="." method="_on_top_flagellum_pressed"]
+[connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/FlowControlContainer/FlowControlButton" to="." method="_on_flow_control_pressed"]

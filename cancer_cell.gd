@@ -49,6 +49,28 @@ func _ready():
     animation = animation
 
 
+func _process(_delta):
+    if food >= FOOD_FOR_MITOSIS and can_perform_mitosis():
+        food -= FOOD_FOR_MITOSIS
+        start_mitosis()
+
+
+func get_mutations_count() -> int:
+    var count: int = 0
+    if has_light:
+        count += 1
+    if has_mouth:
+        count += 1
+    if has_flow_control:
+        count += 1
+    if has_top_flagellum:
+        count += 1
+    if has_bottom_flagellum:
+        count += 1
+    return count
+
+
+
 func set_animation_for_movement(movement: Vector2) -> void:
     if animation in ["Idle", "Forward", "Backwards", "Left", "Right"]:
         var relative_movement = movement.rotated(-rotation)
@@ -100,9 +122,6 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_attack_area_damage_dealt(earned_food):
     food += earned_food
-    if food >= FOOD_FOR_MITOSIS and can_perform_mitosis():
-        food -= FOOD_FOR_MITOSIS
-        start_mitosis()
 
 
 func take_damage(damage: float) -> float:
