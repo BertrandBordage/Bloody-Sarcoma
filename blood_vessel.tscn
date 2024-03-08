@@ -233,6 +233,7 @@ point_count = 6
 [node name="BloodVessel" type="Area2D"]
 collision_layer = 0
 collision_mask = 13
+monitorable = false
 script = ExtResource("1_nhmg3")
 spawnable_scenes = Array[PackedScene]([ExtResource("2_jfo2s"), ExtResource("3_wqr8a")])
 spawnable_probabilities = Array[float]([1.0, 100.0])
@@ -275,6 +276,7 @@ polygon = PackedVector2Array(0, 168, 48, 184, 360, 224, 624, 216, 856, 152, 944,
 [node name="UpperMembraneArea" type="Area2D" parent="UpperMembrane"]
 collision_layer = 0
 collision_mask = 13
+monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UpperMembrane/UpperMembraneArea"]
 polygon = PackedVector2Array(0, 168, 48, 184, 360, 224, 624, 216, 856, 152, 944, 64, 960, 0, 944, 0, 928, 64, 848, 144, 624, 208, 360, 216, 48, 176, 0, 160)
@@ -293,6 +295,7 @@ polygon = PackedVector2Array(0, 264, 48, 280, 360, 312, 632, 312, 896, 240, 1072
 [node name="LowerMembraneArea" type="Area2D" parent="LowerMembrane"]
 collision_layer = 0
 collision_mask = 13
+monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LowerMembrane/LowerMembraneArea"]
 polygon = PackedVector2Array(0, 264, 48, 280, 360, 312, 632, 312, 896, 240, 1072, 72, 1088, 0, 1096, 0, 1080, 72, 904, 248, 640, 320, 360, 320, 48, 288, 0, 272)

@@ -14,5 +14,3 @@ has_mouth = true
 has_flow_control = true
 has_top_flagellum = true
 has_bottom_flagellum = true
-
-[connection signal="sibling_created" from="FirstCell" to="." method="on_cell_created"]

@@ -5,6 +5,7 @@ const COHESION: float = 0.1
 const MOVEMENT_SMOOTHING: float = 0.1  # 0 < and < 1.
 const ROTATION_SMOOTHING: float = 0.99  # 0 < and < 1.
 const TORQUE_STRENGTH: float = 500.0
+# FIXME: Implement a size limit, possibly 100 cells.
 
 
 @export var cell_scene: PackedScene
@@ -27,12 +28,6 @@ func get_exponential_moving_average_position(new_smoothed_position):
     )
 
 
-func on_cell_created(new_cell: RigidBody2D, from_cell: RigidBody2D):
-    new_cell.sibling_created.connect(on_cell_created)
-    new_cell.has_bottom_flagellum = from_cell.has_bottom_flagellum
-    from_cell.has_bottom_flagellum = false
-
-
 func _ready():
     first_cell.animation = "Idle"
 
@@ -41,7 +36,9 @@ func _physics_process(_delta):
     var average_position = get_cells_average_position()
     smoothed_position = get_exponential_moving_average_position(average_position)
     for cell in get_children():
-        var total_movement = movement_force + COHESION * (average_position - (position + cell.position))
+        var total_movement = movement_force + COHESION * (
+            average_position - (position + cell.position)
+        )
         cell.apply_force(total_movement)
         cell.set_animation_for_movement(total_movement)
         cell.apply_torque(

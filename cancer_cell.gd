@@ -1,8 +1,6 @@
 extends RigidBody2D
 
 
-signal sibling_created(new_cell: RigidBody2D, from_cell: RigidBody2D)
-
 var cancer_cell_scene: PackedScene = load("res://cancer_cell.tscn")
 
 
@@ -57,9 +55,7 @@ func _ready():
 
 
 func _process(_delta):
-    if food >= FOOD_FOR_MITOSIS and can_perform_mitosis():
-        food -= FOOD_FOR_MITOSIS
-        start_mitosis()
+    start_mitosis_if_possible()
 
 
 func get_mutations_count() -> int:
@@ -96,11 +92,12 @@ func set_animation_for_movement(movement: Vector2) -> void:
 
 
 func can_perform_mitosis():
-    return not separating and not growing
+    return not separating and not growing and food >= FOOD_FOR_MITOSIS
 
 
-func start_mitosis():
+func start_mitosis_if_possible():
     if can_perform_mitosis():
+        food -= FOOD_FOR_MITOSIS
         separating = true
         animation = "Mitosis"
 
@@ -108,15 +105,18 @@ func start_mitosis():
 func spawn_new_sibling():
     var new_cell: RigidBody2D = cancer_cell_scene.instantiate()
     separating = false
+    has_bottom_flagellum = false
     growing = true
-    new_cell.growing = true
     animation = "Top regrowing"
+    new_cell.growing = true
+    new_cell.has_bottom_flagellum = has_bottom_flagellum
+    new_cell.food = floor(food / 2.0)
+    food = ceil(food / 2.0)
     new_cell.position = position
     new_cell.rotation = rotation
     new_cell.linear_velocity = linear_velocity
     new_cell.angular_velocity = angular_velocity
     add_sibling(new_cell)
-    sibling_created.emit(new_cell, self)
 
 
 func _on_animation_player_animation_finished(anim_name):

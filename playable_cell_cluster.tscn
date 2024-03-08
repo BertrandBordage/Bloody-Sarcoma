@@ -37,6 +37,7 @@ position = Vector2(-200, -160)
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 13
+monitorable = false
 
 [node name="LoadedAreaShape" type="CollisionShape2D" parent="Camera2D/LoadedArea"]
 unique_name_in_owner = true

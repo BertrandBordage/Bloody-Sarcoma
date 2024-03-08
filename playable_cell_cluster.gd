@@ -15,23 +15,34 @@ func _process(_delta):
     spawn_exclusion_global_transform = %SpawnExclusionShape.global_transform
     spawn_exclusion_polygon = spawn_exclusion_global_transform * %SpawnExclusionShape.polygon
     var count: int = 0
-    var missing_mouths: int = 0
-    var missing_top_flagellums: int = 0
-    var missing_bottom_flagellums: int = 0
-    var missing_flow_controls: int = 0
+    var needs_mouths: bool = false
+    var needs_top_flagellums: bool = false
+    var needs_bottom_flagellums: bool = false
+    var needs_flow_controls: bool = false
     for cell in %CancerCellCluster.get_children():
         count += 1
-        missing_mouths += 0 if cell.has_mouth else 1
-        missing_top_flagellums += 0 if cell.has_top_flagellum else 1
-        missing_bottom_flagellums += 0 if cell.has_bottom_flagellum else 1
-        missing_flow_controls += 0 if cell.has_flow_control else 1
+        if not cell.has_mouth:
+            needs_mouths = true
+        if not cell.has_top_flagellum:
+            needs_top_flagellums = true
+        if not cell.has_bottom_flagellum:
+            needs_bottom_flagellums = true
+        if not cell.has_flow_control:
+            needs_flow_controls = true
+        if (
+            count > 1
+            and needs_mouths
+            and needs_top_flagellums and needs_bottom_flagellums
+            and needs_flow_controls
+        ):
+            break
 
     %SacrificeUI.visible = count > 1
     %MutateUI.visible = count > 0 and available_mutations > 0
-    %MouthButton.disabled = missing_mouths == 0
-    %TopFlagellumButton.disabled = missing_top_flagellums == 0
-    %BottomFlagellumButton.disabled = missing_bottom_flagellums == 0
-    %FlowControlButton.disabled = missing_flow_controls == 0
+    %MouthButton.disabled = not needs_mouths
+    %TopFlagellumButton.disabled = not needs_top_flagellums
+    %BottomFlagellumButton.disabled = not needs_bottom_flagellums
+    %FlowControlButton.disabled = not needs_flow_controls
 
     var smoothed_position = %CancerCellCluster.smoothed_position
     %Camera2D.position = smoothed_position

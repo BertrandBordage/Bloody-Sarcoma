@@ -2091,6 +2091,7 @@ region_rect = Rect2(24, 0, 10, 10)
 
 [node name="Light" type="Sprite2D" parent="HealthComponent"]
 unique_name_in_owner = true
+process_mode = 4
 visible = false
 texture = ExtResource("3_rjosp")
 offset = Vector2(0, -3.5)
@@ -2099,6 +2100,7 @@ region_rect = Rect2(4, 0, 2, 1)
 
 [node name="Mouth" type="Sprite2D" parent="HealthComponent"]
 unique_name_in_owner = true
+process_mode = 4
 visible = false
 texture = ExtResource("4_trc7a")
 offset = Vector2(0, -5)
@@ -2107,6 +2109,7 @@ region_rect = Rect2(0, 0, 6, 2)
 
 [node name="TopFlowControl" type="Sprite2D" parent="HealthComponent"]
 unique_name_in_owner = true
+process_mode = 4
 visible = false
 texture = ExtResource("5_wpyvj")
 offset = Vector2(0, -3)
@@ -2115,6 +2118,7 @@ region_rect = Rect2(10, 0, 8, 2)
 
 [node name="BottomFlowControl" type="Sprite2D" parent="HealthComponent"]
 unique_name_in_owner = true
+process_mode = 4
 visible = false
 texture = ExtResource("6_60aek")
 offset = Vector2(0, 3)
@@ -2123,14 +2127,16 @@ region_rect = Rect2(10, 0, 8, 2)
 
 [node name="TopFlagellum" type="Sprite2D" parent="HealthComponent"]
 unique_name_in_owner = true
+process_mode = 4
 visible = false
 texture = ExtResource("7_akkbp")
-offset = Vector2(0, -4)
+offset = Vector2(0, -4.5)
 region_enabled = true
-region_rect = Rect2(9, 9, 12, 2)
+region_rect = Rect2(44, 0, 12, 3)
 
 [node name="BottomFlagellum" type="Sprite2D" parent="HealthComponent"]
 unique_name_in_owner = true
+process_mode = 4
 visible = false
 texture = ExtResource("8_2baya")
 offset = Vector2(0, 4.5)
@@ -2142,6 +2148,8 @@ shape = SubResource("CapsuleShape2D_30hdq")
 
 [node name="AttackArea" parent="." instance=ExtResource("9_uadyq")]
 unique_name_in_owner = true
+process_mode = 4
+visible = false
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
