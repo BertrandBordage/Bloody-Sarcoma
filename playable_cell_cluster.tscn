@@ -73,8 +73,7 @@ layout_mode = 2
 [node name="SacrificeButton" type="Button" parent="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "Sacrifice
-one cell"
+text = "Drop a cell"
 
 [node name="Label" type="Label" parent="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

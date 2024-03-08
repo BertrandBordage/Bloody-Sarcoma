@@ -13,6 +13,7 @@ config_version=5
 config/name="Bloody Sarcoma"
 run/main_scene="res://level_0.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

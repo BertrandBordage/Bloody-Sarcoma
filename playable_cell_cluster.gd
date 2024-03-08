@@ -27,7 +27,7 @@ func _process(_delta):
         missing_flow_controls += 0 if cell.has_flow_control else 1
 
     %SacrificeUI.visible = count > 1
-    %MutateUI.visible = available_mutations > 0
+    %MutateUI.visible = count > 0 and available_mutations > 0
     %MouthButton.disabled = missing_mouths == 0
     %TopFlagellumButton.disabled = missing_top_flagellums == 0
     %BottomFlagellumButton.disabled = missing_bottom_flagellums == 0
@@ -75,6 +75,7 @@ func _on_sacrifice_pressed():
     var cell = get_least_mutated_cell()
     if cell == null:
         return
+    %Spawned.add_child(cell.duplicate())
     cell.queue_free()
     available_mutations += 1
 
