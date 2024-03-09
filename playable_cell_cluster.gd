@@ -90,7 +90,7 @@ func _on_sacrifice_pressed():
     if cell == null:
         return
     var sacrificed_cell = cell.duplicate()
-    create_tween().tween_property(sacrificed_cell, "modulate:v", 0.75, 1.0)
+    create_tween().tween_property(sacrificed_cell, "modulate:a", 0.75, 1.0)
     sacrificed_cell.animation = "Idle"
     %Spawned.add_child(sacrificed_cell)
     cell.queue_free()
