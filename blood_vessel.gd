@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const MAX_SPAWNED = 2000
+const MAX_SPAWNED = 500
 const VELOCITY_MULTIPLIER = 100.0
 @export var spawnable_scenes: Array[PackedScene]
 @export var spawnable_probabilities: Array[float]

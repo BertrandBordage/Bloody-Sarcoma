@@ -4,37 +4,33 @@ extends RigidBody2D
 var cancer_cell_scene: PackedScene = load("res://cancer_cell.tscn")
 
 
-func toggle_node(node: Node2D, enabled: bool):
-    node.visible = enabled
-    node.process_mode = PROCESS_MODE_INHERIT if enabled else PROCESS_MODE_DISABLED
-
-
 @export var has_light: bool = false:
     set(value):
         has_light = value
-        toggle_node(%Light, has_light)
+        Utils.toggle_node(%Light, has_light)
 @export var has_mouth: bool = false:
     set(value):
         has_mouth = value
-        toggle_node(%Mouth, has_mouth)
-        toggle_node(%AttackArea, has_mouth)
+        Utils.toggle_node(%Mouth, has_mouth)
+        Utils.toggle_node(%AttackArea, has_mouth)
 @export var has_flow_control: bool = false:
     set(value):
         has_flow_control = value
-        toggle_node(%TopFlowControl, has_flow_control and has_top_flagellum)
-        toggle_node(%BottomFlowControl, has_flow_control and has_bottom_flagellum)
+        Utils.toggle_node(%TopFlowControl, has_flow_control and has_top_flagellum)
+        Utils.toggle_node(%BottomFlowControl, has_flow_control and has_bottom_flagellum)
 @export var has_top_flagellum: bool = false:
     set(value):
         has_top_flagellum = value
-        toggle_node(%TopFlagellum, has_top_flagellum)
-        toggle_node(%TopFlowControl, has_flow_control and has_top_flagellum)
+        Utils.toggle_node(%TopFlagellum, has_top_flagellum)
+        Utils.toggle_node(%TopFlowControl, has_flow_control and has_top_flagellum)
 @export var has_bottom_flagellum: bool = false:
     set(value):
         has_bottom_flagellum = value
-        toggle_node(%BottomFlagellum, has_bottom_flagellum)
-        toggle_node(%BottomFlowControl, has_flow_control and has_bottom_flagellum)
+        Utils.toggle_node(%BottomFlagellum, has_bottom_flagellum)
+        Utils.toggle_node(%BottomFlowControl, has_flow_control and has_bottom_flagellum)
 
 
+const MAX_CELLS: int = 100
 const FOOD_FOR_MITOSIS: float = 10.0
 var animation: String = "Bottom regrowing":
     set(value):
@@ -101,8 +97,13 @@ func can_perform_mitosis():
 
 
 func start_mitosis_if_possible():
-    if can_perform_mitosis():
-        food -= FOOD_FOR_MITOSIS
+    if not can_perform_mitosis():
+        return
+
+    food -= FOOD_FOR_MITOSIS
+    if get_parent().get_child_count() >= MAX_CELLS:
+        PlayerData.available_mutations += 1
+    else:
         separating = true
         animation = "Mitosis"
 

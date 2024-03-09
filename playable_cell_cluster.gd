@@ -8,7 +8,6 @@ const MAX_ZOOM = Vector2(3.0, 3.0)
 @onready var smoothed_zoom: Vector2 = initial_zoom
 @onready var spawn_exclusion_global_transform: Transform2D
 @onready var spawn_exclusion_polygon: PackedVector2Array
-var available_mutations: int = 0
 
 
 func _process(_delta):
@@ -38,7 +37,7 @@ func _process(_delta):
             break
 
     %SacrificeUI.visible = count > 1
-    %MutateUI.visible = count > 0 and available_mutations > 0
+    %MutateUI.visible = count > 0 and PlayerData.available_mutations > 0
     %MouthButton.disabled = not needs_mouths
     %TopFlagellumButton.disabled = not needs_top_flagellums
     %BottomFlagellumButton.disabled = not needs_bottom_flagellums
@@ -93,14 +92,14 @@ func _on_sacrifice_pressed():
     sacrificed_cell.animation = "Idle"
     %Spawned.add_child(sacrificed_cell)
     cell.queue_free()
-    available_mutations += 1
+    PlayerData.available_mutations += 1
 
 
 func _on_top_flagellum_pressed():
     for cell in %CancerCellCluster.get_children():
         if not cell.has_top_flagellum:
             cell.has_top_flagellum = true
-            available_mutations -= 1
+            PlayerData.available_mutations -= 1
             return
 
 
@@ -108,7 +107,7 @@ func _on_bottom_flagellum_pressed():
     for cell in %CancerCellCluster.get_children():
         if not cell.has_bottom_flagellum:
             cell.has_bottom_flagellum = true
-            available_mutations -= 1
+            PlayerData.available_mutations -= 1
             return
 
 
@@ -116,7 +115,7 @@ func _on_mouth_pressed():
     for cell in %CancerCellCluster.get_children():
         if not cell.has_mouth:
             cell.has_mouth = true
-            available_mutations -= 1
+            PlayerData.available_mutations -= 1
             return
 
 
@@ -124,5 +123,5 @@ func _on_flow_control_pressed():
     for cell in %CancerCellCluster.get_children():
         if not cell.has_flow_control:
             cell.has_flow_control = true
-            available_mutations -= 1
+            PlayerData.available_mutations -= 1
             return

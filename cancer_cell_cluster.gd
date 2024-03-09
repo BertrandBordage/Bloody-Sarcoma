@@ -5,7 +5,6 @@ const COHESION_STRENGTH: float = 0.1
 const MOVEMENT_SMOOTHING: float = 0.1  # 0 < and < 1.
 const ROTATION_SMOOTHING: float = 0.99  # 0 < and < 1.
 const TORQUE_STRENGTH: float = 500.0
-# FIXME: Implement a size limit, possibly 100 cells.
 
 
 @export var cell_scene: PackedScene
@@ -40,9 +39,6 @@ func _physics_process(_delta):
     for cell in get_children():
         var cohesion_vector = (
             average_position - (position + cell.position)
-        )
-        cohesion_vector = cohesion_vector.normalized() * (
-            cohesion_vector.length() ** 2
         )
         var total_movement = movement_force + COHESION_STRENGTH * cohesion_vector
         cell.apply_force(total_movement)
