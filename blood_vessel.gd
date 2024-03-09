@@ -1,12 +1,17 @@
 extends Node2D
 
 
-const MAX_SPAWNED = 500
+const MAX_SPAWNED = 2000
+const VELOCITY_MULTIPLIER = 100.0
 @export var spawnable_scenes: Array[PackedScene]
 @export var spawnable_probabilities: Array[float]
 var spawn_exclusion_global_transform: Transform2D
 var spawn_exclusion_polygon: PackedVector2Array
 @onready var curve: Curve2D = %Path2D.curve
+
+
+# TODO: Spawn cells all AFTER the path as well. Ideally make the before/after decision based on current velocity.
+# TODO: Spawn non-player cancer cells depending on how many were dropped in a given area.
 
 
 func get_spawn_position(initial: bool = false):
@@ -36,6 +41,7 @@ func spawn_random(initial: bool = false):
 
     var spawned = Math.choice(spawnable_scenes, spawnable_probabilities).instantiate()
     spawned.rotation = randf_range(-PI, PI)
+    spawned.linear_velocity = SpawnedFlow.flow_velocity * VELOCITY_MULTIPLIER
     %Spawned.add_child.call_deferred(spawned)
     spawned.set_deferred("global_position", get_spawn_position(initial))
 

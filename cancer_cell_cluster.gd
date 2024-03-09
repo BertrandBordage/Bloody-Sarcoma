@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const COHESION: float = 0.1
+const COHESION_STRENGTH: float = 0.1
 const MOVEMENT_SMOOTHING: float = 0.1  # 0 < and < 1.
 const ROTATION_SMOOTHING: float = 0.99  # 0 < and < 1.
 const TORQUE_STRENGTH: float = 500.0
@@ -34,11 +34,17 @@ func _ready():
 
 func _physics_process(_delta):
     var average_position = get_cells_average_position()
-    smoothed_position = get_exponential_moving_average_position(average_position)
+    var new_smoothed_position = get_exponential_moving_average_position(average_position)
+    SpawnedFlow.flow_velocity = new_smoothed_position - smoothed_position
+    smoothed_position = new_smoothed_position
     for cell in get_children():
-        var total_movement = movement_force + COHESION * (
+        var cohesion_vector = (
             average_position - (position + cell.position)
         )
+        cohesion_vector = cohesion_vector.normalized() * (
+            cohesion_vector.length() ** 2
+        )
+        var total_movement = movement_force + COHESION_STRENGTH * cohesion_vector
         cell.apply_force(total_movement)
         cell.set_animation_for_movement(total_movement)
         cell.apply_torque(
