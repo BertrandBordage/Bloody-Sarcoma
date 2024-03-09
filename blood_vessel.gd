@@ -3,15 +3,24 @@ extends Node2D
 
 const MAX_SPAWNED = 500
 const VELOCITY_MULTIPLIER = 100.0
+const PATH_SEARCH_OFFSET_INTERVAL: float = 10.0
 @export var spawnable_scenes: Array[PackedScene]
 @export var spawnable_probabilities: Array[float]
-var spawn_exclusion_global_transform: Transform2D
-var spawn_exclusion_polygon: PackedVector2Array
 @onready var curve: Curve2D = %Path2D.curve
 
 
 # TODO: Spawn cells all AFTER the path as well. Ideally make the before/after decision based on current velocity.
 # TODO: Spawn non-player cancer cells depending on how many were dropped in a given area.
+
+
+func find_closest_point_outside_spawn_exclusion(from_position: Vector2, offset: float):
+    var point: Vector2
+    while offset > 0:
+        point = from_position + curve.sample_baked(offset)
+        if not Geometry2D.is_point_in_polygon(point, SpawnedFlow.spawn_exclusion_polygon):
+            return point
+        offset -= PATH_SEARCH_OFFSET_INTERVAL
+    return null
 
 
 func get_spawn_position(initial: bool = false):
@@ -24,13 +33,16 @@ func get_spawn_position(initial: bool = false):
             + Vector2(randf() - 0.5, randf() - 0.5) * area_size
         )
     else:
-        var offset = curve.get_closest_offset(spawn_exclusion_global_transform.get_origin())
-        var point: Vector2
-        while offset > 0:
-            point = %Path2D.global_position + curve.sample_baked(offset)
-            if not Geometry2D.is_point_in_polygon(point, spawn_exclusion_polygon):
-                break
-            offset -= 10
+        var point = find_closest_point_outside_spawn_exclusion(
+            %Path2D.global_position,
+            curve.get_closest_offset(SpawnedFlow.spawn_exclusion_global_position),
+        )
+        if point == null:
+            # Start from the end, in case the curve was looping.
+            point = find_closest_point_outside_spawn_exclusion(
+                %Path2D.global_position,
+                curve.get_baked_length(),  # End offset.
+            )
         spawn_position = point
     return spawn_position
 

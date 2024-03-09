@@ -45,6 +45,7 @@ shape = SubResource("RectangleShape2D_0i2i1")
 
 [node name="SpawnExclusionShape" type="CollisionPolygon2D" parent="Camera2D"]
 unique_name_in_owner = true
+scale = Vector2(0.25, 0.25)
 polygon = PackedVector2Array(-192, -152, -192, 152, 192, 152, 192, -152)
 
 [node name="SacrificeUI" type="CanvasLayer" parent="."]

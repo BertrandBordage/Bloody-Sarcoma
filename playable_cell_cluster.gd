@@ -6,13 +6,11 @@ const MIN_ZOOM = Vector2(0.5, 0.5)
 const MAX_ZOOM = Vector2(3.0, 3.0)
 @onready var initial_zoom = %Camera2D.zoom
 @onready var smoothed_zoom: Vector2 = initial_zoom
-@onready var spawn_exclusion_global_transform: Transform2D
-@onready var spawn_exclusion_polygon: PackedVector2Array
 
 
 func _process(_delta):
-    spawn_exclusion_global_transform = %SpawnExclusionShape.global_transform
-    spawn_exclusion_polygon = spawn_exclusion_global_transform * %SpawnExclusionShape.polygon
+    SpawnedFlow.spawn_exclusion_global_position = %SpawnExclusionShape.global_position
+    SpawnedFlow.spawn_exclusion_polygon = %SpawnExclusionShape.global_transform * %SpawnExclusionShape.polygon
     var count: int = 0
     var needs_mouths: bool = false
     var needs_top_flagellums: bool = false
