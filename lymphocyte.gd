@@ -4,6 +4,14 @@ extends RigidBody2D
 const SPEED: float = 1.5
 
 
+func _ready():
+    SpawnedFlow.spawned_bodies.append(self)
+
+
+func _exit_tree():
+    SpawnedFlow.spawned_bodies.erase(self)
+
+
 func take_damage(damage: float):
     return $HealthComponent.take_damage(damage)
 

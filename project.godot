@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 Heartbeat="*res://autoload/Heartbeat.gd"
 Math="*res://autoload/Math.gd"
+SpawnedFlow="*res://autoload/SpawnedFlow.gd"
 
 [display]
 

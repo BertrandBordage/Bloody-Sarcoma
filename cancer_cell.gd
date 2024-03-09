@@ -52,6 +52,11 @@ func _ready():
     has_top_flagellum = has_top_flagellum
     has_bottom_flagellum = has_bottom_flagellum
     animation = animation
+    SpawnedFlow.spawned_bodies.append(self)
+
+
+func _exit_tree():
+    SpawnedFlow.spawned_bodies.erase(self)
 
 
 func _process(_delta):
