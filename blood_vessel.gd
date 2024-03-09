@@ -7,8 +7,11 @@ const PATH_SEARCH_OFFSET_INTERVAL: float = 10.0
 @export var spawnable_scenes: Array[PackedScene]
 @export var spawnable_probabilities: Array[float]
 @onready var paths: Array[Node] = %Paths.get_children()
-@onready var curves: Array = paths.map(func (path): return path.curve)
-
+var lymphocyte_probability: float:
+    get:
+        return spawnable_probabilities[0]
+    set(value):
+        spawnable_probabilities[0] = value
 
 # TODO: Spawn cells all AFTER the path as well. Ideally make the before/after decision based on current velocity.
 # TODO: Spawn non-player cancer cells depending on how many were dropped in a given area.
@@ -73,6 +76,10 @@ func spawn_random(initial: bool = false):
     spawned.linear_velocity = SpawnedFlow.flow_velocity * VELOCITY_MULTIPLIER
     %Spawned.add_child.call_deferred(spawned)
     spawned.set_deferred("global_position", spawn_position)
+
+
+func _ready():
+    create_tween().tween_property(self, "lymphocyte_probability", 4.0, 240).set_delay(20)
 
 
 func _process(_delta):

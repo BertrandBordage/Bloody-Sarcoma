@@ -2,15 +2,10 @@
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
-
-[sub_resource type="Curve2D" id="Curve2D_pckr6"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -200, -160, 0, 0, 0, 0, 200, -160, 0, 0, 0, 0, 200, 160, 0, 0, 0, 0, -200, 160, 0, 0, 0, 0, -200, -160)
-}
-point_count = 5
+[ext_resource type="Script" path="res://Help.gd" id="3_pwehu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
-size = Vector2(640, 480)
+size = Vector2(288, 240)
 
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_0yc8o")
@@ -25,14 +20,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 zoom = Vector2(3, 3)
 
-[node name="SpawningPath" type="Path2D" parent="Camera2D"]
-unique_name_in_owner = true
-curve = SubResource("Curve2D_pckr6")
-
-[node name="SpawnerPathFollow" type="PathFollow2D" parent="Camera2D/SpawningPath"]
-unique_name_in_owner = true
-position = Vector2(-200, -160)
-
 [node name="LoadedArea" type="Area2D" parent="Camera2D"]
 unique_name_in_owner = true
 collision_layer = 0
@@ -45,8 +32,7 @@ shape = SubResource("RectangleShape2D_0i2i1")
 
 [node name="SpawnExclusionShape" type="CollisionPolygon2D" parent="Camera2D"]
 unique_name_in_owner = true
-scale = Vector2(0.25, 0.25)
-polygon = PackedVector2Array(-192, -152, -192, 152, 192, 152, 192, -152)
+polygon = PackedVector2Array(-128, -104, -128, 104, 128, 104, 128, -104)
 
 [node name="SacrificeUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -179,6 +165,35 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Cancels out blood flow,
 if propulsion is enough"
+
+[node name="Help" type="CanvasLayer" parent="."]
+offset = Vector2(0, -100)
+transform = Transform2D(1, 0, 0, 1, 0, -100)
+script = ExtResource("3_pwehu")
+
+[node name="PanelContainer" type="PanelContainer" parent="Help"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -169.5
+offset_right = 169.5
+offset_bottom = 43.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Help/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="RichTextLabel" parent="Help/PanelContainer/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font_size=12]Move your [b]mouse[/b] to control the sarcoma[/font_size]
+[b]Eat[/b] red blood cells and [b]avoid[/b] getting eaten by lymphocytes[/center]"
+fit_content = true
+autowrap_mode = 0
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
 [connection signal="pressed" from="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer/SacrificeButton" to="." method="_on_sacrifice_pressed"]

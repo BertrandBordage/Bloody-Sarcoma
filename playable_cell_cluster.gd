@@ -9,8 +9,6 @@ const MAX_ZOOM = Vector2(3.0, 3.0)
 
 
 func _process(_delta):
-    SpawnedFlow.spawn_exclusion_global_position = %SpawnExclusionShape.global_position
-    SpawnedFlow.spawn_exclusion_polygon = %SpawnExclusionShape.global_transform * %SpawnExclusionShape.polygon
     var count: int = 0
     var needs_mouths: bool = false
     var needs_top_flagellums: bool = false
@@ -50,18 +48,24 @@ func _process(_delta):
         ).clamp(MIN_ZOOM, MAX_ZOOM)
     )
     %Camera2D.zoom = smoothed_zoom
-    %SpawningPath.scale = initial_zoom / smoothed_zoom
-    %SpawnExclusionShape.scale = initial_zoom / smoothed_zoom
+    var scale = initial_zoom / smoothed_zoom
+    %LoadedArea.scale = scale
+    %SpawnExclusionShape.scale = scale
+    SpawnedFlow.spawn_exclusion_global_position = %SpawnExclusionShape.global_position
+    SpawnedFlow.spawn_exclusion_polygon = %SpawnExclusionShape.global_transform * %SpawnExclusionShape.polygon
 
 
 func _physics_process(_delta):
-    var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-    %CancerCellCluster.movement_force = ACCELERATION * direction
-    var viewport = get_viewport()
-    var viewport_size = viewport.get_visible_rect().size
-    %CancerCellCluster.rotation_vector = (
+    var viewport: Viewport = get_viewport()
+    var viewport_size: Vector2 = viewport.get_visible_rect().size
+    var direction: Vector2 = (
         (viewport.get_mouse_position() - viewport_size / 2) / viewport_size
-    ).normalized()
+    )
+    # Multiply by 4 to make it possible to reach top speed
+    # without going to the edge of the screen.
+    direction = (direction * 4).limit_length(1.0)
+    %CancerCellCluster.movement_force = ACCELERATION * direction
+    %CancerCellCluster.rotation_vector = direction
 
 
 func _on_loaded_area_body_exited(body):
