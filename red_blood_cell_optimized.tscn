@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dplfbd6u3usfe"]
+
+[ext_resource type="Script" path="res://red_blood_cell_optimized.gd" id="1_f06r0"]
+[ext_resource type="Texture2D" uid="uid://cxc2qsrg7x4t3" path="res://sprites/red-blood-cell.png" id="2_k5upk"]
+
+[node name="RedBloodCellOptimized" type="Node2D"]
+script = ExtResource("1_f06r0")
+texture = ExtResource("2_k5upk")
