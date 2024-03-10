@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Help.gd" id="3_pwehu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
-size = Vector2(352, 304)
+size = Vector2(416, 368)
 
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_0yc8o")
@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_0i2i1")
 
 [node name="SpawnExclusionShape" type="CollisionPolygon2D" parent="Camera2D"]
 unique_name_in_owner = true
-polygon = PackedVector2Array(-144, -120, 144, -120, 144, 120, -144, 120)
+polygon = PackedVector2Array(-176, -152, 176, -152, 176, 152, -176, 152)
 
 [node name="SacrificeUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

@@ -30,7 +30,6 @@ var lymphocyte_probability: float:
 var spawned_this_frame: bool = false
 
 
-# TODO: Spawn cells all AFTER the path as well. Ideally make the before/after decision based on current velocity.
 # TODO: Spawn non-player cancer cells depending on how many were dropped in a given area.
 
 
@@ -161,7 +160,7 @@ func spawn_random(paths: Array, body_to_respawn = null):
         spawned.rotation = randf_range(-PI, PI)
 
     spawned.linear_velocity = Vector2.UP.rotated(
-        spawn.get_rotation() + randf_range(-PI/4, PI/4)
+        spawn.get_rotation() + randf_range(-PI/2, PI/2)
     ) * Heartbeat.blood_pressure * (
         DOWNSTREAM_VELOCITY_MULTIPLIER if downstream
         else UPSTREAM_VELOCITY_MULTIPLIER
@@ -172,21 +171,23 @@ func spawn_random(paths: Array, body_to_respawn = null):
 
 func move_bodies_in_flow(paths: Array) -> void:
     for body in spawned_bodies:
-        var closest_curve: Curve2D
+        var closest_transform: Transform2D
         var closest_distance: float = INF
 
         for path in paths:
-            var point = path.global_position + path.curve.get_closest_point(body.global_position)
+            var curve = path.curve
+            var offset = curve.get_closest_offset(body.global_position)
+            var transform = curve.sample_baked_with_rotation(offset)
+            var point = path.global_position + transform.origin
             var distance = (point - body.global_position).length()
             if distance < closest_distance:
-                closest_curve = path.curve
+                closest_transform = transform
                 closest_distance = distance
 
         if closest_distance == INF:
             continue
 
-        var offset = closest_curve.get_closest_offset(body.global_position)
-        var flow_rotation: float = closest_curve.sample_baked_with_rotation(offset).get_rotation()
+        var flow_rotation: float = closest_transform.get_rotation()
         body.apply_force(
             Heartbeat.blood_pressure * Vector2.UP.rotated(flow_rotation)
         )
