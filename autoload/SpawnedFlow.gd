@@ -5,9 +5,11 @@ const MAX_SPAWNED = 500
 const PATH_SEARCH_OFFSET_INTERVAL: float = 10.0
 const UPSTREAM_VELOCITY_MULTIPLIER = 10.0
 const DOWNSTREAM_VELOCITY_MULTIPLIER = 5.0
+const CLOSEST_CURVE_QUANTIZATION = 20  # pixels
 var spawn_container: Node2D
 var spawned_bodies: Array[RigidBody2D] = []
 var flow_paths: Array[FlowPath] = []
+var visible_flow_paths: Array[FlowPath] = []
 var visible_paths: Array = []
 var player_speed: float = 0.0
 var spawn_exclusion_global_position: Vector2
@@ -36,11 +38,17 @@ var spawned_this_frame: bool = false
 class FlowPath:
     var path: Path2D
     var curve: Curve2D
+    var offset_rounding: float
     var bounding_box: PackedVector2Array
+    var points: Dictionary = {}
+    var directions: Dictionary = {}
 
     func _init(init_path: Path2D):
         path = init_path
         curve = path.curve
+        offset_rounding = round(
+            curve.get_baked_length() / curve.get_baked_points().size()
+        )
         bounding_box = get_bounding_box()
 
     func get_bounding_box() -> PackedVector2Array:
@@ -65,6 +73,24 @@ class FlowPath:
             Vector2(right, bottom),
             Vector2(left, bottom),
         ])
+
+    func get_closest_offset(point: Vector2):
+        var offset = curve.get_closest_offset(point)
+        return round(offset / offset_rounding) * offset_rounding
+
+    func get_point_and_direction(from_point: Vector2):
+        var quantized_point = round(
+            from_point / CLOSEST_CURVE_QUANTIZATION
+        ) * CLOSEST_CURVE_QUANTIZATION
+        if quantized_point in points:
+            return [points[quantized_point], directions[quantized_point]]
+        var offset = get_closest_offset(from_point)
+        var transform = curve.sample_baked_with_rotation(offset)
+        var point = path.global_position + transform.origin
+        var direction = Vector2.UP.rotated(transform.get_rotation())
+        points[quantized_point] = point
+        directions[quantized_point] = direction
+        return [point, direction]
 
     func is_visible() -> bool:
         return Geometry2D.intersect_polygons(
@@ -170,23 +196,21 @@ func spawn_random(body_to_respawn = null):
 
 
 func get_flow_direction(body: RigidBody2D) -> Vector2:
-    var closest_transform: Transform2D
+    var closest_direction: Vector2
     var closest_distance: float = INF
 
-    for path in visible_paths:
-        var curve: Curve2D = path.curve
-        var offset = curve.get_closest_offset(body.global_position)
-        var transform = curve.sample_baked_with_rotation(offset)
-        var point = path.global_position + transform.origin
+    for flow_path: FlowPath in visible_flow_paths:
+        var point_and_direction = flow_path.get_point_and_direction(body.global_position)
+        var point = point_and_direction[0]
         var distance = (point - body.global_position).length()
         if distance < closest_distance:
-            closest_transform = transform
+            closest_direction = point_and_direction[1]
             closest_distance = distance
 
     if closest_distance == INF:
         return Vector2.UP
 
-    return Vector2.UP.rotated(closest_transform.get_rotation())
+    return closest_direction
 
 
 func move_bodies_in_flow() -> void:
@@ -195,9 +219,12 @@ func move_bodies_in_flow() -> void:
 
 
 func _process(_delta):
-    visible_paths = flow_paths.filter(
+    visible_flow_paths = flow_paths.filter(
         func (flow_path: FlowPath): return flow_path.is_visible()
-    ).map(func (flow_path: FlowPath): return flow_path.path)
+    )
+    visible_paths = visible_flow_paths.map(
+        func (flow_path: FlowPath): return flow_path.path
+    )
 
     if not spawned_this_frame:
         spawn_random()
