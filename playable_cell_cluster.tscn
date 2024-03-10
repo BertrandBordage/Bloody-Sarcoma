@@ -10,10 +10,10 @@ size = Vector2(288, 240)
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_0yc8o")
 
-[node name="CancerCellCluster" parent="." instance=ExtResource("2_h8kyo")]
+[node name="Spawned" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="Spawned" type="Node2D" parent="."]
+[node name="CancerCellCluster" parent="." instance=ExtResource("2_h8kyo")]
 unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_0i2i1")
 
 [node name="SpawnExclusionShape" type="CollisionPolygon2D" parent="Camera2D"]
 unique_name_in_owner = true
-polygon = PackedVector2Array(-128, -104, -128, 104, 128, 104, 128, -104)
+polygon = PackedVector2Array(-128, -104, 128, -104, 128, 104, -128, 104)
 
 [node name="SacrificeUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
