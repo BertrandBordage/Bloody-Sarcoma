@@ -1,15 +1,15 @@
 [gd_scene load_steps=24 format=3 uid="uid://wh8os461b38n"]
 
-[ext_resource type="Script" path="res://cancer_cell.gd" id="1_wx2na"]
-[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://health_component.tscn" id="2_qjl2m"]
-[ext_resource type="Texture2D" uid="uid://b6kfi51waww8v" path="res://sprites/sarcoma-cell.cell.png" id="2_ynhss"]
-[ext_resource type="Texture2D" uid="uid://c5qotjk7byteg" path="res://sprites/sarcoma-cell.light.png" id="3_rjosp"]
-[ext_resource type="Texture2D" uid="uid://cns3y6scanyk4" path="res://sprites/sarcoma-cell.mouth.png" id="4_trc7a"]
-[ext_resource type="Texture2D" uid="uid://diy5ievb8rif" path="res://sprites/sarcoma-cell.top-flow-control.png" id="5_wpyvj"]
-[ext_resource type="Texture2D" uid="uid://baf0su4m37k4e" path="res://sprites/sarcoma-cell.bottom-flow-control.png" id="6_60aek"]
-[ext_resource type="Texture2D" uid="uid://bnissws3oerv5" path="res://sprites/sarcoma-cell.top-flagellum.png" id="7_akkbp"]
-[ext_resource type="Texture2D" uid="uid://cqggdexphnhfl" path="res://sprites/sarcoma-cell.bottom-flagellum.png" id="8_2baya"]
-[ext_resource type="PackedScene" uid="uid://dtl0ps1up22ii" path="res://attack_area.tscn" id="9_uadyq"]
+[ext_resource type="Script" path="res://bodies/cancer_cell.gd" id="1_vxxwk"]
+[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://utils/health_component.tscn" id="2_3d553"]
+[ext_resource type="Texture2D" uid="uid://b6kfi51waww8v" path="res://sprites/sarcoma-cell.cell.png" id="3_y5jvl"]
+[ext_resource type="Texture2D" uid="uid://c5qotjk7byteg" path="res://sprites/sarcoma-cell.light.png" id="4_s4a7w"]
+[ext_resource type="Texture2D" uid="uid://cns3y6scanyk4" path="res://sprites/sarcoma-cell.mouth.png" id="5_a5t0i"]
+[ext_resource type="Texture2D" uid="uid://diy5ievb8rif" path="res://sprites/sarcoma-cell.top-flow-control.png" id="6_vrxn8"]
+[ext_resource type="Texture2D" uid="uid://baf0su4m37k4e" path="res://sprites/sarcoma-cell.bottom-flow-control.png" id="7_t1clu"]
+[ext_resource type="Texture2D" uid="uid://bnissws3oerv5" path="res://sprites/sarcoma-cell.top-flagellum.png" id="8_vrorv"]
+[ext_resource type="Texture2D" uid="uid://cqggdexphnhfl" path="res://sprites/sarcoma-cell.bottom-flagellum.png" id="9_3nffb"]
+[ext_resource type="PackedScene" uid="uid://dtl0ps1up22ii" path="res://utils/attack_area.tscn" id="10_k1dhs"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x0u02"]
 friction = 0.05
@@ -2068,10 +2068,10 @@ radius = 3.0
 height = 8.0
 
 [node name="CancerCell" type="RigidBody2D"]
-collision_mask = 11
+collision_mask = 107
 mass = 0.02
 physics_material_override = SubResource("PhysicsMaterial_x0u02")
-script = ExtResource("1_wx2na")
+script = ExtResource("1_vxxwk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -2080,12 +2080,12 @@ libraries = {
 }
 autoplay = "Bottom regrowing"
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_qjl2m")]
+[node name="HealthComponent" parent="." instance=ExtResource("2_3d553")]
 unique_name_in_owner = true
 initial_health = 10.0
 
 [node name="Cell" type="Sprite2D" parent="HealthComponent"]
-texture = ExtResource("2_ynhss")
+texture = ExtResource("3_y5jvl")
 region_enabled = true
 region_rect = Rect2(24, 0, 10, 10)
 
@@ -2093,7 +2093,7 @@ region_rect = Rect2(24, 0, 10, 10)
 unique_name_in_owner = true
 process_mode = 4
 visible = false
-texture = ExtResource("3_rjosp")
+texture = ExtResource("4_s4a7w")
 offset = Vector2(0, -3.5)
 region_enabled = true
 region_rect = Rect2(4, 0, 2, 1)
@@ -2102,7 +2102,7 @@ region_rect = Rect2(4, 0, 2, 1)
 unique_name_in_owner = true
 process_mode = 4
 visible = false
-texture = ExtResource("4_trc7a")
+texture = ExtResource("5_a5t0i")
 offset = Vector2(0, -5)
 region_enabled = true
 region_rect = Rect2(0, 0, 6, 2)
@@ -2111,7 +2111,7 @@ region_rect = Rect2(0, 0, 6, 2)
 unique_name_in_owner = true
 process_mode = 4
 visible = false
-texture = ExtResource("5_wpyvj")
+texture = ExtResource("6_vrxn8")
 offset = Vector2(0, -3)
 region_enabled = true
 region_rect = Rect2(10, 0, 8, 2)
@@ -2120,7 +2120,7 @@ region_rect = Rect2(10, 0, 8, 2)
 unique_name_in_owner = true
 process_mode = 4
 visible = false
-texture = ExtResource("6_60aek")
+texture = ExtResource("7_t1clu")
 offset = Vector2(0, 3)
 region_enabled = true
 region_rect = Rect2(10, 0, 8, 2)
@@ -2129,7 +2129,7 @@ region_rect = Rect2(10, 0, 8, 2)
 unique_name_in_owner = true
 process_mode = 4
 visible = false
-texture = ExtResource("7_akkbp")
+texture = ExtResource("8_vrorv")
 offset = Vector2(0, -4.5)
 region_enabled = true
 region_rect = Rect2(44, 0, 12, 3)
@@ -2138,7 +2138,7 @@ region_rect = Rect2(44, 0, 12, 3)
 unique_name_in_owner = true
 process_mode = 4
 visible = false
-texture = ExtResource("8_2baya")
+texture = ExtResource("9_3nffb")
 offset = Vector2(0, 4.5)
 region_enabled = true
 region_rect = Rect2(16, 6, 10, 3)
@@ -2146,11 +2146,11 @@ region_rect = Rect2(16, 6, 10, 3)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_30hdq")
 
-[node name="AttackArea" parent="." instance=ExtResource("9_uadyq")]
+[node name="AttackArea" parent="." instance=ExtResource("10_k1dhs")]
 unique_name_in_owner = true
 process_mode = 4
 visible = false
-collision_mask = 12
+collision_mask = 108
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(0, -8)

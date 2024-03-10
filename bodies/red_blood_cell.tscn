@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4fbq3qboenqe"]
 
 [ext_resource type="Texture2D" uid="uid://cxc2qsrg7x4t3" path="res://sprites/red-blood-cell.png" id="1_tv380"]
-[ext_resource type="Script" path="res://red_blood_cell.gd" id="1_y4inn"]
-[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://health_component.tscn" id="3_pr0ae"]
+[ext_resource type="Script" path="res://bodies/red_blood_cell.gd" id="1_y4inn"]
+[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://utils/health_component.tscn" id="3_pr0ae"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h5lub"]
 radius = 1.5
@@ -10,7 +10,7 @@ height = 8.0
 
 [node name="RedBloodCell" type="RigidBody2D"]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 111
 mass = 0.01
 script = ExtResource("1_y4inn")
 

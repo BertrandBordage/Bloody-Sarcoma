@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://level_0.gd" id="1_6mmf6"]
 [ext_resource type="PackedScene" uid="uid://dm0f3yccbu33i" path="res://blood_vessel.tscn" id="1_061b8"]
-[ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://fps.tscn" id="4_pmgej"]
+[ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://utils/fps.tscn" id="4_pmgej"]
 [ext_resource type="PackedScene" uid="uid://11qi1e3xb58u" path="res://playable_cell_cluster.tscn" id="6_1ntlw"]
 
 [node name="Level0" type="Node2D"]

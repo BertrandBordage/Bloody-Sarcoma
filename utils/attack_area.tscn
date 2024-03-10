@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://dtl0ps1up22ii"]
 
-[ext_resource type="Script" path="res://attack_area.gd" id="1_s7ocb"]
+[ext_resource type="Script" path="res://utils/attack_area.gd" id="1_8kple"]
 
 [node name="AttackArea" type="Area2D"]
 collision_layer = 0
-collision_mask = 13
+collision_mask = 109
 monitorable = false
-script = ExtResource("1_s7ocb")
+script = ExtResource("1_8kple")

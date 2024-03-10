@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbkcwlw0kc3nk"]
+[gd_scene load_steps=13 format=3 uid="uid://cbkcwlw0kc3nk"]
 
 [ext_resource type="Texture2D" uid="uid://cmtpdedm1ey8g" path="res://sprites/lymphocyte.membrane.png" id="1_au5ra"]
-[ext_resource type="Script" path="res://lymphocyte.gd" id="1_ph5vg"]
+[ext_resource type="Script" path="res://bodies/lymphocyte.gd" id="1_ph5vg"]
 [ext_resource type="Texture2D" uid="uid://dhyfdaq4qinyv" path="res://sprites/lymphocyte.nucleus.png" id="2_cssrb"]
-[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://health_component.tscn" id="4_27mus"]
-[ext_resource type="PackedScene" uid="uid://dtl0ps1up22ii" path="res://attack_area.tscn" id="5_bov45"]
+[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://utils/health_component.tscn" id="4_27mus"]
+[ext_resource type="PackedScene" uid="uid://dtl0ps1up22ii" path="res://utils/attack_area.tscn" id="5_bov45"]
+[ext_resource type="PackedScene" uid="uid://bjiq1fjatlo2b" path="res://utils/threat_detection_area.tscn" id="5_h2flb"]
 
 [sub_resource type="Animation" id="Animation_i4frn"]
 length = 2.4
@@ -143,14 +144,14 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjfjl"]
 radius = 15.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8nlcw"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wyyj"]
 radius = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xk8v0"]
 
 [node name="Lymphocyte" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 14
+collision_mask = 78
 mass = 0.05
 angular_damp = 1.0
 script = ExtResource("1_ph5vg")
@@ -179,15 +180,15 @@ region_rect = Rect2(34, 34, 34, 34)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_xjfjl")
 
-[node name="ThreadDetectionArea" type="Area2D" parent="."]
+[node name="ThreatDetectionArea" parent="." instance=ExtResource("5_h2flb")]
 unique_name_in_owner = true
-collision_layer = 0
+speed = 1.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ThreadDetectionArea"]
-shape = SubResource("CircleShape2D_8nlcw")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThreatDetectionArea"]
+shape = SubResource("CircleShape2D_4wyyj")
 
 [node name="AttackArea" parent="." instance=ExtResource("5_bov45")]
-collision_mask = 1
+collision_mask = 33
 damage = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]

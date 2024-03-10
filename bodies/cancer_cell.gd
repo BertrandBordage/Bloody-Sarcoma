@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 const NAME = "CancerCell"
-var cancer_cell_scene: PackedScene = load("res://cancer_cell.tscn")
+var cancer_cell_scene: PackedScene = load("res://bodies/cancer_cell.tscn")
 
 
 @export var has_light: bool = false:
@@ -32,7 +32,7 @@ var cancer_cell_scene: PackedScene = load("res://cancer_cell.tscn")
 
 
 const MAX_CELLS: int = 100
-const FOOD_FOR_MITOSIS: float = 10.0
+const FOOD_FOR_MITOSIS: float = 200.0
 var animation: String = "Bottom regrowing":
     set(value):
         animation = value
@@ -134,8 +134,24 @@ func _on_animation_player_animation_finished(anim_name):
         animation = "Idle"
 
 
-func _on_attack_area_damage_dealt(earned_food):
+func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
     food += earned_food
+    if earned_food == 0:
+        return
+    if body.NAME == "Bacteria":
+        if has_bottom_flagellum:
+            if has_top_flagellum:
+                for sibling in get_parent().get_children():
+                    if not sibling.has_bottom_flagellum:
+                        sibling.has_bottom_flagellum = true
+                        break
+                    if not sibling.has_top_flagellum:
+                        sibling.has_top_flagellum = true
+                        break
+            else:
+                has_top_flagellum = true
+        else:
+            has_bottom_flagellum = true
 
 
 func take_damage(damage: float) -> float:
@@ -143,4 +159,4 @@ func take_damage(damage: float) -> float:
 
 
 func _on_health_component_died():
-    queue_free()
+    SpawnedFlow.respawn_if_possible(self)

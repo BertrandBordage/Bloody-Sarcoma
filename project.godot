@@ -42,6 +42,8 @@ enabled=PackedStringArray("res://addons/aseprite_importer/plugin.cfg")
 2d_physics/layer_3="Lymphocytes"
 2d_physics/layer_4="Red blood cells"
 2d_physics/layer_5="Permeable vessel membranes"
+2d_physics/layer_6="Bacteria"
+2d_physics/layer_7="Neutrophils"
 
 [physics]
 

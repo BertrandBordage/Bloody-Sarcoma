@@ -17,4 +17,4 @@ func take_damage(damage: float):
 
 
 func _on_health_component_died():
-    queue_free()
+    SpawnedFlow.respawn_if_possible(self)

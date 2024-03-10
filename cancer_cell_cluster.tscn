@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://0irp083fvy7v"]
 
 [ext_resource type="Script" path="res://cancer_cell_cluster.gd" id="1_qb1w4"]
-[ext_resource type="PackedScene" uid="uid://wh8os461b38n" path="res://cancer_cell.tscn" id="2_ofif5"]
+[ext_resource type="PackedScene" uid="uid://wh8os461b38n" path="res://bodies/cancer_cell.tscn" id="2_dvrly"]
 
 [node name="CancerCellCluster" type="Node2D"]
 script = ExtResource("1_qb1w4")
-cell_scene = ExtResource("2_ofif5")
+cell_scene = ExtResource("2_dvrly")
 
-[node name="FirstCell" parent="." instance=ExtResource("2_ofif5")]
+[node name="FirstCell" parent="." instance=ExtResource("2_dvrly")]
 unique_name_in_owner = true
 has_light = true
 has_mouth = true
