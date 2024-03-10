@@ -161,12 +161,12 @@ func spawn_random(paths: Array, body_to_respawn = null):
         spawned.rotation = randf_range(-PI, PI)
 
     spawned.linear_velocity = Vector2.UP.rotated(
-        spawn.get_rotation()
-    ) * player_speed * (
+        spawn.get_rotation() + randf_range(-PI/4, PI/4)
+    ) * Heartbeat.blood_pressure * (
         DOWNSTREAM_VELOCITY_MULTIPLIER if downstream
         else UPSTREAM_VELOCITY_MULTIPLIER
     )
-    spawned.angular_velocity = 0.0
+    spawned.angular_velocity = randf() - 0.5
     spawned_this_frame = true
 
 
