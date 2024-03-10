@@ -1,7 +1,7 @@
 extends Node
 
 
-const MAX_SPAWNED = 600
+const MAX_SPAWNED = 500
 const PATH_SEARCH_OFFSET_INTERVAL: float = 10.0
 const VELOCITY_MULTIPLIER = 100.0
 var spawn_container: Node2D
@@ -117,14 +117,17 @@ func spawn_random(paths: Array, initial: bool = false):
         return
 
     var spawn_position = get_spawn_position(paths, initial)
-    if spawn_position == null:
+    if spawn_position == null or (
+        spawn_position is String and spawn_position == "outside"
+    ):
         return
 
     var spawned = Math.choice(spawnable_scenes, spawnable_probabilities).instantiate()
+    spawn_container.add_child(spawned)
+    spawned.global_position = spawn_position
     spawned.rotation = randf_range(-PI, PI)
+    # FIXME: `flow_velocity` should be the path direction * player_velocity.length().
     spawned.linear_velocity = flow_velocity * VELOCITY_MULTIPLIER
-    spawn_container.add_child.call_deferred(spawned)
-    spawned.set_deferred("global_position", spawn_position)
 
 
 func move_bodies_in_flow(paths: Array) -> void:

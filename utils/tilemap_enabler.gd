@@ -11,7 +11,7 @@ func toggle(enabled: bool):
 
 
 func _ready():
-    toggle(false)
+    _on_screen_exited()
 
 
 func _on_screen_entered():
