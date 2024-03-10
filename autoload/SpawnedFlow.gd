@@ -3,7 +3,8 @@ extends Node
 
 const MAX_SPAWNED = 500
 const PATH_SEARCH_OFFSET_INTERVAL: float = 10.0
-const VELOCITY_MULTIPLIER = 10.0
+const UPSTREAM_VELOCITY_MULTIPLIER = 10.0
+const DOWNSTREAM_VELOCITY_MULTIPLIER = 5.0
 var spawn_container: Node2D
 var spawned_bodies: Array[RigidBody2D] = []
 var flow_paths: Array[FlowPath] = []
@@ -75,10 +76,13 @@ class FlowPath:
 
 
 
-func find_closest_point_outside_spawn_exclusion(curve: Curve2D, from_position: Vector2, offset: float):
+func find_closest_point_outside_spawn_exclusion(
+    curve: Curve2D, from_position: Vector2, offset: float, downstream: bool = false,
+):
     var is_start: bool = true
     var point_with_rotation: Transform2D
-    while offset > 0:
+    var max_offset = curve.get_baked_length()
+    while offset < max_offset if downstream else offset > 0:
         point_with_rotation = curve.sample_baked_with_rotation(offset).translated(from_position)
         if not Geometry2D.is_point_in_polygon(
             point_with_rotation.origin, spawn_exclusion_polygon,
@@ -88,12 +92,12 @@ func find_closest_point_outside_spawn_exclusion(curve: Curve2D, from_position: V
                 # Do not use it as a candidate for spawning.
                 return "outside"
             return point_with_rotation
-        offset -= PATH_SEARCH_OFFSET_INTERVAL
+        offset += PATH_SEARCH_OFFSET_INTERVAL if downstream else -PATH_SEARCH_OFFSET_INTERVAL
         is_start = false
     return null
 
 
-func get_spawn_position(paths: Array, initial: bool = false):
+func get_spawn_position(paths: Array, downstream: bool = false, initial: bool = false):
     if initial:
         # TODO: Implement and call this on program start.
         pass
@@ -105,6 +109,7 @@ func get_spawn_position(paths: Array, initial: bool = false):
             curve,
             path.global_position,
             curve.get_closest_offset(spawn_exclusion_global_position),
+            downstream,
         )
         if point_with_rotation is String and point_with_rotation == "outside":
             # The path is not even in view, skip to the next path.
@@ -114,7 +119,8 @@ func get_spawn_position(paths: Array, initial: bool = false):
             point_with_rotation = find_closest_point_outside_spawn_exclusion(
                 curve,
                 path.global_position,
-                curve.get_baked_length(),  # End offset.
+                0.0 if downstream else curve.get_baked_length(),  # End offset.
+                downstream,
             )
         return point_with_rotation
 
@@ -124,7 +130,9 @@ func spawn_random(paths: Array, body_to_respawn = null):
         if body_to_respawn != null:
             body_to_respawn.queue_free()
         return
-    var spawn = get_spawn_position(paths)
+    # Take a random spawn direction, upstream or downstream.
+    var downstream = randf() >= 0.5
+    var spawn = get_spawn_position(paths, downstream)
     if spawn == null or (spawn is String and spawn == "outside"):
         return
 
@@ -152,7 +160,12 @@ func spawn_random(paths: Array, body_to_respawn = null):
         spawned.global_transform.origin = spawn.origin
         spawned.rotation = randf_range(-PI, PI)
 
-    spawned.linear_velocity = Vector2.UP.rotated(spawn.get_rotation()) * player_speed * VELOCITY_MULTIPLIER
+    spawned.linear_velocity = Vector2.UP.rotated(
+        spawn.get_rotation()
+    ) * player_speed * (
+        DOWNSTREAM_VELOCITY_MULTIPLIER if downstream
+        else UPSTREAM_VELOCITY_MULTIPLIER
+    )
     spawned.angular_velocity = 0.0
     spawned_this_frame = true
 
