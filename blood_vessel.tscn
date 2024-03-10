@@ -1,8 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://dm0f3yccbu33i"]
+[gd_scene load_steps=24 format=3 uid="uid://dm0f3yccbu33i"]
 
 [ext_resource type="Script" path="res://blood_vessel.gd" id="1_nhmg3"]
-[ext_resource type="PackedScene" uid="uid://cbkcwlw0kc3nk" path="res://lymphocyte.tscn" id="2_jfo2s"]
-[ext_resource type="PackedScene" uid="uid://d4fbq3qboenqe" path="res://red_blood_cell.tscn" id="3_wqr8a"]
 [ext_resource type="Texture2D" uid="uid://brf53bylrmo7w" path="res://sprites/blood-vessel-background.png" id="4_c74kl"]
 [ext_resource type="Texture2D" uid="uid://d0ffotkke4jv7" path="res://sprites/blood-vessel-walls.png" id="5_bxnpo"]
 [ext_resource type="Texture2D" uid="uid://ccb802ob5in78" path="res://sprites/fat-cells.png" id="6_i5io4"]
@@ -1636,8 +1634,6 @@ point_count = 4
 
 [node name="BloodVessel" type="Node2D"]
 script = ExtResource("1_nhmg3")
-spawnable_scenes = Array[PackedScene]([ExtResource("2_jfo2s"), ExtResource("3_wqr8a")])
-spawnable_probabilities = Array[float]([0.0, 100.0])
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 0)
@@ -1656,6 +1652,3 @@ curve = SubResource("Curve2D_eceop")
 
 [node name="Path2D2" type="Path2D" parent="Paths"]
 curve = SubResource("Curve2D_v55or")
-
-[node name="Spawned" type="Node2D" parent="."]
-unique_name_in_owner = true

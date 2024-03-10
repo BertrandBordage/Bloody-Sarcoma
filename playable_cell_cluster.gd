@@ -8,6 +8,11 @@ const MAX_ZOOM = Vector2(3.0, 3.0)
 @onready var smoothed_zoom: Vector2 = initial_zoom
 
 
+func _ready():
+    SpawnedFlow.spawn_container = %Spawned
+    create_tween().tween_property(SpawnedFlow, "lymphocyte_probability", 4.0, 240).set_delay(20)
+
+
 func _process(_delta):
     var count: int = 0
     var needs_mouths: bool = false
@@ -48,9 +53,9 @@ func _process(_delta):
         ).clamp(MIN_ZOOM, MAX_ZOOM)
     )
     %Camera2D.zoom = smoothed_zoom
-    var scale = initial_zoom / smoothed_zoom
-    %LoadedArea.scale = scale
-    %SpawnExclusionShape.scale = scale
+    var areas_scale = initial_zoom / smoothed_zoom
+    %LoadedArea.scale = areas_scale
+    %SpawnExclusionShape.scale = areas_scale
     SpawnedFlow.spawn_exclusion_global_position = %SpawnExclusionShape.global_position
     SpawnedFlow.spawn_exclusion_polygon = %SpawnExclusionShape.global_transform * %SpawnExclusionShape.polygon
 
