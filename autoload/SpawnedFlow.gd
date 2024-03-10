@@ -17,15 +17,18 @@ var spawn_exclusion_polygon: PackedVector2Array
 var lymphocyte_scene: PackedScene = load("res://bodies/lymphocyte.tscn")
 var red_blood_cell_scene: PackedScene = load("res://bodies/red_blood_cell.tscn")
 var bacteria_scene: PackedScene = load("res://bodies/bacteria.tscn")
+var neutrophil_scene: PackedScene = load("res://bodies/neutrophil.tscn")
 var spawnable_scene_names: Array[String] = [
     "Lymphocyte",
     "RedBloodCell",
     "Bacteria",
+    "Neutrophil",
 ]
 var spawnable_probabilities: Array[float] = [
     0.0,
     100.0,
     0.25,
+    0.5,
 ]
 var lymphocyte_probability: float:
     get:
@@ -178,6 +181,8 @@ func spawn_random(body_to_respawn = null):
                 scene = red_blood_cell_scene
             "Bacteria":
                 scene = bacteria_scene
+            "Neutrophil":
+                scene = neutrophil_scene
         spawned = scene.instantiate()
         spawn_container.add_child.call_deferred(spawned)
         # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323

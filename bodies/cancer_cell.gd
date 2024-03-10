@@ -138,6 +138,11 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
     food += earned_food
     if earned_food == 0:
         return
+    if body.NAME == "Neutrophil":
+        for sibling in get_parent().get_children():
+            if not sibling.has_mouth:
+                sibling.has_mouth = true
+                break
     if body.NAME == "Bacteria":
         if has_bottom_flagellum:
             if has_top_flagellum:

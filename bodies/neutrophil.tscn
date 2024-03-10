@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://xvj7rurqthbi"]
+
+[ext_resource type="Script" path="res://bodies/neutrophil.gd" id="1_rhh8i"]
+[ext_resource type="Texture2D" uid="uid://cda5wdu6a125n" path="res://sprites/neutrophil.png" id="1_slxv4"]
+[ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://utils/health_component.tscn" id="2_7ncq3"]
+[ext_resource type="PackedScene" uid="uid://dtl0ps1up22ii" path="res://utils/attack_area.tscn" id="4_i6ge5"]
+[ext_resource type="PackedScene" uid="uid://bjiq1fjatlo2b" path="res://utils/threat_detection_area.tscn" id="5_vwnuu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvdip"]
+atlas = ExtResource("1_slxv4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t5rp"]
+atlas = ExtResource("1_slxv4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shxn0"]
+atlas = ExtResource("1_slxv4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sagk3"]
+atlas = ExtResource("1_slxv4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdbce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvdip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t5rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shxn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sagk3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.67
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pyts1"]
+radius = 7.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjj1i"]
+radius = 3.0
+height = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k8gj6"]
+radius = 32.0
+
+[node name="Neutrophil" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 111
+mass = 0.04
+script = ExtResource("1_rhh8i")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_7ncq3")]
+initial_health = 5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HealthComponent"]
+sprite_frames = SubResource("SpriteFrames_gdbce")
+autoplay = "default"
+frame_progress = 0.0302918
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pyts1")
+
+[node name="AttackArea" parent="." instance=ExtResource("4_i6ge5")]
+unique_name_in_owner = true
+collision_mask = 33
+damage = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tjj1i")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="ThreatDetectionArea" parent="." instance=ExtResource("5_vwnuu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThreatDetectionArea"]
+shape = SubResource("CircleShape2D_k8gj6")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
