@@ -3,12 +3,12 @@ extends Node
 
 const MAX_SPAWNED = 500
 const PATH_SEARCH_OFFSET_INTERVAL: float = 10.0
-const VELOCITY_MULTIPLIER = 100.0
+const VELOCITY_MULTIPLIER = 10.0
 var spawn_container: Node2D
 var spawned_bodies: Array[RigidBody2D] = []
 var flow_paths: Array[FlowPath] = []
 var visible_paths: Array = []
-var flow_velocity: Vector2 = Vector2.ZERO
+var player_speed: float = 0.0
 var spawn_exclusion_global_position: Vector2
 var spawn_exclusion_polygon: PackedVector2Array
 var lymphocyte_scene: PackedScene = load("res://lymphocyte.tscn")
@@ -74,17 +74,20 @@ class FlowPath:
         ).size() > 0
 
 
+
 func find_closest_point_outside_spawn_exclusion(curve: Curve2D, from_position: Vector2, offset: float):
     var is_start: bool = true
-    var point: Vector2
+    var point_with_rotation: Transform2D
     while offset > 0:
-        point = from_position + curve.sample_baked(offset)
-        if not Geometry2D.is_point_in_polygon(point, spawn_exclusion_polygon):
+        point_with_rotation = curve.sample_baked_with_rotation(offset).translated(from_position)
+        if not Geometry2D.is_point_in_polygon(
+            point_with_rotation.origin, spawn_exclusion_polygon,
+        ):
             if is_start:
                 # The path is not even in view.
                 # Do not use it as a candidate for spawning.
                 return "outside"
-            return point
+            return point_with_rotation
         offset -= PATH_SEARCH_OFFSET_INTERVAL
         is_start = false
     return null
@@ -98,29 +101,31 @@ func get_spawn_position(paths: Array, initial: bool = false):
     paths.shuffle()
     for path in paths:
         var curve = path.curve
-        var point = find_closest_point_outside_spawn_exclusion(
+        var point_with_rotation = find_closest_point_outside_spawn_exclusion(
             curve,
             path.global_position,
             curve.get_closest_offset(spawn_exclusion_global_position),
         )
-        if point is String and point == "outside":
+        if point_with_rotation is String and point_with_rotation == "outside":
             # The path is not even in view, skip to the next path.
             continue
-        if point == null:
+        if point_with_rotation == null:
             # Start from the end, in case the curve was looping.
-            point = find_closest_point_outside_spawn_exclusion(
+            point_with_rotation = find_closest_point_outside_spawn_exclusion(
                 curve,
                 path.global_position,
                 curve.get_baked_length(),  # End offset.
             )
-        return point
+        return point_with_rotation
 
 
 func spawn_random(paths: Array, body_to_respawn = null):
-    var spawn_position = get_spawn_position(paths)
-    if spawn_position == null or (
-        spawn_position is String and spawn_position == "outside"
-    ):
+    if spawned_this_frame:
+        if body_to_respawn != null:
+            body_to_respawn.queue_free()
+        return
+    var spawn = get_spawn_position(paths)
+    if spawn == null or (spawn is String and spawn == "outside"):
         return
 
     var scene_name: String = Math.choice(spawnable_scene_names, spawnable_probabilities)
@@ -129,7 +134,7 @@ func spawn_random(paths: Array, body_to_respawn = null):
         if body_to_respawn != null:
             body_to_respawn.queue_free()
 
-        if spawned_this_frame or spawned_bodies.size() >= MAX_SPAWNED:
+        if spawned_bodies.size() >= MAX_SPAWNED:
             return
         var scene: PackedScene
         match scene_name:
@@ -138,15 +143,16 @@ func spawn_random(paths: Array, body_to_respawn = null):
             "RedBloodCell":
                 scene = red_blood_cell_scene
         spawned = scene.instantiate()
-        spawn_container.add_child(spawned)
+        spawn_container.add_child.call_deferred(spawned)
+        # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
+        spawned.set_deferred("global_transform", Transform2D(randf_range(-PI, PI), spawn.origin))
     else:
         spawned = body_to_respawn
+        # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
+        spawned.global_transform.origin = spawn.origin
+        spawned.rotation = randf_range(-PI, PI)
 
-    # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
-    spawned.global_transform.origin = spawn_position
-    spawned.rotation = randf_range(-PI, PI)
-    # FIXME: `flow_velocity` should be the path direction * player_velocity.length().
-    spawned.linear_velocity = flow_velocity * VELOCITY_MULTIPLIER
+    spawned.linear_velocity = Vector2.UP.rotated(spawn.get_rotation()) * player_speed * VELOCITY_MULTIPLIER
     spawned.angular_velocity = 0.0
     spawned_this_frame = true
 

@@ -34,7 +34,7 @@ func _ready():
 func _physics_process(_delta):
     var average_position = get_cells_average_position()
     var new_smoothed_position = get_exponential_moving_average_position(average_position)
-    SpawnedFlow.flow_velocity = new_smoothed_position - smoothed_position
+    SpawnedFlow.player_speed = (new_smoothed_position - smoothed_position).length()
     smoothed_position = new_smoothed_position
     for cell in get_children():
         var cohesion_vector = (
