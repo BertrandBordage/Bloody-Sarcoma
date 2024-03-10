@@ -96,13 +96,13 @@ func find_closest_point_outside_spawn_exclusion(
     return null
 
 
-func get_spawn_position(paths: Array, downstream: bool = false, initial: bool = false):
+func get_spawn_position(downstream: bool = false, initial: bool = false):
     if initial:
         # TODO: Implement and call this on program start.
         pass
     # Take a path randomly.
-    paths.shuffle()
-    for path in paths:
+    visible_paths.shuffle()
+    for path in visible_paths:
         var curve = path.curve
         var point_with_rotation = find_closest_point_outside_spawn_exclusion(
             curve,
@@ -124,14 +124,14 @@ func get_spawn_position(paths: Array, downstream: bool = false, initial: bool = 
         return point_with_rotation
 
 
-func spawn_random(paths: Array, body_to_respawn = null):
+func spawn_random(body_to_respawn = null):
     if spawned_this_frame:
         if body_to_respawn != null:
             body_to_respawn.queue_free()
         return
     # Take a random spawn direction, upstream or downstream.
     var downstream = randf() >= 0.5
-    var spawn = get_spawn_position(paths, downstream)
+    var spawn = get_spawn_position(downstream)
     if spawn == null or (spawn is String and spawn == "outside"):
         return
 
@@ -169,28 +169,29 @@ func spawn_random(paths: Array, body_to_respawn = null):
     spawned_this_frame = true
 
 
-func move_bodies_in_flow(paths: Array) -> void:
+func get_flow_direction(body: RigidBody2D) -> Vector2:
+    var closest_transform: Transform2D
+    var closest_distance: float = INF
+
+    for path in visible_paths:
+        var curve: Curve2D = path.curve
+        var offset = curve.get_closest_offset(body.global_position)
+        var transform = curve.sample_baked_with_rotation(offset)
+        var point = path.global_position + transform.origin
+        var distance = (point - body.global_position).length()
+        if distance < closest_distance:
+            closest_transform = transform
+            closest_distance = distance
+
+    if closest_distance == INF:
+        return Vector2.UP
+
+    return Vector2.UP.rotated(closest_transform.get_rotation())
+
+
+func move_bodies_in_flow() -> void:
     for body in spawned_bodies:
-        var closest_transform: Transform2D
-        var closest_distance: float = INF
-
-        for path in paths:
-            var curve = path.curve
-            var offset = curve.get_closest_offset(body.global_position)
-            var transform = curve.sample_baked_with_rotation(offset)
-            var point = path.global_position + transform.origin
-            var distance = (point - body.global_position).length()
-            if distance < closest_distance:
-                closest_transform = transform
-                closest_distance = distance
-
-        if closest_distance == INF:
-            continue
-
-        var flow_rotation: float = closest_transform.get_rotation()
-        body.apply_force(
-            Heartbeat.blood_pressure * Vector2.UP.rotated(flow_rotation)
-        )
+        body.apply_force(Heartbeat.blood_pressure * get_flow_direction(body))
 
 
 func _process(_delta):
@@ -199,10 +200,10 @@ func _process(_delta):
     ).map(func (flow_path: FlowPath): return flow_path.path)
 
     if not spawned_this_frame:
-        spawn_random(visible_paths)
-    move_bodies_in_flow(visible_paths)
+        spawn_random()
+    move_bodies_in_flow()
     spawned_this_frame = false
 
 
 func respawn_if_possible(body: RigidBody2D):
-    spawn_random(visible_paths, body)
+    spawn_random(body)
