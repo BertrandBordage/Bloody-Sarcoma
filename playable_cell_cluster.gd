@@ -1,8 +1,8 @@
 extends Node2D
 
-const ACCELERATION = 1.0
-const ZOOM_SMOOTHING = 0.995  # 0 < and < 1.
-const MIN_ZOOM = Vector2(0.75, 0.75)
+const ACCELERATION = 2.0
+const ZOOM_SMOOTHING = 0.998  # 0 < and < 1.
+const MIN_ZOOM = Vector2(1.0, 1.0)
 const MAX_ZOOM = Vector2(3.0, 3.0)
 @onready var initial_zoom = %Camera2D.zoom
 @onready var smoothed_zoom: Vector2 = initial_zoom
@@ -49,7 +49,7 @@ func _process(_delta):
     smoothed_zoom = (
         ZOOM_SMOOTHING * smoothed_zoom
         + (1.0 - ZOOM_SMOOTHING) * (
-            initial_zoom / (1.0 + %CancerCellCluster.movement_force.length())
+            initial_zoom / (1.0 + SpawnedFlow.player_speed)
         ).clamp(MIN_ZOOM, MAX_ZOOM)
     )
     %Camera2D.zoom = smoothed_zoom
@@ -66,9 +66,9 @@ func _physics_process(_delta):
     var direction: Vector2 = (
         (viewport.get_mouse_position() - viewport_size / 2) / viewport_size
     )
-    # Multiply by 4 to make it possible to reach top speed
+    # Multiply by 5 to make it possible to reach top speed
     # without going to the edge of the screen.
-    direction = (direction * 4).limit_length(1.0)
+    direction = (direction * 5).limit_length(1.0)
     %CancerCellCluster.movement_force = ACCELERATION * direction
     %CancerCellCluster.rotation_vector = direction
 

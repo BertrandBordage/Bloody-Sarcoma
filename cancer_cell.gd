@@ -112,11 +112,11 @@ func start_mitosis_if_possible():
 func spawn_new_sibling():
     var new_cell: RigidBody2D = cancer_cell_scene.instantiate()
     separating = false
-    has_bottom_flagellum = false
     growing = true
     animation = "Top regrowing"
     new_cell.growing = true
     new_cell.has_bottom_flagellum = has_bottom_flagellum
+    has_bottom_flagellum = false
     new_cell.food = floor(food / 2.0)
     food = ceil(food / 2.0)
     new_cell.position = position
