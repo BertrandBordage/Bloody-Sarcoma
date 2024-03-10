@@ -74,7 +74,7 @@ func _physics_process(_delta):
 
 
 func _on_loaded_area_body_exited(body):
-    body.queue_free()
+    SpawnedFlow.respawn_if_possible(body)
 
 
 func get_least_mutated_cell():

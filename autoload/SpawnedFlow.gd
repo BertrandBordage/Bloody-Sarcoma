@@ -7,12 +7,15 @@ const VELOCITY_MULTIPLIER = 100.0
 var spawn_container: Node2D
 var spawned_bodies: Array[RigidBody2D] = []
 var flow_paths: Array[FlowPath] = []
+var visible_paths: Array = []
 var flow_velocity: Vector2 = Vector2.ZERO
 var spawn_exclusion_global_position: Vector2
 var spawn_exclusion_polygon: PackedVector2Array
-var spawnable_scenes: Array[PackedScene] = [
-    load("res://lymphocyte.tscn"),
-    load("res://red_blood_cell.tscn"),
+var lymphocyte_scene: PackedScene = load("res://lymphocyte.tscn")
+var red_blood_cell_scene: PackedScene = load("res://red_blood_cell.tscn")
+var spawnable_scene_names: Array[String] = [
+    "Lymphocyte",
+    "RedBloodCell",
 ]
 var spawnable_probabilities: Array[float] = [
     0.0,
@@ -23,6 +26,7 @@ var lymphocyte_probability: float:
         return spawnable_probabilities[0]
     set(value):
         spawnable_probabilities[0] = value
+var spawned_this_frame: bool = false
 
 
 # TODO: Spawn cells all AFTER the path as well. Ideally make the before/after decision based on current velocity.
@@ -112,22 +116,39 @@ func get_spawn_position(paths: Array, initial: bool = false):
         return point
 
 
-func spawn_random(paths: Array, initial: bool = false):
-    if spawned_bodies.size() >= MAX_SPAWNED:
-        return
-
-    var spawn_position = get_spawn_position(paths, initial)
+func spawn_random(paths: Array, body_to_respawn = null):
+    var spawn_position = get_spawn_position(paths)
     if spawn_position == null or (
         spawn_position is String and spawn_position == "outside"
     ):
         return
 
-    var spawned = Math.choice(spawnable_scenes, spawnable_probabilities).instantiate()
-    spawn_container.add_child(spawned)
-    spawned.global_position = spawn_position
+    var scene_name: String = Math.choice(spawnable_scene_names, spawnable_probabilities)
+    var spawned: RigidBody2D
+    if body_to_respawn == null or scene_name != body_to_respawn.NAME:
+        if body_to_respawn != null:
+            body_to_respawn.queue_free()
+
+        if spawned_this_frame or spawned_bodies.size() >= MAX_SPAWNED:
+            return
+        var scene: PackedScene
+        match scene_name:
+            "Lymphocyte":
+                scene = lymphocyte_scene
+            "RedBloodCell":
+                scene = red_blood_cell_scene
+        spawned = scene.instantiate()
+        spawn_container.add_child(spawned)
+    else:
+        spawned = body_to_respawn
+
+    # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
+    spawned.global_transform.origin = spawn_position
     spawned.rotation = randf_range(-PI, PI)
     # FIXME: `flow_velocity` should be the path direction * player_velocity.length().
     spawned.linear_velocity = flow_velocity * VELOCITY_MULTIPLIER
+    spawned.angular_velocity = 0.0
+    spawned_this_frame = true
 
 
 func move_bodies_in_flow(paths: Array) -> void:
@@ -153,9 +174,15 @@ func move_bodies_in_flow(paths: Array) -> void:
 
 
 func _process(_delta):
-    var visible_paths = flow_paths.filter(
+    visible_paths = flow_paths.filter(
         func (flow_path: FlowPath): return flow_path.is_visible()
     ).map(func (flow_path: FlowPath): return flow_path.path)
 
-    spawn_random(visible_paths)
+    if not spawned_this_frame:
+        spawn_random(visible_paths)
     move_bodies_in_flow(visible_paths)
+    spawned_this_frame = false
+
+
+func respawn_if_possible(body: RigidBody2D):
+    spawn_random(visible_paths, body)

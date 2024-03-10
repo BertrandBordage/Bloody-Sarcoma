@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 
+const NAME = "CancerCell"
 var cancer_cell_scene: PackedScene = load("res://cancer_cell.tscn")
 
 

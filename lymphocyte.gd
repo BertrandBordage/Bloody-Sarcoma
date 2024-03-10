@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 
+const NAME = "Lymphocyte"
 const SPEED: float = 1.5
 
 

@@ -1,6 +1,9 @@
 extends RigidBody2D
 
 
+const NAME = "RedBloodCell"
+
+
 func _ready():
     SpawnedFlow.spawned_bodies.append(self)
 
