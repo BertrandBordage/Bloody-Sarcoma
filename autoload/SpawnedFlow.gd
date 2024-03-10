@@ -30,9 +30,16 @@ var lymphocyte_probability: float:
     set(value):
         spawnable_probabilities[0] = value
 var spawned_this_frame: bool = false
+var flow_directions_cache: Dictionary = {}
 
 
 # TODO: Spawn non-player cancer cells depending on how many were dropped in a given area.
+
+
+func quantize_point(point: Vector2) -> Vector2:
+    return round(
+        point / CLOSEST_CURVE_QUANTIZATION
+    ) * CLOSEST_CURVE_QUANTIZATION
 
 
 class FlowPath:
@@ -40,8 +47,6 @@ class FlowPath:
     var curve: Curve2D
     var offset_rounding: float
     var bounding_box: PackedVector2Array
-    var points: Dictionary = {}
-    var directions: Dictionary = {}
 
     func _init(init_path: Path2D):
         path = init_path
@@ -79,17 +84,10 @@ class FlowPath:
         return round(offset / offset_rounding) * offset_rounding
 
     func get_point_and_direction(from_point: Vector2):
-        var quantized_point = round(
-            from_point / CLOSEST_CURVE_QUANTIZATION
-        ) * CLOSEST_CURVE_QUANTIZATION
-        if quantized_point in points:
-            return [points[quantized_point], directions[quantized_point]]
         var offset = get_closest_offset(from_point)
         var transform = curve.sample_baked_with_rotation(offset)
         var point = path.global_position + transform.origin
         var direction = Vector2.UP.rotated(transform.get_rotation())
-        points[quantized_point] = point
-        directions[quantized_point] = direction
         return [point, direction]
 
     func is_visible() -> bool:
@@ -196,11 +194,15 @@ func spawn_random(body_to_respawn = null):
 
 
 func get_flow_direction(body: RigidBody2D) -> Vector2:
+    var quantized_point = quantize_point(body.global_position)
+    if quantized_point in flow_directions_cache:
+        return flow_directions_cache[quantized_point]
+
     var closest_direction: Vector2
     var closest_distance: float = INF
 
     for flow_path: FlowPath in visible_flow_paths:
-        var point_and_direction = flow_path.get_point_and_direction(body.global_position)
+        var point_and_direction = flow_path.get_point_and_direction(quantized_point)
         var point = point_and_direction[0]
         var distance = (point - body.global_position).length()
         if distance < closest_distance:
@@ -208,8 +210,9 @@ func get_flow_direction(body: RigidBody2D) -> Vector2:
             closest_distance = distance
 
     if closest_distance == INF:
-        return Vector2.UP
+        closest_direction = Vector2.UP
 
+    flow_directions_cache[quantized_point] = closest_direction
     return closest_direction
 
 
