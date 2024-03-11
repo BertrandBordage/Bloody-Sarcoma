@@ -5,6 +5,7 @@ signal threat_level_decreased(threat_level: int)
 
 const MAX_THREAT_LEVEL: float = 5.0
 var threat_level: float = 0.0
+var score: int = 0
 var cluster: Node2D
 var cooldown_timer: Timer
 
@@ -49,6 +50,8 @@ func get_worst_cell():
 
 
 func drop_cell():
+    if cluster.get_child_count() <= 1:
+        return
     var cell = get_worst_cell()
     if cell == null:
         return
@@ -57,3 +60,4 @@ func drop_cell():
     dropped_cell.animation = "Idle"
     SpawnedFlow.spawn_container.add_child(dropped_cell)
     cell.queue_free()
+    score += 100

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=12 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://b4flvaln2as1g" path="res://sounds/background_noise.wav" id="3_owkcr"]
 [ext_resource type="Script" path="res://Help.gd" id="3_pwehu"]
 [ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://utils/fps.tscn" id="4_5xils"]
+[ext_resource type="Script" path="res://Score.gd" id="7_4hjp6"]
+[ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="7_rckg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
 size = Vector2(416, 368)
@@ -95,19 +97,32 @@ layout_mode = 2
 texture = ExtResource("3_obfec")
 stretch_mode = 5
 
+[node name="Score" type="Label" parent="Overlay"]
+offset_left = 456.0
+offset_top = 8.0
+offset_right = 632.0
+offset_bottom = 31.0
+theme_override_colors/font_outline_color = Color(0.0705882, 0.305882, 0.537255, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_rckg4")
+theme_override_font_sizes/font_size = 30
+text = "1234567"
+horizontal_alignment = 2
+script = ExtResource("7_4hjp6")
+
 [node name="FPS" parent="Overlay" instance=ExtResource("4_5xils")]
 offset_left = 568.0
-offset_top = 0.0
+offset_top = 40.0
 offset_right = 632.0
-offset_bottom = 24.0
+offset_bottom = 64.0
 text = "?? FPS"
 horizontal_alignment = 2
 
-[node name="SacrificeUI" type="CanvasLayer" parent="."]
+[node name="MetastasizeUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 visible = false
 
-[node name="PanelContainer" type="PanelContainer" parent="SacrificeUI"]
+[node name="PanelContainer" type="PanelContainer" parent="MetastasizeUI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -118,25 +133,26 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="SacrificeUI/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MetastasizeUI/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SacrificeUI/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MetastasizeUI/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SacrificeButton" type="Button" parent="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MetastasizeButton" type="Button" parent="MetastasizeUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "Drop a cell"
+text = "Metastasize"
 
-[node name="Label" type="Label" parent="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MetastasizeUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "Gives one mutation"
+text = "- 1 cell + 100 points"
+horizontal_alignment = 1
 
 [node name="Help" type="CanvasLayer" parent="."]
 offset = Vector2(0, 100)
@@ -172,4 +188,3 @@ autowrap_mode = 0
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
 [connection signal="timeout" from="ThreatLevelCooldown" to="ThreatLevelCooldown" method="_on_timeout"]
-[connection signal="pressed" from="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer/SacrificeButton" to="." method="_on_sacrifice_pressed"]

@@ -6,6 +6,7 @@ const MIN_ZOOM = Vector2(1.5, 1.5)
 const MAX_ZOOM = Vector2(3.0, 3.0)
 @onready var initial_zoom = %Camera2D.zoom
 @onready var smoothed_zoom: Vector2 = initial_zoom
+var use_mouse: bool = true
 
 
 func _ready():
@@ -15,7 +16,10 @@ func _ready():
 
 
 func _process(_delta):
-    %SacrificeUI.visible = %CancerCellCluster.get_child_count() > 1
+    if Input.is_action_just_pressed("drop_cell"):
+        PlayerData.drop_cell()
+
+    %MetastasizeUI.visible = %CancerCellCluster.get_child_count() > 1
 
     var smoothed_position = %CancerCellCluster.smoothed_position
     %Camera2D.position = smoothed_position
@@ -34,21 +38,23 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
-    var viewport: Viewport = get_viewport()
-    var viewport_size: Vector2 = viewport.get_visible_rect().size
-    var direction: Vector2 = (
-        (viewport.get_mouse_position() - viewport_size / 2) / viewport_size
-    )
-    # Multiply by 5 to make it possible to reach top speed
-    # without going to the edge of the screen.
-    direction = (direction * 5).limit_length(1.0)
-    %CancerCellCluster.movement_force = ACCELERATION * direction
-    %CancerCellCluster.rotation_vector = direction
+    var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
+    if use_mouse and direction != Vector2.ZERO:
+        use_mouse = false
+    if use_mouse:
+        var viewport: Viewport = get_viewport()
+        var viewport_size: Vector2 = viewport.get_visible_rect().size
+        direction = (
+            (viewport.get_mouse_position() - viewport_size / 2) / viewport_size
+        )
+        # Multiply by 5 to make it possible to reach top speed
+        # without going to the edge of the screen.
+        direction = (direction * 5).limit_length(1.0)
+
+    if direction != Vector2.ZERO:
+        %CancerCellCluster.movement_force = ACCELERATION * direction
+        %CancerCellCluster.rotation_vector = direction
 
 
 func _on_loaded_area_body_exited(body):
     SpawnedFlow.respawn_if_possible(body)
-
-
-func _on_sacrifice_pressed():
-    PlayerData.drop_cell()
