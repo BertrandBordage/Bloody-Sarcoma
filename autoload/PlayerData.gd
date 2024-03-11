@@ -4,9 +4,8 @@ signal threat_level_raised(threat_level: int)
 signal threat_level_decreased(threat_level: int)
 
 const MAX_THREAT_LEVEL: float = 5.0
-# TODO: Remove available_mutations, we now get mutations from eating.
-var available_mutations: int = 0
 var threat_level: float = 0.0
+var cluster: Node2D
 var cooldown_timer: Timer
 
 
@@ -34,3 +33,27 @@ func decrease_threat_level():
 
     if threat_level > 0:
         cooldown_timer.start()
+
+
+func get_least_mutated_cell():
+    var min_mutations: int = 100
+    var candidate = null
+    for cell in cluster.get_children():
+        var mutations_count = cell.get_mutations_count()
+        if mutations_count == 0:
+            return cell
+        if mutations_count < min_mutations:
+            min_mutations = mutations_count
+            candidate = cell
+    return candidate
+
+
+func drop_cell():
+    var cell = get_least_mutated_cell()
+    if cell == null:
+        return
+    var dropped_cell = cell.duplicate()
+    create_tween().tween_property(dropped_cell, "modulate:a", 0.75, 1.0)
+    dropped_cell.animation = "Idle"
+    SpawnedFlow.spawn_container.add_child(dropped_cell)
+    cell.queue_free()
