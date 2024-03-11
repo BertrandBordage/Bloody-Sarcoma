@@ -136,13 +136,25 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
     food += earned_food
+    %HealthComponent.health = min(
+        %HealthComponent.health + earned_food,
+        %HealthComponent.initial_health,
+    )
     if earned_food == 0:
         return
+
+    #
+    # Kills
+    #
+
+    if body.NAME == "Lymphocyte":
+        PlayerData.raise_threat_level(1.0)
     if body.NAME == "Neutrophil":
         for sibling in get_parent().get_children():
             if not sibling.has_mouth:
                 sibling.has_mouth = true
                 break
+        PlayerData.raise_threat_level(0.5)
     if body.NAME == "Bacteria":
         if has_bottom_flagellum:
             if has_top_flagellum:

@@ -10,7 +10,7 @@ const MAX_ZOOM = Vector2(3.0, 3.0)
 
 func _ready():
     SpawnedFlow.spawn_container = %Spawned
-    create_tween().tween_property(SpawnedFlow, "lymphocyte_probability", 4.0, 240).set_delay(20)
+    PlayerData.cooldown_timer = %ThreatLevelCooldown
 
 
 func _process(_delta):

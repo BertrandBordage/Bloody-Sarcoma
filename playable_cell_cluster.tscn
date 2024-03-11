@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=9 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
+[ext_resource type="Script" path="res://ThreatLevel.gd" id="3_1fjrt"]
+[ext_resource type="Script" path="res://ThreatLevelCooldown.gd" id="3_21bpp"]
+[ext_resource type="Texture2D" uid="uid://bk0nq1hsqnn5r" path="res://sprites/lymphocyte.png" id="3_obfec"]
 [ext_resource type="Script" path="res://Help.gd" id="3_pwehu"]
+[ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://utils/fps.tscn" id="4_5xils"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
 size = Vector2(416, 368)
@@ -33,6 +37,62 @@ shape = SubResource("RectangleShape2D_0i2i1")
 [node name="SpawnExclusionShape" type="CollisionPolygon2D" parent="Camera2D"]
 unique_name_in_owner = true
 polygon = PackedVector2Array(-176, -152, 176, -152, 176, 152, -176, 152)
+
+[node name="ThreatLevelCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 30.0
+one_shot = true
+script = ExtResource("3_21bpp")
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="ThreatLevel" type="HBoxContainer" parent="Overlay/MarginContainer"]
+layout_mode = 2
+script = ExtResource("3_1fjrt")
+
+[node name="TextureRect" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("3_obfec")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("3_obfec")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("3_obfec")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("3_obfec")
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("3_obfec")
+stretch_mode = 5
+
+[node name="FPS" parent="Overlay" instance=ExtResource("4_5xils")]
+offset_left = 568.0
+offset_top = 0.0
+offset_right = 632.0
+offset_bottom = 24.0
+text = "?? FPS"
+horizontal_alignment = 2
 
 [node name="SacrificeUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -167,18 +227,21 @@ text = "Cancels out blood flow,
 if propulsion is enough"
 
 [node name="Help" type="CanvasLayer" parent="."]
-offset = Vector2(0, -100)
-transform = Transform2D(1, 0, 0, 1, 0, -100)
+offset = Vector2(0, 100)
+transform = Transform2D(1, 0, 0, 1, 0, 100)
 script = ExtResource("3_pwehu")
 
 [node name="PanelContainer" type="PanelContainer" parent="Help"]
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -169.5
-offset_right = 169.5
-offset_bottom = 43.0
+anchor_bottom = 1.0
+offset_left = -237.5
+offset_top = -60.0
+offset_right = 237.5
 grow_horizontal = 2
+grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Help/PanelContainer"]
 layout_mode = 2
@@ -196,6 +259,7 @@ fit_content = true
 autowrap_mode = 0
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
+[connection signal="timeout" from="ThreatLevelCooldown" to="ThreatLevelCooldown" method="_on_timeout"]
 [connection signal="pressed" from="SacrificeUI/PanelContainer/MarginContainer/VBoxContainer/SacrificeButton" to="." method="_on_sacrifice_pressed"]
 [connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MouthContainer/MouthButton" to="." method="_on_mouth_pressed"]
 [connection signal="pressed" from="MutateUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BottomFlagellumContainer/BottomFlagellumButton" to="." method="_on_bottom_flagellum_pressed"]
