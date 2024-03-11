@@ -8,6 +8,7 @@ const TORQUE_STRENGTH: float = 500.0
 
 @export var cell_scene: PackedScene
 @onready var first_cell: RigidBody2D = %FirstCell
+@onready var first_cell_for_restart: RigidBody2D = first_cell.duplicate()
 @onready var smoothed_position: Vector2 = position
 var movement_force: Vector2 = Vector2.ZERO
 var rotation_vector: Vector2 = Vector2.UP

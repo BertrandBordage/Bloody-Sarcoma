@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=15 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
@@ -11,9 +11,11 @@
 [ext_resource type="Script" path="res://Score.gd" id="7_4hjp6"]
 [ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="7_rckg4"]
 [ext_resource type="Script" path="res://MetastasizeButton.gd" id="10_sccpc"]
+[ext_resource type="Script" path="res://PauseOverlay.gd" id="12_j7f23"]
+[ext_resource type="Script" path="res://GameOver.gd" id="13_swuyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
-size = Vector2(416, 368)
+size = Vector2(160, 144)
 
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_0yc8o")
@@ -26,7 +28,7 @@ unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
-zoom = Vector2(3, 3)
+zoom = Vector2(10, 10)
 
 [node name="LoadedArea" type="Area2D" parent="Camera2D"]
 unique_name_in_owner = true
@@ -40,7 +42,7 @@ shape = SubResource("RectangleShape2D_0i2i1")
 
 [node name="SpawnExclusionShape" type="CollisionPolygon2D" parent="Camera2D"]
 unique_name_in_owner = true
-polygon = PackedVector2Array(-176, -152, 176, -152, 176, 152, -176, 152)
+polygon = PackedVector2Array(-56, -48, 56, -48, 56, 48, -56, 48)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
 current = true
@@ -112,6 +114,7 @@ horizontal_alignment = 2
 script = ExtResource("7_4hjp6")
 
 [node name="FPS" parent="Overlay" instance=ExtResource("4_5xils")]
+process_mode = 3
 offset_left = 568.0
 offset_top = 40.0
 offset_right = 632.0
@@ -187,6 +190,96 @@ text = "[center][font_size=12]Move your [b]mouse[/b] to control the sarcoma[/fon
 fit_content = true
 autowrap_mode = 0
 
+[node name="PauseOverlay" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("12_j7f23")
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseOverlay"]
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -31.5
+offset_right = 45.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseOverlay/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("13_swuyd")
+
+[node name="PanelContainer" type="PanelContainer" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -31.5
+offset_right = 45.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "YOU LOST
+
+But the host just beat cancer! 🎉
+
+You can still try to metastasize a new host"
+horizontal_alignment = 1
+
+[node name="GameOverRestartButton" type="Button" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Restart"
+
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
 [connection signal="timeout" from="ThreatLevelCooldown" to="ThreatLevelCooldown" method="_on_timeout"]
 [connection signal="pressed" from="MetastasizeUI/MarginContainer/VBoxContainer/MetastasizeButton" to="." method="_on_metastasize_button_pressed"]
+[connection signal="pressed" from="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="PauseOverlay" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="PauseOverlay" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOver/PanelContainer/MarginContainer/VBoxContainer/GameOverRestartButton" to="GameOver" method="_on_game_over_restart_button_pressed"]

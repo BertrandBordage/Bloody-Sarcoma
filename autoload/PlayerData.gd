@@ -4,15 +4,53 @@ signal threat_level_raised(threat_level: int)
 signal threat_level_decreased(threat_level: int)
 signal input_changed
 
+const MIN_ZOOM = Vector2(1.5, 1.5)
+const MAX_ZOOM = Vector2(3.0, 3.0)
 const MAX_THREAT_LEVEL: float = 5.0
 var threat_level: float = 0.0
 var score: int = 0
 var cluster: Node2D
+var camera: Camera2D
+var initial_zoom: Vector2
+var zoom_smoothing: float  # 0 < and < 1.
+var smoothed_zoom: Vector2
 var cooldown_timer: Timer
 var use_mouse: bool = true
 var use_gamepad: bool = false
 var is_nintendo_gamepad: bool = false
 var use_keyboard: bool = false
+
+
+func initial_zoom_tween():
+    smoothed_zoom = initial_zoom
+    zoom_smoothing = 0.99
+    create_tween().tween_property(self, "zoom_smoothing", 0.998, 5.0)
+
+
+func restart():
+    threat_level = 0.0
+    score = 0
+    for cell in cluster.get_children():
+        cell.queue_free()
+    var first_cell = cluster.first_cell_for_restart.duplicate()
+    first_cell.animation = "Idle"
+    cluster.add_child(first_cell)
+    for spawned in SpawnedFlow.spawn_container.get_children():
+        spawned.queue_free()
+
+    camera.global_position = first_cell.global_position
+    cluster.smoothed_position = camera.position
+    initial_zoom_tween()
+    cooldown_timer.stop()
+
+
+func _process(_delta):
+    smoothed_zoom = (
+        zoom_smoothing * smoothed_zoom
+        + (1.0 - zoom_smoothing) * (
+            MIN_ZOOM / (1.0 + SpawnedFlow.player_speed)
+        ).clamp(MIN_ZOOM, MAX_ZOOM)
+    )
 
 
 func _input(event):

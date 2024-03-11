@@ -1,35 +1,34 @@
 extends Node2D
 
 const ACCELERATION = 2.0
-const ZOOM_SMOOTHING = 0.998  # 0 < and < 1.
-const MIN_ZOOM = Vector2(1.5, 1.5)
-const MAX_ZOOM = Vector2(3.0, 3.0)
-@onready var initial_zoom = %Camera2D.zoom
-@onready var smoothed_zoom: Vector2 = initial_zoom
 
 
 func _ready():
     SpawnedFlow.spawn_container = %Spawned
     PlayerData.cluster = %CancerCellCluster
+    PlayerData.camera = %Camera2D
+    PlayerData.initial_zoom = %Camera2D.zoom
     PlayerData.cooldown_timer = %ThreatLevelCooldown
+    PlayerData.initial_zoom_tween()
 
 
 func _process(_delta):
     if Input.is_action_just_pressed("metastasize"):
         PlayerData.metastasize()
 
-    %MetastasizeUI.visible = %CancerCellCluster.get_child_count() > 1
+    var count = %CancerCellCluster.get_child_count()
 
-    var smoothed_position = %CancerCellCluster.smoothed_position
-    %Camera2D.position = smoothed_position
-    smoothed_zoom = (
-        ZOOM_SMOOTHING * smoothed_zoom
-        + (1.0 - ZOOM_SMOOTHING) * (
-            initial_zoom / (1.0 + SpawnedFlow.player_speed)
-        ).clamp(MIN_ZOOM, MAX_ZOOM)
-    )
-    %Camera2D.zoom = smoothed_zoom
-    var areas_scale = initial_zoom / smoothed_zoom
+    if count == 0:
+        %GameOver.visible = true
+        %GameOver.process_mode = PROCESS_MODE_INHERIT
+        %GameOverRestartButton.grab_focus()
+
+
+    %MetastasizeUI.visible = count > 1
+
+    %Camera2D.position = %CancerCellCluster.smoothed_position
+    %Camera2D.zoom = PlayerData.smoothed_zoom
+    var areas_scale = PlayerData.initial_zoom / PlayerData.smoothed_zoom
     %LoadedArea.scale = areas_scale
     %SpawnExclusionShape.scale = areas_scale
     SpawnedFlow.spawn_exclusion_global_position = %SpawnExclusionShape.global_position

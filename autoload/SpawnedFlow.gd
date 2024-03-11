@@ -163,6 +163,8 @@ func spawn_random(body_to_respawn = null):
     var downstream = randf() >= 0.5
     var spawn = get_spawn_position(downstream)
     if spawn == null or (spawn is String and spawn == "outside"):
+        if body_to_respawn != null:
+            body_to_respawn.queue_free()
         return
 
     var scene_name: String = Math.choice(spawnable_scene_names, spawnable_probabilities)
