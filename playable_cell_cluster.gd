@@ -62,3 +62,7 @@ func _on_loaded_area_body_exited(body):
 
 func _on_metastasize_button_pressed():
     PlayerData.metastasize()
+
+
+func _on_save_timer_timeout():
+    PlayerData.save_high_score()

@@ -347,6 +347,10 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Restart"
 
+[node name="SaveTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
 [connection signal="timeout" from="ThreatLevelCooldown" to="ThreatLevelCooldown" method="_on_timeout"]
 [connection signal="pressed" from="MetastasizeUI/MarginContainer/VBoxContainer/MetastasizeButton" to="." method="_on_metastasize_button_pressed"]
@@ -354,3 +358,4 @@ text = "Restart"
 [connection signal="pressed" from="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="PauseOverlay" method="_on_restart_button_pressed"]
 [connection signal="meta_clicked" from="GameOver/PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer/PublishHighScore" to="GameOver" method="_on_publish_high_score_meta_clicked"]
 [connection signal="pressed" from="GameOver/PanelContainer/MarginContainer/VBoxContainer/GameOverRestartButton" to="GameOver" method="_on_game_over_restart_button_pressed"]
+[connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]
