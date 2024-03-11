@@ -22,6 +22,8 @@ func _process(_delta):
         %GameOver.visible = true
         %GameOver.process_mode = PROCESS_MODE_INHERIT
         %GameOverRestartButton.grab_focus()
+        %NewHighScore.visible = PlayerData.score >= PlayerData.high_score
+        %HighScoreForScreenshot.text = "%s" % PlayerData.score
 
 
     %MetastasizeUI.visible = count > 1

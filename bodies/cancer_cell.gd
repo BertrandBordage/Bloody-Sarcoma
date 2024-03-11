@@ -166,7 +166,6 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
     elif body.NAME == "Neutrophil":
         %NeutrophilDead.play()
         for sibling in get_parent().get_children():
-            # FIXME: sibling can be something else, when the cancer cell is detached.
             if not sibling.has_mouth:
                 sibling.has_mouth = true
                 break
@@ -177,7 +176,6 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
         if has_bottom_flagellum:
             if has_top_flagellum:
                 for sibling in get_parent().get_children():
-                    # FIXME: sibling can be something else, when the cancer cell is detached.
                     if not sibling.has_bottom_flagellum:
                         sibling.has_bottom_flagellum = true
                         break
