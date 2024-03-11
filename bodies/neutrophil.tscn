@@ -73,7 +73,7 @@ shape = SubResource("CircleShape2D_pyts1")
 [node name="AttackArea" parent="." instance=ExtResource("4_i6ge5")]
 unique_name_in_owner = true
 collision_mask = 33
-damage = 0.25
+damage = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(0, -9)

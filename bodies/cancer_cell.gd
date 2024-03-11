@@ -32,7 +32,7 @@ var cancer_cell_scene: PackedScene = load("res://bodies/cancer_cell.tscn")
 
 
 const MAX_CELLS: int = 100
-const FOOD_FOR_MITOSIS: float = 150.0
+const FOOD_FOR_MITOSIS: float = 125.0
 var animation: String = "Bottom regrowing":
     set(value):
         animation = value

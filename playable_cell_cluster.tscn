@@ -242,6 +242,7 @@ text = "Restart"
 
 [node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 4
 visible = false
 script = ExtResource("13_swuyd")
 

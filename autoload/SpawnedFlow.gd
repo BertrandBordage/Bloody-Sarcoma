@@ -35,6 +35,7 @@ var lymphocyte_probability: float:
         return spawnable_probabilities[0]
     set(value):
         spawnable_probabilities[0] = value
+var lymphocyte_probability_tween: Tween
 var spawned_this_frame: bool = false
 var flow_directions_cache: Dictionary = {}
 

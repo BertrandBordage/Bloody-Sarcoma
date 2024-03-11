@@ -33,6 +33,10 @@ func restart():
     save_high_score()
     high_score = read_high_score()
     threat_level = 0.0
+    SpawnedFlow.lymphocyte_probability_tween.stop()
+    SpawnedFlow.lymphocyte_probability = 0.0
+    # -1 is a trick to not trigger the first threat level to blink.
+    threat_level_decreased.emit(-1.0)
     score = 0
     for cell in cluster.get_children():
         cell.queue_free()
@@ -100,7 +104,6 @@ func _input(event):
         input_changed.emit()
 
 
-
 func raise_threat_level(amount: float):
     if threat_level >= MAX_THREAT_LEVEL:
         return
@@ -110,7 +113,10 @@ func raise_threat_level(amount: float):
         return
     threat_level = floor(threat_level)
     threat_level_raised.emit(threat_level)
-    create_tween().tween_property(
+    if SpawnedFlow.lymphocyte_probability_tween:
+        SpawnedFlow.lymphocyte_probability_tween.stop()
+    SpawnedFlow.lymphocyte_probability_tween = create_tween()
+    SpawnedFlow.lymphocyte_probability_tween.tween_property(
         SpawnedFlow, "lymphocyte_probability",
         PlayerData.threat_level,
         30,
