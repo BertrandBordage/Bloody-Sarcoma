@@ -2,12 +2,40 @@ extends Node
 
 signal threat_level_raised(threat_level: int)
 signal threat_level_decreased(threat_level: int)
+signal input_changed
 
 const MAX_THREAT_LEVEL: float = 5.0
 var threat_level: float = 0.0
 var score: int = 0
 var cluster: Node2D
 var cooldown_timer: Timer
+var use_mouse: bool = true
+var use_gamepad: bool = false
+var is_nintendo_gamepad: bool = false
+var use_keyboard: bool = false
+
+
+func _input(event):
+    if event is InputEventJoypadMotion:
+        is_nintendo_gamepad = Input.get_joy_name(
+            event.device
+        ).to_lower().contains("nintendo")
+        if not use_gamepad:
+            use_mouse = false
+            use_gamepad = true
+            use_keyboard = false
+            input_changed.emit()
+    elif event is InputEventKey and not use_keyboard:
+        use_mouse = false
+        use_gamepad = false
+        use_keyboard = true
+        input_changed.emit()
+    elif event is InputEventMouseMotion and not use_mouse:
+        use_mouse = true
+        use_gamepad = false
+        use_keyboard = false
+        input_changed.emit()
+
 
 
 func raise_threat_level(amount: float):

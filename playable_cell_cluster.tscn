@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=13 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://utils/fps.tscn" id="4_5xils"]
 [ext_resource type="Script" path="res://Score.gd" id="7_4hjp6"]
 [ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="7_rckg4"]
+[ext_resource type="Script" path="res://MetastasizeButton.gd" id="10_sccpc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
 size = Vector2(416, 368)
@@ -146,7 +147,8 @@ layout_mode = 2
 [node name="MetastasizeButton" type="Button" parent="MetastasizeUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-text = "Metastasize"
+text = "[SPACE]  Metastisize"
+script = ExtResource("10_sccpc")
 
 [node name="Label" type="Label" parent="MetastasizeUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

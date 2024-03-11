@@ -6,7 +6,6 @@ const MIN_ZOOM = Vector2(1.5, 1.5)
 const MAX_ZOOM = Vector2(3.0, 3.0)
 @onready var initial_zoom = %Camera2D.zoom
 @onready var smoothed_zoom: Vector2 = initial_zoom
-var use_mouse: bool = true
 
 
 func _ready():
@@ -38,10 +37,8 @@ func _process(_delta):
 
 
 func _physics_process(_delta):
-    var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
-    if use_mouse and direction != Vector2.ZERO:
-        use_mouse = false
-    if use_mouse:
+    var direction: Vector2
+    if PlayerData.use_mouse:
         var viewport: Viewport = get_viewport()
         var viewport_size: Vector2 = viewport.get_visible_rect().size
         direction = (
@@ -50,6 +47,8 @@ func _physics_process(_delta):
         # Multiply by 5 to make it possible to reach top speed
         # without going to the edge of the screen.
         direction = (direction * 5).limit_length(1.0)
+    else:
+        direction = Input.get_vector("left", "right", "up", "down")
 
     if direction != Vector2.ZERO:
         %CancerCellCluster.movement_force = ACCELERATION * direction
