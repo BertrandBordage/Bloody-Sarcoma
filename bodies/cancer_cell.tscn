@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://wh8os461b38n"]
+[gd_scene load_steps=38 format=3 uid="uid://wh8os461b38n"]
 
 [ext_resource type="Script" path="res://bodies/cancer_cell.gd" id="1_vxxwk"]
 [ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://utils/health_component.tscn" id="2_3d553"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bnissws3oerv5" path="res://sprites/sarcoma-cell.top-flagellum.png" id="8_vrorv"]
 [ext_resource type="Texture2D" uid="uid://cqggdexphnhfl" path="res://sprites/sarcoma-cell.bottom-flagellum.png" id="9_3nffb"]
 [ext_resource type="PackedScene" uid="uid://dtl0ps1up22ii" path="res://utils/attack_area.tscn" id="10_k1dhs"]
+[ext_resource type="AudioStream" uid="uid://docbrhbku8dx" path="res://sounds/bite.wav" id="11_g7etw"]
 [ext_resource type="AudioStream" uid="uid://b6acu21hicy42" path="res://sounds/red_blood_cell_dead.wav" id="11_gd2nv"]
 [ext_resource type="AudioStream" uid="uid://dqphet5wx2g44" path="res://sounds/lymphocyte_dead.wav" id="12_yg6ff"]
 [ext_resource type="AudioStream" uid="uid://b5htosbx6mekb" path="res://sounds/bacteria_dead.wav" id="13_qe53m"]
@@ -2203,10 +2204,14 @@ shape = SubResource("CapsuleShape2D_n78o6")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
+[node name="Bite" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_g7etw")
+volume_db = -10.0
+
 [node name="RedBloodCellDead" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_adsae")
-volume_db = 10.0
 
 [node name="LymphocyteDead" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true

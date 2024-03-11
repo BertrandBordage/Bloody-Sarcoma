@@ -140,6 +140,8 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
         %HealthComponent.health + earned_food,
         %HealthComponent.initial_health,
     )
+    if not %Bite.playing:
+        %Bite.play()
     if earned_food == 0:
         return
 

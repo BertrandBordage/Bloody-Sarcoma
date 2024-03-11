@@ -202,11 +202,15 @@ debug_color = Color(0.701961, 0, 0, 0.419608)
 unique_name_in_owner = true
 stream = ExtResource("7_fcdih")
 volume_db = -15.0
+attenuation = 4.00001
+panning_strength = 2.0
 
 [node name="PresenceEnd" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("8_c4nmr")
 volume_db = -15.0
+attenuation = 4.0
+panning_strength = 2.0
 
 [node name="PresenceNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 unique_name_in_owner = true
