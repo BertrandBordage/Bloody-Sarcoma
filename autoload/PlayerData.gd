@@ -35,21 +35,21 @@ func decrease_threat_level():
         cooldown_timer.start()
 
 
-func get_least_mutated_cell():
-    var min_mutations: int = 100
+func get_worst_cell():
+    var min_worth: int = 100
     var candidate = null
     for cell in cluster.get_children():
-        var mutations_count = cell.get_mutations_count()
-        if mutations_count == 0:
+        var worth = cell.get_worth()
+        if worth == 0:
             return cell
-        if mutations_count < min_mutations:
-            min_mutations = mutations_count
+        if worth < min_worth:
+            min_worth = worth
             candidate = cell
     return candidate
 
 
 func drop_cell():
-    var cell = get_least_mutated_cell()
+    var cell = get_worst_cell()
     if cell == null:
         return
     var dropped_cell = cell.duplicate()

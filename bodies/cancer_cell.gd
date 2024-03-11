@@ -60,19 +60,23 @@ func _process(_delta):
     start_mitosis_if_possible()
 
 
-func get_mutations_count() -> int:
-    var count: int = 0
+func get_worth() -> int:
+    var worth: int = 0
     if has_light:
-        count += 1
+        worth += 1
     if has_mouth:
-        count += 1
+        worth += 1
     if has_flow_control:
-        count += 1
+        worth += 1
     if has_top_flagellum:
-        count += 1
+        worth += 1
     if has_bottom_flagellum:
-        count += 1
-    return count
+        worth += 1
+    if separating:
+        worth += 2
+    if growing:
+        worth -= 1
+    return worth
 
 
 
