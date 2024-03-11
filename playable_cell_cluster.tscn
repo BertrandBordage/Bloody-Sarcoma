@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=10 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
 [ext_resource type="Script" path="res://ThreatLevel.gd" id="3_1fjrt"]
 [ext_resource type="Script" path="res://ThreatLevelCooldown.gd" id="3_21bpp"]
 [ext_resource type="Texture2D" uid="uid://bk0nq1hsqnn5r" path="res://sprites/lymphocyte.png" id="3_obfec"]
+[ext_resource type="AudioStream" uid="uid://b4flvaln2as1g" path="res://sounds/background_noise.wav" id="3_owkcr"]
 [ext_resource type="Script" path="res://Help.gd" id="3_pwehu"]
 [ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://utils/fps.tscn" id="4_5xils"]
 
@@ -26,17 +27,27 @@ zoom = Vector2(3, 3)
 
 [node name="LoadedArea" type="Area2D" parent="Camera2D"]
 unique_name_in_owner = true
+visible = false
 collision_layer = 0
 collision_mask = 13
 monitorable = false
 
 [node name="LoadedAreaShape" type="CollisionShape2D" parent="Camera2D/LoadedArea"]
 unique_name_in_owner = true
+visible = false
 shape = SubResource("RectangleShape2D_0i2i1")
 
 [node name="SpawnExclusionShape" type="CollisionPolygon2D" parent="Camera2D"]
 unique_name_in_owner = true
+visible = false
 polygon = PackedVector2Array(-176, -152, 176, -152, 176, 152, -176, 152)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
+
+[node name="BackgroundNoise" type="AudioStreamPlayer2D" parent="Camera2D"]
+stream = ExtResource("3_owkcr")
+autoplay = true
 
 [node name="ThreatLevelCooldown" type="Timer" parent="."]
 unique_name_in_owner = true
