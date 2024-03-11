@@ -27,16 +27,18 @@ func end_of_invulnerability():
 func take_damage(damage: float) -> float:
     if invulnerable:
         return 0.0
-    health -= damage
-    if health > 0:
-        invulnerable = true
-        var tween: Tween = create_tween()
-        tween.tween_property(self, "modulate:v", flash_strength, invulnerability_duration / 2.0)
-        tween.tween_property(self, "modulate:v", get_color_value(), invulnerability_duration / 2.0)
-        tween.tween_callback(end_of_invulnerability)
+    if health == 0:
         return 0.0
-    died.emit()
-    return initial_health
+    health -= damage
+    if health <= 0:
+        died.emit()
+        return initial_health
+    invulnerable = true
+    var tween: Tween = create_tween()
+    tween.tween_property(self, "modulate:v", flash_strength, invulnerability_duration / 2.0)
+    tween.tween_property(self, "modulate:v", get_color_value(), invulnerability_duration / 2.0)
+    tween.tween_callback(end_of_invulnerability)
+    return 0.0
 
 
 func reset_for_respawn() -> void:
