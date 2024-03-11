@@ -177,6 +177,8 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
 
 
 func take_damage(damage: float):
+    if not %Hurt.playing:
+        %Hurt.play()
     return %HealthComponent.take_damage(damage)
 
 
@@ -185,4 +187,8 @@ func reset_for_respawn():
 
 
 func _on_health_component_died():
+    var audio = %Dead.duplicate()
+    get_tree().root.add_child(audio)
+    audio.global_position = global_position
+    audio.play()
     queue_free()

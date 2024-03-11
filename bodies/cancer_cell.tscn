@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://wh8os461b38n"]
+[gd_scene load_steps=37 format=3 uid="uid://wh8os461b38n"]
 
 [ext_resource type="Script" path="res://bodies/cancer_cell.gd" id="1_vxxwk"]
 [ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://utils/health_component.tscn" id="2_3d553"]
@@ -14,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://dqphet5wx2g44" path="res://sounds/lymphocyte_dead.wav" id="12_yg6ff"]
 [ext_resource type="AudioStream" uid="uid://b5htosbx6mekb" path="res://sounds/bacteria_dead.wav" id="13_qe53m"]
 [ext_resource type="AudioStream" uid="uid://e3syo3wchfm3" path="res://sounds/neutrophil_dead.wav" id="14_4cxip"]
+[ext_resource type="AudioStream" uid="uid://bgmdowpw37smh" path="res://sounds/cancer_cell_hurt.wav" id="15_eeqdc"]
+[ext_resource type="AudioStream" uid="uid://cfycswhoaw3na" path="res://sounds/cancer_cell_dead.wav" id="16_p8i7i"]
+[ext_resource type="Script" path="res://bodies/Dead.gd" id="17_irp71"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x0u02"]
 friction = 0.05
@@ -2096,6 +2099,18 @@ streams_count = 1
 stream_0/stream = ExtResource("14_4cxip")
 stream_0/weight = 1.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_csna4"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("15_eeqdc")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ws30a"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("16_p8i7i")
+stream_0/weight = 1.0
+
 [node name="CancerCell" type="RigidBody2D"]
 collision_mask = 107
 mass = 0.02
@@ -2201,11 +2216,23 @@ pitch_scale = 0.5
 [node name="BacteriaDead" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_bhvjp")
+volume_db = -5.0
 
 [node name="NeutrophilDead" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_i357j")
+volume_db = -8.0
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_csna4")
+
+[node name="Dead" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_ws30a")
+script = ExtResource("17_irp71")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="damage_dealt" from="AttackArea" to="." method="_on_attack_area_damage_dealt"]
+[connection signal="finished" from="Dead" to="Dead" method="_on_finished"]

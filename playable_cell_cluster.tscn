@@ -47,6 +47,7 @@ current = true
 
 [node name="BackgroundNoise" type="AudioStreamPlayer2D" parent="Camera2D"]
 stream = ExtResource("3_owkcr")
+volume_db = -10.0
 autoplay = true
 
 [node name="ThreatLevelCooldown" type="Timer" parent="."]
