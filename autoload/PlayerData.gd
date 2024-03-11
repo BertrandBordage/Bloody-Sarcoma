@@ -21,6 +21,7 @@ var use_mouse: bool = true
 var use_gamepad: bool = false
 var is_nintendo_gamepad: bool = false
 var use_keyboard: bool = false
+var use_touch: bool = false
 
 
 func initial_zoom_tween():
@@ -33,7 +34,8 @@ func restart():
     save_high_score()
     high_score = read_high_score()
     threat_level = 0.0
-    SpawnedFlow.lymphocyte_probability_tween.stop()
+    if SpawnedFlow.lymphocyte_probability_tween:
+        SpawnedFlow.lymphocyte_probability_tween.stop()
     SpawnedFlow.lymphocyte_probability = 0.0
     # -1 is a trick to not trigger the first threat level to blink.
     threat_level_decreased.emit(-1.0)
@@ -96,6 +98,12 @@ func _input(event):
         use_mouse = false
         use_gamepad = false
         use_keyboard = true
+        input_changed.emit()
+    elif event is InputEventScreenTouch and not use_touch:
+        use_mouse = false
+        use_touch = true
+        use_gamepad = false
+        use_keyboard = false
         input_changed.emit()
     elif event is InputEventMouseMotion and not use_mouse:
         use_mouse = true

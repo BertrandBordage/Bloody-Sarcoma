@@ -37,7 +37,8 @@ func _process(_delta):
 
 func _physics_process(_delta):
     var direction: Vector2
-    if PlayerData.use_mouse:
+    # TODO: Improve touch controls.
+    if PlayerData.use_mouse or PlayerData.use_touch:
         var viewport: Viewport = get_viewport()
         var viewport_size: Vector2 = viewport.get_visible_rect().size
         direction = (

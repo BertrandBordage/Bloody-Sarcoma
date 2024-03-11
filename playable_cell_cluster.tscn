@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=16 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Score.gd" id="7_4hjp6"]
 [ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="7_rckg4"]
 [ext_resource type="Script" path="res://MetastasizeButton.gd" id="10_sccpc"]
+[ext_resource type="Script" path="res://Controls.gd" id="12_ek127"]
 [ext_resource type="Script" path="res://PauseOverlay.gd" id="12_j7f23"]
 [ext_resource type="Script" path="res://GameOver.gd" id="13_swuyd"]
 
@@ -165,8 +166,8 @@ text = "- 1 cell + 100 points"
 horizontal_alignment = 1
 
 [node name="Help" type="CanvasLayer" parent="."]
-offset = Vector2(0, 100)
-transform = Transform2D(1, 0, 0, 1, 0, 100)
+offset = Vector2(0, 200)
+transform = Transform2D(1, 0, 0, 1, 0, 200)
 script = ExtResource("3_pwehu")
 
 [node name="PanelContainer" type="PanelContainer" parent="Help"]
@@ -188,13 +189,29 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="RichTextLabel" parent="Help/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Help/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Controls" type="RichTextLabel" parent="Help/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[center][font_size=12]Move your [b]mouse[/b] to control the sarcoma[/font_size]
-[b]Eat[/b] red blood cells and [b]avoid[/b] getting eaten by lymphocytes[/center]"
+text = "[center][font_size=12]Move your [b]mouse[/b] to control the sarcoma[/font_size][/center]"
 fit_content = true
-autowrap_mode = 0
+script = ExtResource("12_ek127")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Help/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][b]Eat[/b] red blood cells and [b]avoid[/b] getting eaten by lymphocytes
+Discover the rest.[/center]"
+fit_content = true
+
+[node name="BestExperience" type="RichTextLabel" parent="Help/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Best experienced with a [b]gamepad[/b] and [b]headphones[/b][/center]"
+fit_content = true
 
 [node name="PauseOverlay" type="CanvasLayer" parent="."]
 process_mode = 3
