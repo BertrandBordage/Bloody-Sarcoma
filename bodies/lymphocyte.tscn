@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbkcwlw0kc3nk"]
+[gd_scene load_steps=15 format=3 uid="uid://cbkcwlw0kc3nk"]
 
 [ext_resource type="Texture2D" uid="uid://cmtpdedm1ey8g" path="res://sprites/lymphocyte.membrane.png" id="1_au5ra"]
 [ext_resource type="Script" path="res://bodies/lymphocyte.gd" id="1_ph5vg"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://utils/health_component.tscn" id="4_27mus"]
 [ext_resource type="PackedScene" uid="uid://dtl0ps1up22ii" path="res://utils/attack_area.tscn" id="5_bov45"]
 [ext_resource type="PackedScene" uid="uid://bjiq1fjatlo2b" path="res://utils/threat_detection_area.tscn" id="5_h2flb"]
+[ext_resource type="AudioStream" uid="uid://dx41jxmo81soa" path="res://sounds/lymphocyte_presence.wav" id="7_fcdih"]
+[ext_resource type="AudioStream" uid="uid://dgo0mlahu7o5y" path="res://sounds/lymphocyte_presence_end.wav" id="8_c4nmr"]
 
 [sub_resource type="Animation" id="Animation_i4frn"]
 length = 2.4
@@ -170,12 +172,12 @@ invulnerability_duration = 0.5
 [node name="Membrane" type="Sprite2D" parent="HealthComponent"]
 texture = ExtResource("1_au5ra")
 region_enabled = true
-region_rect = Rect2(34, 34, 34, 34)
+region_rect = Rect2(68, 0, 34, 34)
 
 [node name="Nucleus" type="Sprite2D" parent="HealthComponent"]
 texture = ExtResource("2_cssrb")
 region_enabled = true
-region_rect = Rect2(34, 34, 34, 34)
+region_rect = Rect2(68, 0, 34, 34)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -196,4 +198,21 @@ damage = 2.0
 shape = SubResource("CircleShape2D_xk8v0")
 debug_color = Color(0.701961, 0, 0, 0.419608)
 
+[node name="Presence" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_fcdih")
+volume_db = -10.0
+
+[node name="PresenceEnd" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_c4nmr")
+volume_db = -10.0
+
+[node name="PresenceNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(5.96046e-08, 2.38419e-07)
+scale = Vector2(1.6, 1.6)
+
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="screen_entered" from="PresenceNotifier" to="." method="_on_presence_notifier_screen_entered"]
+[connection signal="screen_exited" from="PresenceNotifier" to="." method="_on_presence_notifier_screen_exited"]

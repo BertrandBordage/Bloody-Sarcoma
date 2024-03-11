@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://wh8os461b38n"]
+[gd_scene load_steps=32 format=3 uid="uid://wh8os461b38n"]
 
 [ext_resource type="Script" path="res://bodies/cancer_cell.gd" id="1_vxxwk"]
 [ext_resource type="PackedScene" uid="uid://bwvnv4kvdejan" path="res://utils/health_component.tscn" id="2_3d553"]
@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bnissws3oerv5" path="res://sprites/sarcoma-cell.top-flagellum.png" id="8_vrorv"]
 [ext_resource type="Texture2D" uid="uid://cqggdexphnhfl" path="res://sprites/sarcoma-cell.bottom-flagellum.png" id="9_3nffb"]
 [ext_resource type="PackedScene" uid="uid://dtl0ps1up22ii" path="res://utils/attack_area.tscn" id="10_k1dhs"]
+[ext_resource type="AudioStream" uid="uid://b6acu21hicy42" path="res://sounds/red_blood_cell_dead.wav" id="11_gd2nv"]
+[ext_resource type="AudioStream" uid="uid://dqphet5wx2g44" path="res://sounds/lymphocyte_dead.wav" id="12_yg6ff"]
+[ext_resource type="AudioStream" uid="uid://b5htosbx6mekb" path="res://sounds/bacteria_dead.wav" id="13_qe53m"]
+[ext_resource type="AudioStream" uid="uid://e3syo3wchfm3" path="res://sounds/neutrophil_dead.wav" id="14_4cxip"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x0u02"]
 friction = 0.05
@@ -2067,6 +2071,31 @@ height = 10.0
 radius = 3.0
 height = 8.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_adsae"]
+random_pitch = 2.0
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("11_gd2nv")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o5b1f"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("12_yg6ff")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bhvjp"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("13_qe53m")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i357j"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("14_4cxip")
+stream_0/weight = 1.0
+
 [node name="CancerCell" type="RigidBody2D"]
 collision_mask = 107
 mass = 0.02
@@ -2158,6 +2187,24 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_n78o6")
 disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="RedBloodCellDead" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_adsae")
+volume_db = 10.0
+
+[node name="LymphocyteDead" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_o5b1f")
+pitch_scale = 0.5
+
+[node name="BacteriaDead" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_bhvjp")
+
+[node name="NeutrophilDead" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_i357j")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

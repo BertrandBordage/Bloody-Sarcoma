@@ -185,6 +185,7 @@ func spawn_random(body_to_respawn = null):
                 scene = neutrophil_scene
             _:
                 push_warning("Unknown scene name %s" % scene_name)
+                return
         spawned = scene.instantiate()
         spawn_container.add_child.call_deferred(spawned)
         # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
