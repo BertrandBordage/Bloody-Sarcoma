@@ -19,7 +19,6 @@ func raise_threat_level(amount: float):
         return
     threat_level = floor(threat_level)
     threat_level_raised.emit(threat_level)
-    var threat_level_before_wait = threat_level
     create_tween().tween_property(
         SpawnedFlow, "lymphocyte_probability",
         PlayerData.threat_level,
