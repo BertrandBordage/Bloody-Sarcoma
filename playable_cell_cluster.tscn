@@ -123,35 +123,34 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 visible = false
 
-[node name="PanelContainer" type="PanelContainer" parent="MetastasizeUI"]
+[node name="MarginContainer" type="MarginContainer" parent="MetastasizeUI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
+offset_left = -183.0
+offset_top = -69.0
 grow_horizontal = 0
 grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="MetastasizeUI/PanelContainer"]
-layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MetastasizeUI/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MetastasizeUI/MarginContainer"]
 layout_mode = 2
 
-[node name="MetastasizeButton" type="Button" parent="MetastasizeUI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MetastasizeButton" type="Button" parent="MetastasizeUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "[SPACE]  Metastisize"
 script = ExtResource("10_sccpc")
 
-[node name="Label" type="Label" parent="MetastasizeUI/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MetastasizeUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 10
 text = "- 1 cell + 100 points"
 horizontal_alignment = 1
