@@ -50,9 +50,8 @@ func _physics_process(_delta):
     else:
         direction = Input.get_vector("left", "right", "up", "down")
 
-    if direction != Vector2.ZERO:
-        %CancerCellCluster.movement_force = ACCELERATION * direction
-        %CancerCellCluster.rotation_vector = direction
+    %CancerCellCluster.movement_force = ACCELERATION * direction
+    %CancerCellCluster.rotation_vector = direction
 
 
 func _on_loaded_area_body_exited(body):

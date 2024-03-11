@@ -161,6 +161,7 @@ func metastasize():
     if cell == null:
         return
     var dropped_cell = cell.duplicate()
+    dropped_cell.detached = true
     create_tween().tween_property(dropped_cell, "modulate:a", 0.75, 1.0)
     dropped_cell.animation = "Idle"
     SpawnedFlow.spawn_container.add_child(dropped_cell)

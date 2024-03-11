@@ -40,6 +40,7 @@ var animation: String = "Bottom regrowing":
 var food: float = 0.0
 var separating: bool = false
 var growing: bool = false
+var detached: bool = false
 
 
 func _ready():
@@ -144,6 +145,8 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
         %HealthComponent.health + earned_food,
         %HealthComponent.initial_health,
     )
+    if detached:
+        return
     if not %Bite.playing:
         %Bite.play()
     if earned_food == 0:
@@ -163,6 +166,7 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
     elif body.NAME == "Neutrophil":
         %NeutrophilDead.play()
         for sibling in get_parent().get_children():
+            # FIXME: sibling can be something else, when the cancer cell is detached.
             if not sibling.has_mouth:
                 sibling.has_mouth = true
                 break
@@ -173,6 +177,7 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
         if has_bottom_flagellum:
             if has_top_flagellum:
                 for sibling in get_parent().get_children():
+                    # FIXME: sibling can be something else, when the cancer cell is detached.
                     if not sibling.has_bottom_flagellum:
                         sibling.has_bottom_flagellum = true
                         break
@@ -197,6 +202,8 @@ func reset_for_respawn():
 
 
 func _on_health_component_died():
+    if detached:
+        return
     var audio = %Dead.duplicate()
     get_tree().root.add_child(audio)
     audio.global_position = global_position
