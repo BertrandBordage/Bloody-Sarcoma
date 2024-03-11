@@ -10,4 +10,4 @@ layer_0/tile_data = PackedInt32Array(0, 2490370, 19, 1, 2490370, 19, 2, 2490370,
 
 [node name="TilemapEnabler" parent="." instance=ExtResource("2_jpcq3")]
 position = Vector2(128, 48)
-scale = Vector2(25.6, 17.6)
+scale = Vector2(38.4, 30.4)

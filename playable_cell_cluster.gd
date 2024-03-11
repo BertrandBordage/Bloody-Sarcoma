@@ -2,7 +2,7 @@ extends Node2D
 
 const ACCELERATION = 2.0
 const ZOOM_SMOOTHING = 0.998  # 0 < and < 1.
-const MIN_ZOOM = Vector2(1.0, 1.0)
+const MIN_ZOOM = Vector2(1.5, 1.5)
 const MAX_ZOOM = Vector2(3.0, 3.0)
 @onready var initial_zoom = %Camera2D.zoom
 @onready var smoothed_zoom: Vector2 = initial_zoom

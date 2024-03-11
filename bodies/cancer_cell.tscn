@@ -2207,7 +2207,7 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="Bite" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("11_g7etw")
-volume_db = -10.0
+volume_db = -7.0
 
 [node name="RedBloodCellDead" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
