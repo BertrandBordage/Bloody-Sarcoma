@@ -126,10 +126,7 @@ func find_closest_point_outside_spawn_exclusion(
     return null
 
 
-func get_spawn_position(downstream: bool = false, initial: bool = false):
-    if initial:
-        # TODO: Implement and call this on program start.
-        pass
+func get_spawn_position(downstream: bool = false):
     # Take a path randomly.
     visible_paths.shuffle()
     for path in visible_paths:
