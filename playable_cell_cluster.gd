@@ -15,8 +15,8 @@ func _ready():
 
 
 func _process(_delta):
-    if Input.is_action_just_pressed("drop_cell"):
-        PlayerData.drop_cell()
+    if Input.is_action_just_pressed("metastasize"):
+        PlayerData.metastasize()
 
     %MetastasizeUI.visible = %CancerCellCluster.get_child_count() > 1
 
@@ -57,3 +57,7 @@ func _physics_process(_delta):
 
 func _on_loaded_area_body_exited(body):
     SpawnedFlow.respawn_if_possible(body)
+
+
+func _on_metastasize_button_pressed():
+    PlayerData.metastasize()

@@ -189,3 +189,4 @@ autowrap_mode = 0
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
 [connection signal="timeout" from="ThreatLevelCooldown" to="ThreatLevelCooldown" method="_on_timeout"]
+[connection signal="pressed" from="MetastasizeUI/MarginContainer/VBoxContainer/MetastasizeButton" to="." method="_on_metastasize_button_pressed"]

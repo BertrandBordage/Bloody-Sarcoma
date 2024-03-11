@@ -107,7 +107,7 @@ func start_mitosis_if_possible():
 
     food -= FOOD_FOR_MITOSIS
     if get_parent().get_child_count() >= MAX_CELLS:
-        PlayerData.drop_cell()
+        PlayerData.metastasize()
 
     separating = true
     animation = "Mitosis"

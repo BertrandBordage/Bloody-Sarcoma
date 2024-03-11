@@ -77,7 +77,7 @@ func get_worst_cell():
     return candidate
 
 
-func drop_cell():
+func metastasize():
     if cluster.get_child_count() <= 1:
         return
     var cell = get_worst_cell()
