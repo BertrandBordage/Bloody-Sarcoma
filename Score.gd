@@ -2,4 +2,7 @@ extends Label
 
 
 func _process(_delta):
-    text = "%s" % PlayerData.score
+    text = "HIGH SCORE: %s\n%s" % [
+        max(PlayerData.high_score, PlayerData.score),
+        PlayerData.score,
+    ]

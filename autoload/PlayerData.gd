@@ -7,8 +7,10 @@ signal input_changed
 const MIN_ZOOM = Vector2(1.5, 1.5)
 const MAX_ZOOM = Vector2(3.0, 3.0)
 const MAX_THREAT_LEVEL: float = 5.0
+const HIGH_SCORE_PATH: String = "user://high_score.save"
 var threat_level: float = 0.0
 var score: int = 0
+var high_score: int = 0
 var cluster: Node2D
 var camera: Camera2D
 var initial_zoom: Vector2
@@ -28,6 +30,8 @@ func initial_zoom_tween():
 
 
 func restart():
+    save_high_score()
+    high_score = read_high_score()
     threat_level = 0.0
     score = 0
     for cell in cluster.get_children():
@@ -42,6 +46,27 @@ func restart():
     cluster.smoothed_position = camera.position
     initial_zoom_tween()
     cooldown_timer.stop()
+
+
+func read_high_score():
+    if FileAccess.file_exists(HIGH_SCORE_PATH):
+        return FileAccess.open(
+            HIGH_SCORE_PATH, FileAccess.READ,
+        ).get_64()
+    return 0
+
+
+func save_high_score():
+    if score > high_score:
+        FileAccess.open(HIGH_SCORE_PATH, FileAccess.WRITE).store_64(score)
+
+
+func _ready():
+    high_score = read_high_score()
+
+
+func _exit_tree():
+    save_high_score()
 
 
 func _process(_delta):

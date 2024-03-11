@@ -101,26 +101,32 @@ texture = ExtResource("3_obfec")
 stretch_mode = 5
 
 [node name="Score" type="Label" parent="Overlay"]
-offset_left = 456.0
-offset_top = 8.0
-offset_right = 632.0
-offset_bottom = 31.0
-theme_override_colors/font_outline_color = Color(0.0705882, 0.305882, 0.537255, 1)
+offset_left = 376.0
+offset_top = 2.0
+offset_right = 633.0
+offset_bottom = 67.0
+theme_override_colors/font_outline_color = Color(0.227451, 0.266667, 0.4, 1)
 theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("7_rckg4")
-theme_override_font_sizes/font_size = 30
-text = "1234567"
+theme_override_font_sizes/font_size = 31
+text = "HIGH SCORE: 1234567
+1234567"
 horizontal_alignment = 2
 script = ExtResource("7_4hjp6")
 
 [node name="FPS" parent="Overlay" instance=ExtResource("4_5xils")]
 process_mode = 3
-offset_left = 568.0
-offset_top = 40.0
-offset_right = 632.0
-offset_bottom = 64.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 0.0
+offset_right = 32.0
+offset_bottom = 24.0
+grow_horizontal = 2
 text = "?? FPS"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="MetastasizeUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
