@@ -163,6 +163,7 @@ libraries = {
 autoplay = "Idle"
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_27mus")]
+unique_name_in_owner = true
 initial_health = 20.0
 invulnerability_duration = 0.5
 

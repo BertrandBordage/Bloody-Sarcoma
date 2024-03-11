@@ -1,7 +1,7 @@
 extends Node
 
 
-const MAX_SPAWNED = 600
+const MAX_SPAWNED = 500
 const PATH_SEARCH_OFFSET_INTERVAL: float = 10.0
 const UPSTREAM_VELOCITY_MULTIPLIER = 10.0
 const DOWNSTREAM_VELOCITY_MULTIPLIER = 5.0
@@ -183,12 +183,15 @@ func spawn_random(body_to_respawn = null):
                 scene = bacteria_scene
             "Neutrophil":
                 scene = neutrophil_scene
+            _:
+                push_warning("Unknown scene name %s" % scene_name)
         spawned = scene.instantiate()
         spawn_container.add_child.call_deferred(spawned)
         # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
         spawned.set_deferred("global_transform", Transform2D(randf_range(-PI, PI), spawn.origin))
     else:
         spawned = body_to_respawn
+        spawned.reset_for_respawn()
         # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
         spawned.global_transform.origin = spawn.origin
         spawned.rotation = randf_range(-PI, PI)

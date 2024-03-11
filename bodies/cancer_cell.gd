@@ -32,7 +32,7 @@ var cancer_cell_scene: PackedScene = load("res://bodies/cancer_cell.tscn")
 
 
 const MAX_CELLS: int = 100
-const FOOD_FOR_MITOSIS: float = 200.0
+const FOOD_FOR_MITOSIS: float = 150.0
 var animation: String = "Bottom regrowing":
     set(value):
         animation = value
@@ -171,9 +171,13 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
             has_bottom_flagellum = true
 
 
-func take_damage(damage: float) -> float:
+func take_damage(damage: float):
     return %HealthComponent.take_damage(damage)
 
 
+func reset_for_respawn():
+    %HealthComponent.reset_for_respawn()
+
+
 func _on_health_component_died():
-    SpawnedFlow.respawn_if_possible(self)
+    queue_free()

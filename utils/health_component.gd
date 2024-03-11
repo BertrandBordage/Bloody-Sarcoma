@@ -37,3 +37,7 @@ func take_damage(damage: float) -> float:
         return 0.0
     died.emit()
     return initial_health
+
+
+func reset_for_respawn() -> void:
+    health = initial_health

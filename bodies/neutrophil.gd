@@ -13,7 +13,11 @@ func _exit_tree():
 
 
 func take_damage(damage: float):
-    return $HealthComponent.take_damage(damage)
+    return %HealthComponent.take_damage(damage)
+
+
+func reset_for_respawn():
+    %HealthComponent.reset_for_respawn()
 
 
 func _on_health_component_died():
