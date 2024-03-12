@@ -13,5 +13,5 @@ func start_tween():
     tween.finished.connect(queue_free)
 
 
-func _process(delta):
+func _physics_process(delta):
     position += velocity * delta
