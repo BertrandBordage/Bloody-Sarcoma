@@ -26,6 +26,7 @@ var game_over: bool = false
 var points_container: Node2D
 var points_scene: PackedScene = load("res://ui/points.tscn")
 var worst_cell: RigidBody2D
+var show_fps: bool = false
 
 
 func initial_zoom_tween():
