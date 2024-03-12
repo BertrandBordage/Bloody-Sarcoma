@@ -3,6 +3,8 @@ extends PanelContainer
 
 signal closed
 
+var drag_velocity: Vector2 = Vector2.ZERO
+
 
 func _ready():
     %CloseButton.grab_focus()
@@ -15,8 +17,16 @@ func _ready():
 ]
 
 
+func _input(event):
+    if event is InputEventScreenDrag and event.index == 0:
+        drag_velocity = event.velocity
+    elif event is InputEventScreenTouch and event.index == 0 and not event.pressed:
+        drag_velocity = Vector2.ZERO
+
+
 func _physics_process(delta):
     %ScrollContainer.scroll_vertical += Input.get_axis("up", "down") * delta * 200
+    %ScrollContainer.scroll_vertical -= drag_velocity.y * delta
 
 
 func _on_close_button_pressed():

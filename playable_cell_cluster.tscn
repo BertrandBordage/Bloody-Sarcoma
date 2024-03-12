@@ -143,11 +143,11 @@ fit_content = true
 
 [node name="TouchJoystick" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 visible = false
 
 [node name="TouchJoystickTexture" type="TextureRect" parent="TouchJoystick"]
 unique_name_in_owner = true
-anchors_preset = -1
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_vn84i")

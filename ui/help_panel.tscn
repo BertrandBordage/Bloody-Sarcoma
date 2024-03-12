@@ -196,7 +196,7 @@ theme_override_constants/separation = 0
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/LymphocyteDescription"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Lymphocyte NK (Natural Killer)"
+text = "Natural Killer lymphocyte (NK cell)"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/LymphocyteDescription"]
 layout_mode = 2

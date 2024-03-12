@@ -19,6 +19,7 @@ func _ready():
 
 
 func trigger_pause():
+    %TouchJoystick.visible = false
     if pause_overlay:
         pause_overlay.queue_free()
     else:
