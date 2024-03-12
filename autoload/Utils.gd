@@ -17,3 +17,14 @@ func rotate_via_torque(
         + (1.0 - smoothing) * strength
         * Vector2.RIGHT.rotated(body.rotation).dot(direction)
     )
+
+
+func get_key_name(action_name: String, event_index_in_action: int = 0) -> String:
+    var event: InputEvent = InputMap.action_get_events(action_name)[event_index_in_action]
+    if not (event is InputEventKey):
+        return ""
+    return OS.get_keycode_string(
+        DisplayServer.keyboard_get_label_from_physical(
+            event.physical_keycode
+        )
+    )

@@ -1,17 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=11 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
-[ext_resource type="Script" path="res://ThreatLevel.gd" id="3_1fjrt"]
 [ext_resource type="Script" path="res://ThreatLevelCooldown.gd" id="3_21bpp"]
-[ext_resource type="Texture2D" uid="uid://bk0nq1hsqnn5r" path="res://sprites/lymphocyte.png" id="3_obfec"]
 [ext_resource type="AudioStream" uid="uid://b4flvaln2as1g" path="res://sounds/background_noise.wav" id="3_owkcr"]
-[ext_resource type="Script" path="res://Help.gd" id="3_pwehu"]
-[ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://utils/fps.tscn" id="4_5xils"]
-[ext_resource type="Script" path="res://Score.gd" id="7_4hjp6"]
-[ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="7_rckg4"]
+[ext_resource type="Script" path="res://HelpNotification.gd" id="3_pwehu"]
+[ext_resource type="PackedScene" uid="uid://0ufhn1vj785r" path="res://ui/overlay.tscn" id="7_wvqnc"]
 [ext_resource type="Script" path="res://MetastasizeButton.gd" id="10_sccpc"]
-[ext_resource type="Script" path="res://Controls.gd" id="12_ek127"]
 [ext_resource type="PackedScene" uid="uid://cr2jltd2x05do" path="res://ui/pause_overlay.tscn" id="13_yk1py"]
 [ext_resource type="PackedScene" uid="uid://bdje3lr1njbve" path="res://ui/game_over.tscn" id="14_jw6rb"]
 
@@ -61,75 +56,11 @@ wait_time = 30.0
 one_shot = true
 script = ExtResource("3_21bpp")
 
-[node name="Overlay" type="CanvasLayer" parent="."]
+[node name="SaveTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Overlay"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-
-[node name="ThreatLevel" type="HBoxContainer" parent="Overlay/MarginContainer"]
-layout_mode = 2
-script = ExtResource("3_1fjrt")
-
-[node name="TextureRect" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
-modulate = Color(1, 1, 1, 0.498039)
-layout_mode = 2
-texture = ExtResource("3_obfec")
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
-modulate = Color(1, 1, 1, 0.498039)
-layout_mode = 2
-texture = ExtResource("3_obfec")
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
-modulate = Color(1, 1, 1, 0.498039)
-layout_mode = 2
-texture = ExtResource("3_obfec")
-stretch_mode = 5
-
-[node name="TextureRect4" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
-modulate = Color(1, 1, 1, 0.498039)
-layout_mode = 2
-texture = ExtResource("3_obfec")
-stretch_mode = 5
-
-[node name="TextureRect5" type="TextureRect" parent="Overlay/MarginContainer/ThreatLevel"]
-modulate = Color(1, 1, 1, 0.498039)
-layout_mode = 2
-texture = ExtResource("3_obfec")
-stretch_mode = 5
-
-[node name="Score" type="Label" parent="Overlay"]
-offset_left = 376.0
-offset_top = 2.0
-offset_right = 633.0
-offset_bottom = 67.0
-theme_override_colors/font_outline_color = Color(0.227451, 0.266667, 0.4, 1)
-theme_override_constants/outline_size = 4
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("7_rckg4")
-theme_override_font_sizes/font_size = 31
-text = "HIGH SCORE: 1234567
-1234567"
-horizontal_alignment = 2
-script = ExtResource("7_4hjp6")
-
-[node name="FPS" parent="Overlay" instance=ExtResource("4_5xils")]
-process_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -32.0
-offset_top = 0.0
-offset_right = 32.0
-offset_bottom = 24.0
-grow_horizontal = 2
-text = "?? FPS"
-horizontal_alignment = 1
+[node name="Overlay" parent="." instance=ExtResource("7_wvqnc")]
 
 [node name="MetastasizeUI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -167,59 +98,36 @@ theme_override_font_sizes/font_size = 10
 text = "- 1 cell + 100 points"
 horizontal_alignment = 1
 
-[node name="Help" type="CanvasLayer" parent="."]
-offset = Vector2(0, 200)
-transform = Transform2D(1, 0, 0, 1, 0, 200)
+[node name="HelpNotification" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_pwehu")
 
-[node name="PanelContainer" type="PanelContainer" parent="Help"]
+[node name="PanelContainer" type="PanelContainer" parent="HelpNotification"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -237.5
-offset_top = -60.0
-offset_right = 237.5
+offset_left = -92.0
+offset_top = -43.0
+offset_right = 92.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Help/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HelpNotification/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Help/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Controls" type="RichTextLabel" parent="Help/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="PauseForHelp" type="RichTextLabel" parent="HelpNotification/PanelContainer/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[center][font_size=12]Move your [b]mouse[/b] to control the sarcoma[/font_size][/center]"
+text = "[center]Press [b]Pause[/b] for help[/center]"
 fit_content = true
-script = ExtResource("12_ek127")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Help/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[center][b]Eat[/b] red blood cells and [b]avoid[/b] getting eaten by lymphocytes
-Discover the rest.[/center]"
-fit_content = true
-
-[node name="BestExperience" type="RichTextLabel" parent="Help/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[center]Best experienced with a [b]gamepad[/b] and [b]headphones[/b][/center]"
-fit_content = true
-
-[node name="SaveTimer" type="Timer" parent="."]
-wait_time = 60.0
-autostart = true
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
 [connection signal="timeout" from="ThreatLevelCooldown" to="ThreatLevelCooldown" method="_on_timeout"]
-[connection signal="pressed" from="MetastasizeUI/MarginContainer/VBoxContainer/MetastasizeButton" to="." method="_on_metastasize_button_pressed"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]
+[connection signal="pressed" from="MetastasizeUI/MarginContainer/VBoxContainer/MetastasizeButton" to="." method="_on_metastasize_button_pressed"]

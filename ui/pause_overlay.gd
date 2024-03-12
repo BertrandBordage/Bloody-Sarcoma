@@ -9,25 +9,22 @@ func _ready():
     %ResumeButton.grab_focus()
 
 
-func unpause():
+func _exit_tree():
+    get_parent().pause_overlay = null
     get_tree().paused = false
-    queue_free()
 
 
 func _input(event):
     if event is InputEventKey and event.is_action_pressed("pause"):
-        # We defer the pause to prevent the game
-        # from triggering pause again when we unpause with ESC.
-        await get_tree().create_timer(0.01).timeout
-        unpause()
+        queue_free()
 
 
 func _on_resume_button_pressed():
-    unpause()
+    queue_free()
 
 
 func _on_restart_button_pressed():
-    unpause()
+    queue_free()
     PlayerData.restart()
 
 

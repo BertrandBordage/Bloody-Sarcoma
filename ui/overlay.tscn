@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=3 uid="uid://0ufhn1vj785r"]
+
+[ext_resource type="Script" path="res://ui/overlay.gd" id="1_31ttu"]
+[ext_resource type="Script" path="res://ui/ThreatLevel.gd" id="1_k3fax"]
+[ext_resource type="Texture2D" uid="uid://bk0nq1hsqnn5r" path="res://sprites/lymphocyte.png" id="2_e6gl8"]
+[ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="3_mh5td"]
+[ext_resource type="Script" path="res://ui/Score.gd" id="4_st3ua"]
+[ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://utils/fps.tscn" id="5_3qrgs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_heduv"]
+bg_color = Color(0, 0, 0, 0.498039)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5c6kg"]
+bg_color = Color(0, 0, 0, 0.745098)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Overlay" type="CanvasLayer"]
+script = ExtResource("1_31ttu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="ThreatLevel" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("1_k3fax")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("2_e6gl8")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("2_e6gl8")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("2_e6gl8")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("2_e6gl8")
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/ThreatLevel"]
+modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 2
+texture = ExtResource("2_e6gl8")
+stretch_mode = 5
+
+[node name="Score" type="Label" parent="."]
+offset_left = 376.0
+offset_top = 2.0
+offset_right = 633.0
+offset_bottom = 67.0
+theme_override_colors/font_outline_color = Color(0.227451, 0.266667, 0.4, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("3_mh5td")
+theme_override_font_sizes/font_size = 31
+text = "HIGH SCORE: 1234567
+1234567"
+horizontal_alignment = 2
+script = ExtResource("4_st3ua")
+
+[node name="FPS" parent="." instance=ExtResource("5_3qrgs")]
+process_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = 8.0
+offset_right = -40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "?? FPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseButton" type="Button" parent="."]
+process_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -15.0
+offset_top = 10.0
+offset_right = 15.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_heduv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5c6kg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_heduv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_heduv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_heduv")
+text = "I I"
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

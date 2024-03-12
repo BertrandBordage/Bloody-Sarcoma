@@ -235,7 +235,7 @@ func move_bodies_in_flow() -> void:
         body.apply_force(Heartbeat.blood_pressure * get_flow_direction(body))
 
 
-func _process(_delta):
+func _physics_process(_delta):
     visible_flow_paths = flow_paths.filter(
         func (flow_path: FlowPath): return flow_path.is_visible()
     )

@@ -3,6 +3,7 @@ extends Node2D
 const ACCELERATION = 2.0
 @export var pause_overlay_scene: PackedScene
 @export var game_over_scene: PackedScene
+var pause_overlay: CanvasLayer
 
 
 func _ready():
@@ -14,9 +15,19 @@ func _ready():
     PlayerData.initial_zoom_tween()
 
 
+func trigger_pause():
+    if pause_overlay:
+        pause_overlay.queue_free()
+    else:
+        if %HelpNotification:
+            %HelpNotification.queue_free()
+        pause_overlay = pause_overlay_scene.instantiate()
+        add_child(pause_overlay)
+
+
 func _input(event):
     if event is InputEventKey and event.is_action_pressed("pause"):
-        add_child(pause_overlay_scene.instantiate())
+        trigger_pause()
 
 
 func _process(_delta):
@@ -39,8 +50,6 @@ func _process(_delta):
     SpawnedFlow.spawn_exclusion_global_position = %SpawnExclusionShape.global_position
     SpawnedFlow.spawn_exclusion_polygon = %SpawnExclusionShape.global_transform * %SpawnExclusionShape.polygon
 
-
-func _physics_process(_delta):
     var direction: Vector2
     # TODO: Improve touch controls.
     if PlayerData.use_mouse or PlayerData.use_touch:
