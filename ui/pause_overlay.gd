@@ -7,7 +7,7 @@ extends CanvasLayer
 func _ready():
     get_tree().paused = true
     %ResumeButton.grab_focus()
-    if OS.get_name() == "HTML5":
+    if OS.get_name() == "Web":
         %QuitButton.queue_free()
 
 
