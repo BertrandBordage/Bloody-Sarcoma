@@ -1,6 +1,8 @@
 extends Node2D
 
 const ACCELERATION = 2.0
+@export var pause_overlay_scene: PackedScene
+@export var game_over_scene: PackedScene
 
 
 func _ready():
@@ -12,18 +14,19 @@ func _ready():
     PlayerData.initial_zoom_tween()
 
 
+func _input(event):
+    if event is InputEventKey and event.is_action_pressed("pause"):
+        add_child(pause_overlay_scene.instantiate())
+
+
 func _process(_delta):
     if Input.is_action_just_pressed("metastasize"):
         PlayerData.metastasize()
 
     var count = %CancerCellCluster.get_child_count()
 
-    if count == 0:
-        %GameOver.visible = true
-        %GameOver.process_mode = PROCESS_MODE_INHERIT
-        %GameOverRestartButton.grab_focus()
-        %NewHighScore.visible = PlayerData.score >= PlayerData.high_score
-        %HighScoreForScreenshot.text = "%s" % PlayerData.score
+    if count == 0 and not PlayerData.game_over:
+        add_child(game_over_scene.instantiate())
 
 
     %MetastasizeUI.visible = count > 1

@@ -1,0 +1,206 @@
+[gd_scene load_steps=11 format=3 uid="uid://vxjab1uaubqe"]
+
+[ext_resource type="Script" path="res://ui/help_panel.gd" id="1_o34ys"]
+[ext_resource type="Texture2D" uid="uid://dey82ary5gpe7" path="res://sprites/sarcoma-help.png" id="2_cyy2r"]
+[ext_resource type="Texture2D" uid="uid://cxc2qsrg7x4t3" path="res://sprites/red-blood-cell.png" id="3_k0xwx"]
+[ext_resource type="Texture2D" uid="uid://bc671h037sr0m" path="res://sprites/bacteria.png" id="4_8x7e1"]
+[ext_resource type="Texture2D" uid="uid://cda5wdu6a125n" path="res://sprites/neutrophil.png" id="5_lkfql"]
+[ext_resource type="Texture2D" uid="uid://bk0nq1hsqnn5r" path="res://sprites/lymphocyte.png" id="6_uxk6x"]
+
+[sub_resource type="Theme" id="Theme_8rn6w"]
+Label/colors/font_color = Color(0.14902, 0.168627, 0.266667, 1)
+RichTextLabel/colors/default_color = Color(0.14902, 0.168627, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3hib"]
+bg_color = Color(0.917647, 0.831373, 0.666667, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.894118, 0.65098, 0.447059, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8raqx"]
+atlas = ExtResource("4_8x7e1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mece8"]
+atlas = ExtResource("5_lkfql")
+region = Rect2(0, 0, 16, 16)
+
+[node name="HelpPanel" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -207.0
+offset_right = 256.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_8rn6w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_f3hib")
+script = ExtResource("1_o34ys")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HOW   TO   PLAY"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.917647, 0.831373, 0.666667, 1)
+text = "  X  "
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Controls" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Controls
+[font_size=12px]Gamepad left joystick [font_size=9px]or[/font_size] move mouse around cluster [font_size=9px]or[/font_size] arrow keys.[/font_size]"
+fit_content = true
+
+[node name="Goal" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Goal
+[font_size=12px][fill]You play as a cluster of muscle cancer cells ([i]sarcoma[/i]) moving freely in blood vessels. Survive and spread everywhere ([i]metastasize[/i]) in the host human body.
+But you are not any cancer: you’re a mutant one, stealing abilities from other cells (see below).[/fill]
+[b]Eat anything[/b] and [b]metastasize[/b] to get the best score.[/font_size]"
+fit_content = true
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="SarcomaSprite" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("2_cyy2r")
+stretch_mode = 5
+
+[node name="SarcomaDescription" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/SarcomaDescription"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mutant sarcoma cells"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/SarcomaDescription"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Reproduction every 125 food eaten
+1 “mouth” gives ability to eat
+2 bottom flagellums give propulsion
+2 top flagellums give maneuverability"
+
+[node name="RedBloodCellSprite" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_k0xwx")
+stretch_mode = 5
+flip_h = true
+
+[node name="RedBloodCellDescription" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/RedBloodCellDescription"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Red blood cells"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/RedBloodCellDescription"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "+3 food, heals damaged sarcoma cells"
+
+[node name="BacteriaSprite" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8raqx")
+stretch_mode = 5
+
+[node name="BacteriaDescription" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/BacteriaDescription"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bacteria"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/BacteriaDescription"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "+5 food, +2 flagellums to a sarcoma cell (to the killer if possible)"
+
+[node name="NeutrophilSprite" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_mece8")
+stretch_mode = 5
+
+[node name="NeutrophilDescription" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/NeutrophilDescription"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Neutrophil"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/NeutrophilDescription"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "+10 food, +1 “mouth” to a sarcoma cell (to the killer if possible)
+Neutrophils call lymphocytes when killed"
+
+[node name="LymphocyteSprite" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("6_uxk6x")
+stretch_mode = 5
+
+[node name="LymphocyteDescription" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/LymphocyteDescription"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lymphocyte NK (Natural Killer)"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer/LymphocyteDescription"]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 12
+text = "+20 food
+Lymphocytes call more lymphocytes when killed"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

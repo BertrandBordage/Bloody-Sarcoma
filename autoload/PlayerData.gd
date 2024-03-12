@@ -22,6 +22,7 @@ var use_gamepad: bool = false
 var is_nintendo_gamepad: bool = false
 var use_keyboard: bool = false
 var use_touch: bool = false
+var game_over: bool = false
 
 
 func initial_zoom_tween():
@@ -33,6 +34,7 @@ func initial_zoom_tween():
 func restart():
     save_high_score()
     high_score = read_high_score()
+    game_over = false
     threat_level = 0.0
     if SpawnedFlow.lymphocyte_probability_tween:
         SpawnedFlow.lymphocyte_probability_tween.stop()

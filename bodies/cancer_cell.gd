@@ -141,10 +141,11 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
     food += earned_food
-    %HealthComponent.health = min(
-        %HealthComponent.health + earned_food,
-        %HealthComponent.initial_health,
-    )
+    if body.NAME == "RedBloodCell":
+        %HealthComponent.health = min(
+            %HealthComponent.health + earned_food,
+            %HealthComponent.initial_health,
+        )
     if detached:
         return
     if not %Bite.playing:

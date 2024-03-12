@@ -60,7 +60,7 @@ script = ExtResource("1_rhh8i")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_7ncq3")]
 unique_name_in_owner = true
-initial_health = 5.0
+initial_health = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HealthComponent"]
 sprite_frames = SubResource("SpriteFrames_gdbce")

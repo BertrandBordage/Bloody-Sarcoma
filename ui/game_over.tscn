@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdje3lr1njbve"]
+
+[ext_resource type="Script" path="res://ui/game_over.gd" id="1_64d16"]
+[ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="2_f1l5y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hsxg"]
+content_margin_left = 19.0
+content_margin_top = 19.0
+content_margin_right = 19.0
+content_margin_bottom = 19.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_64d16")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -31.5
+offset_right = 45.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="YouLost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "YOU LOST
+
+But the host just beat cancer!"
+horizontal_alignment = 1
+
+[node name="NewHighScore" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1hsxg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/NewHighScore"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer"]
+layout_mode = 2
+text = "NEW PERSONAL BEST SCORE!"
+horizontal_alignment = 1
+
+[node name="HighScoreForScreenshot" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_f1l5y")
+theme_override_font_sizes/font_size = 62
+text = "1234567"
+horizontal_alignment = 1
+
+[node name="PublishHighScore" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=12px]Proud of your [b]high score[/b]?
+Share a screenshot of this in a comment [url=https://bertrandbordage.itch.io/bloody-sarcoma]on the game page[/url]![/font_size]"
+fit_content = true
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "You can still try to metastasize a new host"
+
+[node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Restart"
+
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer/PublishHighScore" to="." method="_on_publish_high_score_meta_clicked"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_game_over_restart_button_pressed"]

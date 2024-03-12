@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=16 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
@@ -12,29 +12,16 @@
 [ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="7_rckg4"]
 [ext_resource type="Script" path="res://MetastasizeButton.gd" id="10_sccpc"]
 [ext_resource type="Script" path="res://Controls.gd" id="12_ek127"]
-[ext_resource type="Script" path="res://PauseOverlay.gd" id="12_j7f23"]
-[ext_resource type="Script" path="res://GameOver.gd" id="13_swuyd"]
+[ext_resource type="PackedScene" uid="uid://cr2jltd2x05do" path="res://ui/pause_overlay.tscn" id="13_yk1py"]
+[ext_resource type="PackedScene" uid="uid://bdje3lr1njbve" path="res://ui/game_over.tscn" id="14_jw6rb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
 size = Vector2(160, 144)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hsxg"]
-content_margin_left = 19.0
-content_margin_top = 19.0
-content_margin_right = 19.0
-content_margin_bottom = 19.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_0yc8o")
+pause_overlay_scene = ExtResource("13_yk1py")
+game_over_scene = ExtResource("14_jw6rb")
 
 [node name="Spawned" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -228,125 +215,6 @@ bbcode_enabled = true
 text = "[center]Best experienced with a [b]gamepad[/b] and [b]headphones[/b][/center]"
 fit_content = true
 
-[node name="PauseOverlay" type="CanvasLayer" parent="."]
-process_mode = 3
-visible = false
-script = ExtResource("12_j7f23")
-
-[node name="PanelContainer" type="PanelContainer" parent="PauseOverlay"]
-process_mode = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.5
-offset_top = -31.5
-offset_right = 45.5
-offset_bottom = 31.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PauseOverlay/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "PAUSE"
-horizontal_alignment = 1
-
-[node name="ResumeButton" type="Button" parent="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Resume"
-
-[node name="RestartButton" type="Button" parent="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Restart"
-
-[node name="GameOver" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
-process_mode = 4
-visible = false
-script = ExtResource("13_swuyd")
-
-[node name="PanelContainer" type="PanelContainer" parent="GameOver"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.5
-offset_top = -31.5
-offset_right = 45.5
-offset_bottom = 31.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="GameOver/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="YouLost" type="Label" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "YOU LOST
-
-But the host just beat cancer!"
-horizontal_alignment = 1
-
-[node name="NewHighScore" type="PanelContainer" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1hsxg")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer/NewHighScore"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer"]
-layout_mode = 2
-text = "NEW PERSONAL BEST SCORE!"
-horizontal_alignment = 1
-
-[node name="HighScoreForScreenshot" type="Label" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("7_rckg4")
-theme_override_font_sizes/font_size = 62
-text = "1234567"
-horizontal_alignment = 1
-
-[node name="PublishHighScore" type="RichTextLabel" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[font_size=12px]Proud of your [b]high score[/b]?
-Share a screenshot of this in a comment [url=https://bertrandbordage.itch.io/bloody-sarcoma]on the game page[/url]![/font_size]"
-fit_content = true
-
-[node name="Label2" type="Label" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "You can still try to metastasize a new host"
-
-[node name="GameOverRestartButton" type="Button" parent="GameOver/PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Restart"
-
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 60.0
 autostart = true
@@ -354,8 +222,4 @@ autostart = true
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
 [connection signal="timeout" from="ThreatLevelCooldown" to="ThreatLevelCooldown" method="_on_timeout"]
 [connection signal="pressed" from="MetastasizeUI/MarginContainer/VBoxContainer/MetastasizeButton" to="." method="_on_metastasize_button_pressed"]
-[connection signal="pressed" from="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="PauseOverlay" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseOverlay/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="PauseOverlay" method="_on_restart_button_pressed"]
-[connection signal="meta_clicked" from="GameOver/PanelContainer/MarginContainer/VBoxContainer/NewHighScore/VBoxContainer/PublishHighScore" to="GameOver" method="_on_publish_high_score_meta_clicked"]
-[connection signal="pressed" from="GameOver/PanelContainer/MarginContainer/VBoxContainer/GameOverRestartButton" to="GameOver" method="_on_game_over_restart_button_pressed"]
 [connection signal="timeout" from="SaveTimer" to="." method="_on_save_timer_timeout"]
