@@ -30,8 +30,14 @@ var worst_cell: RigidBody2D
 
 func initial_zoom_tween():
     smoothed_zoom = initial_zoom
-    zoom_smoothing = 0.99
-    create_tween().tween_property(self, "zoom_smoothing", 0.998, 5.0)
+    zoom_smoothing = 0.998
+    var tween: Tween = create_tween()
+    tween.tween_property(
+        self, "zoom_smoothing", 0.99, 2.5,
+    ).set_ease(Tween.EASE_IN)
+    tween.tween_property(
+        self, "zoom_smoothing", 0.998, 2.5,
+    ).set_ease(Tween.EASE_OUT)
 
 
 func restart():

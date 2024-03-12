@@ -102,6 +102,7 @@ text = "- 1 cell + 100 points"
 horizontal_alignment = 1
 
 [node name="HelpNotification" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_pwehu")
 
 [node name="PanelContainer" type="PanelContainer" parent="HelpNotification"]
