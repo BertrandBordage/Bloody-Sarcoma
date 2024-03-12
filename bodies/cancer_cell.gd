@@ -9,26 +9,31 @@ var cancer_cell_scene: PackedScene = load("res://bodies/cancer_cell.tscn")
     set(value):
         has_light = value
         Utils.toggle_node(%Light, has_light)
+        update_worth()
 @export var has_mouth: bool = false:
     set(value):
         has_mouth = value
         Utils.toggle_node(%Mouth, has_mouth)
         Utils.toggle_node(%AttackArea, has_mouth)
+        update_worth()
 @export var has_flow_control: bool = false:
     set(value):
         has_flow_control = value
         Utils.toggle_node(%TopFlowControl, has_flow_control and has_top_flagellum)
         Utils.toggle_node(%BottomFlowControl, has_flow_control and has_bottom_flagellum)
+        update_worth()
 @export var has_top_flagellum: bool = false:
     set(value):
         has_top_flagellum = value
         Utils.toggle_node(%TopFlagellum, has_top_flagellum)
         Utils.toggle_node(%TopFlowControl, has_flow_control and has_top_flagellum)
+        update_worth()
 @export var has_bottom_flagellum: bool = false:
     set(value):
         has_bottom_flagellum = value
         Utils.toggle_node(%BottomFlagellum, has_bottom_flagellum)
         Utils.toggle_node(%BottomFlowControl, has_flow_control and has_bottom_flagellum)
+        update_worth()
 
 
 const MAX_CELLS: int = 100
@@ -38,9 +43,19 @@ var animation: String = "Bottom regrowing":
         animation = value
         %AnimationPlayer.current_animation = animation
 var food: float = 0.0
-var separating: bool = false
-var growing: bool = false
-var detached: bool = false
+var separating: bool = false:
+    set(value):
+        separating = value
+        update_worth()
+var growing: bool = false:
+    set(value):
+        growing = value
+        update_worth()
+var detached: bool = false:
+    set(value):
+        detached = value
+        update_worth()
+var worth: float
 
 
 func _ready():
@@ -61,24 +76,25 @@ func _process(_delta):
     start_mitosis_if_possible()
 
 
-func get_worth() -> int:
-    var worth: int = 0
+func update_worth():
+    worth = 0.0
     if has_light:
-        worth += 1
+        worth += 1.0
     if has_mouth:
-        worth += 1
+        worth += 1.0
     if has_flow_control:
-        worth += 1
+        worth += 1.0
     if has_top_flagellum:
-        worth += 1
+        worth += 1.0
     if has_bottom_flagellum:
-        worth += 1
+        worth += 1.0
     if separating:
-        worth += 2
+        worth += 2.0
     if growing:
-        worth -= 1
-    return worth
-
+        # For an equal worth, penalize growing cells.
+        # Doing this with 1.0 would not work, as it would downgrade
+        # interesting growing cells like a cell with bottom flagellums.
+        worth -= 0.5
 
 
 func set_animation_for_movement(movement: Vector2) -> void:

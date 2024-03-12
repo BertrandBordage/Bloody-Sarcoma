@@ -2117,11 +2117,6 @@ collision_mask = 107
 mass = 0.02
 physics_material_override = SubResource("PhysicsMaterial_x0u02")
 script = ExtResource("1_vxxwk")
-has_light = null
-has_mouth = null
-has_flow_control = null
-has_top_flagellum = null
-has_bottom_flagellum = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

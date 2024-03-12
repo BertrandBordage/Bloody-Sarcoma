@@ -25,6 +25,7 @@ var use_touch: bool = false
 var game_over: bool = false
 var points_container: Node2D
 var points_scene: PackedScene = load("res://ui/points.tscn")
+var worst_cell: RigidBody2D
 
 
 func initial_zoom_tween():
@@ -86,6 +87,7 @@ func _process(_delta):
             MIN_ZOOM / (1.0 + SpawnedFlow.player_speed)
         ).clamp(MIN_ZOOM, MAX_ZOOM)
     )
+    worst_cell = get_worst_cell()
 
 
 func _input(event):
@@ -146,30 +148,50 @@ func decrease_threat_level():
 
 
 func get_worst_cell():
-    var min_worth: int = 100
+    var min_worth: float = INF
     var candidate = null
+    var mouth_count: int = 0
+    var top_flagellum_count: int = 0
+    var bottom_flagellum_count: int = 0
     for cell in cluster.get_children():
-        var worth = cell.get_worth()
-        if worth == 0:
+        if cell.worth <= 0:
             return cell
-        if worth < min_worth:
-            min_worth = worth
+        if cell.has_mouth:
+            mouth_count += 1
+        if cell.has_top_flagellum:
+            top_flagellum_count += 1
+        if cell.has_bottom_flagellum:
+            bottom_flagellum_count += 1
+        if cell.worth < min_worth:
+            min_worth = cell.worth
             candidate = cell
+    if (
+        mouth_count == 1 and candidate.has_mouth
+    ) or (
+       top_flagellum_count == 1 and candidate.has_top_flagellum
+    ) or (
+        bottom_flagellum_count == 1 and candidate.has_bottom_flagellum
+    ):
+        # It’s the last one with a nice mutation, don’t drop it!
+        return null
     return candidate
 
 
+func can_metastasize() -> bool:
+    return worst_cell != null
+
+
 func metastasize():
-    if cluster.get_child_count() <= 1:
+    if not can_metastasize():
         return
-    var cell = get_worst_cell()
-    if cell == null:
+    if worst_cell == null:
         return
-    var dropped_cell = cell.duplicate()
+    var dropped_cell = worst_cell.duplicate()
     dropped_cell.detached = true
     create_tween().tween_property(dropped_cell, "modulate:a", 0.75, 1.0)
     dropped_cell.animation = "Idle"
     SpawnedFlow.spawn_container.add_child(dropped_cell)
-    cell.queue_free()
+    worst_cell.queue_free()
     score += 100
 
 

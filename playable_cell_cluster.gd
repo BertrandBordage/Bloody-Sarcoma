@@ -41,7 +41,7 @@ func _process(_delta):
         add_child(game_over_scene.instantiate())
 
 
-    %MetastasizeUI.visible = count > 1
+    %MetastasizeUI.visible = PlayerData.can_metastasize()
 
     %Camera2D.position = %CancerCellCluster.smoothed_position
     %Camera2D.zoom = PlayerData.smoothed_zoom
