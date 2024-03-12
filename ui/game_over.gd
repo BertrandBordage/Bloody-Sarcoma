@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 func _ready():
-    PlayerData.game_over = true
+    PlayerData.is_game_over = true
     %RestartButton.grab_focus()
     %NewHighScore.visible = PlayerData.score >= PlayerData.high_score
     %HighScoreForScreenshot.text = "%s" % PlayerData.score

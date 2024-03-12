@@ -69,7 +69,7 @@ func _process(_delta):
 
     var count = %CancerCellCluster.get_child_count()
 
-    if count == 0 and not PlayerData.game_over:
+    if count == 0 and not PlayerData.is_game_over:
         add_child(game_over_scene.instantiate())
 
 

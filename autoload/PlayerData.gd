@@ -3,6 +3,8 @@ extends Node
 signal threat_level_raised(threat_level: int)
 signal threat_level_decreased(threat_level: int)
 signal input_changed
+signal game_over
+signal game_restart
 
 const MIN_ZOOM = Vector2(1.5, 1.5)
 const MAX_ZOOM = Vector2(3.0, 3.0)
@@ -22,7 +24,13 @@ var use_gamepad: bool = false
 var is_nintendo_gamepad: bool = false
 var use_keyboard: bool = false
 var use_touch: bool = false
-var game_over: bool = false
+var is_game_over: bool = false:
+    set(value):
+        is_game_over = value
+        if is_game_over:
+            game_over.emit()
+        else:
+            game_restart.emit()
 var points_container: Node2D
 var points_scene: PackedScene = load("res://ui/points.tscn")
 var worst_cell: RigidBody2D
@@ -44,7 +52,7 @@ func initial_zoom_tween():
 func restart():
     save_high_score()
     high_score = read_high_score()
-    game_over = false
+    is_game_over = false
     threat_level = 0.0
     if SpawnedFlow.lymphocyte_probability_tween:
         SpawnedFlow.lymphocyte_probability_tween.stop()

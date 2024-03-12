@@ -181,7 +181,7 @@ text = "Neutrophil"
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_font_sizes/font_size = 12
-text = "+10 food, +1 “mouth” to a sarcoma cell (to the killer if possible)
+text = "+10 food, +1 “mouth” to a sarcoma cell
 Neutrophils call lymphocytes when killed"
 
 [node name="LymphocyteSprite" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/GridContainer"]
