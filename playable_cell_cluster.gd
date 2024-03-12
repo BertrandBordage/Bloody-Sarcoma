@@ -4,6 +4,8 @@ const ACCELERATION = 2.0
 @export var pause_overlay_scene: PackedScene
 @export var game_over_scene: PackedScene
 var pause_overlay: CanvasLayer
+var touch_position
+var touch_velocity: Vector2 = Vector2.ZERO
 
 
 func _ready():
@@ -26,9 +28,38 @@ func trigger_pause():
         add_child(pause_overlay)
 
 
+func normalize_screen_velocity(
+    screen_velocity: Vector2, speed_multiplier: float = 5.0
+) -> Vector2:
+    var viewport: Viewport = get_viewport()
+    var viewport_size: Vector2 = viewport.get_visible_rect().size
+    screen_velocity /= viewport_size
+    # Multiply to make it possible to reach top speed
+    # without going to the edge of the screen.
+    return (screen_velocity * speed_multiplier).limit_length(1.0)
+
+
 func _input(event):
     if event.is_action_pressed("pause"):
         trigger_pause()
+    if event is InputEventScreenTouch and event.index == 0:
+        if touch_position == null:
+            if event.pressed:
+                touch_position = event.position
+                %TouchJoystick.visible = true
+                %TouchJoystick.offset = touch_position
+        elif not event.pressed:
+            %TouchJoystick.visible = false
+            touch_position = null
+            touch_velocity = Vector2.ZERO
+    elif event is InputEventScreenDrag and event.index == 0 and touch_position != null:
+        touch_velocity = normalize_screen_velocity(
+            event.position - touch_position,
+            8.0,
+        )
+        %TouchJoystick.offset = (
+            touch_position + touch_velocity * 40.0
+        )
 
 
 func _process(_delta):
@@ -52,16 +83,14 @@ func _process(_delta):
     SpawnedFlow.spawn_exclusion_polygon = %SpawnExclusionShape.global_transform * %SpawnExclusionShape.polygon
 
     var direction: Vector2
-    # TODO: Improve touch controls.
-    if PlayerData.use_mouse or PlayerData.use_touch:
+    if PlayerData.use_mouse:
         var viewport: Viewport = get_viewport()
         var viewport_size: Vector2 = viewport.get_visible_rect().size
-        direction = (
-            (viewport.get_mouse_position() - viewport_size / 2) / viewport_size
+        direction = normalize_screen_velocity(
+            viewport.get_mouse_position() - viewport_size / 2,
         )
-        # Multiply by 5 to make it possible to reach top speed
-        # without going to the edge of the screen.
-        direction = (direction * 5).limit_length(1.0)
+    elif PlayerData.use_touch:
+        direction = touch_velocity
     else:
         direction = Input.get_vector("left", "right", "up", "down")
 

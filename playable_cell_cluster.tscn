@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=13 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
@@ -12,6 +12,17 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i2i1"]
 size = Vector2(160, 144)
+
+[sub_resource type="Gradient" id="Gradient_ms6f2"]
+offsets = PackedFloat32Array(0.565868, 0.577844)
+colors = PackedColorArray(0, 0, 0, 0.247059, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vn84i"]
+gradient = SubResource("Gradient_ms6f2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="PlayableCellCluster" type="Node2D"]
 script = ExtResource("1_0yc8o")
@@ -129,6 +140,17 @@ layout_mode = 2
 bbcode_enabled = true
 text = "[center]Press [b]Pause[/b] for help[/center]"
 fit_content = true
+
+[node name="TouchJoystick" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="TouchJoystickTexture" type="TextureRect" parent="TouchJoystick"]
+unique_name_in_owner = true
+anchors_preset = -1
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_vn84i")
 
 [connection signal="body_exited" from="Camera2D/LoadedArea" to="." method="_on_loaded_area_body_exited"]
 [connection signal="timeout" from="ThreatLevelCooldown" to="ThreatLevelCooldown" method="_on_timeout"]

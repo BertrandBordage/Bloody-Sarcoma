@@ -7,6 +7,7 @@ extends CanvasLayer
 func _ready():
     get_tree().paused = true
     %ResumeButton.grab_focus()
+    %ShowFPS.button_pressed = PlayerData.show_fps
     if OS.get_name() == "Web":
         %QuitButton.queue_free()
 

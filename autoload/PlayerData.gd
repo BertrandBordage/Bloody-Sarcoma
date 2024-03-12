@@ -106,22 +106,27 @@ func _input(event):
             use_mouse = false
             use_gamepad = true
             use_keyboard = false
+            use_touch = false
             input_changed.emit()
     elif event is InputEventKey and not use_keyboard:
         use_mouse = false
         use_gamepad = false
         use_keyboard = true
+        use_touch = false
         input_changed.emit()
-    elif event is InputEventScreenTouch and not use_touch:
-        use_mouse = false
-        use_touch = true
-        use_gamepad = false
-        use_keyboard = false
-        input_changed.emit()
-    elif event is InputEventMouseMotion and not use_mouse:
+    elif event is InputEventMouseMotion and not use_mouse and not use_touch:
         use_mouse = true
         use_gamepad = false
         use_keyboard = false
+        use_touch = false
+        input_changed.emit()
+    elif (
+        event is InputEventScreenTouch or event is InputEventScreenDrag
+    ) and not use_touch:
+        use_mouse = false
+        use_gamepad = false
+        use_keyboard = false
+        use_touch = true
         input_changed.emit()
 
 

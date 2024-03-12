@@ -84,8 +84,7 @@ unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
 text = "Controls
-[font_size=12px]Gamepad left joystick [font_size=9px]or[/font_size] move mouse/finger around cluster
-[font_size=9px]or[/font_size] arrow keys [font_size=9px]or[/font_size] WASD keys.[/font_size]"
+[font_size=12px]Gamepad left joystick [font_size=9px]or[/font_size] move mouse around cluster [font_size=9px]or[/font_size] use finger like a joystick [font_size=9px]or[/font_size] arrow keys [font_size=9px]or[/font_size] WASD keys.[/font_size]"
 fit_content = true
 
 [node name="Goal" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
