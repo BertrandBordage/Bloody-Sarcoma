@@ -7,6 +7,8 @@ extends CanvasLayer
 func _ready():
     get_tree().paused = true
     %ResumeButton.grab_focus()
+    if OS.get_name() == "HTML5":
+        %QuitButton.queue_free()
 
 
 func _exit_tree():
@@ -32,3 +34,7 @@ func _on_help_button_pressed():
     var help_panel = help_panel_scene.instantiate()
     help_panel.closed.connect(func (): %HelpButton.grab_focus())
     add_child(help_panel)
+
+
+func _on_quit_button_pressed():
+    get_tree().quit()
