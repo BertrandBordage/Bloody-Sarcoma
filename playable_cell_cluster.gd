@@ -12,6 +12,7 @@ func _ready():
     PlayerData.camera = %Camera2D
     PlayerData.initial_zoom = %Camera2D.zoom
     PlayerData.cooldown_timer = %ThreatLevelCooldown
+    PlayerData.points_container = %PointsContainer
     PlayerData.initial_zoom_tween()
 
 

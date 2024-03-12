@@ -250,4 +250,6 @@ func _physics_process(_delta):
 
 
 func respawn_if_possible(body: RigidBody2D):
-    spawn_random(body)
+    # We defer the call to keep the current position just a little bit longer,
+    # so points can be shown at the right position.
+    spawn_random.call_deferred(body)

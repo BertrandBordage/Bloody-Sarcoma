@@ -24,6 +24,9 @@ unique_name_in_owner = true
 [node name="CancerCellCluster" parent="." instance=ExtResource("2_h8kyo")]
 unique_name_in_owner = true
 
+[node name="PointsContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 zoom = Vector2(10, 10)

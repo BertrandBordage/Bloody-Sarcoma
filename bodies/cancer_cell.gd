@@ -159,11 +159,11 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
 
     if body.NAME == "RedBloodCell":
         %RedBloodCellDead.play()
-        PlayerData.score += 1
+        PlayerData.add_points(1, body)
     elif body.NAME == "Lymphocyte":
         %LymphocyteDead.play()
         PlayerData.raise_threat_level(1.0)
-        PlayerData.score += 100
+        PlayerData.add_points(100, body)
     elif body.NAME == "Neutrophil":
         %NeutrophilDead.play()
         for sibling in get_parent().get_children():
@@ -171,7 +171,7 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
                 sibling.has_mouth = true
                 break
         PlayerData.raise_threat_level(0.5)
-        PlayerData.score += 10
+        PlayerData.add_points(10, body)
     elif body.NAME == "Bacteria":
         %BacteriaDead.play()
         if has_bottom_flagellum:
@@ -187,7 +187,7 @@ func _on_attack_area_damage_dealt(body: RigidBody2D, earned_food: float):
                 has_top_flagellum = true
         else:
             has_bottom_flagellum = true
-        PlayerData.score += 5
+        PlayerData.add_points(5, body)
 
 
 func take_damage(damage: float):

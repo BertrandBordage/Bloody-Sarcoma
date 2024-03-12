@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://ui/overlay.gd" id="1_31ttu"]
 [ext_resource type="Script" path="res://ui/ThreatLevel.gd" id="1_k3fax"]
 [ext_resource type="Texture2D" uid="uid://bk0nq1hsqnn5r" path="res://sprites/lymphocyte.png" id="2_e6gl8"]
-[ext_resource type="FontFile" uid="uid://hnxgeipnqeuo" path="res://fonts/Micro5-Regular.ttf" id="3_mh5td"]
+[ext_resource type="Theme" uid="uid://cv60v87ptglbk" path="res://ui/score_theme.tres" id="4_ll6id"]
 [ext_resource type="Script" path="res://ui/Score.gd" id="4_st3ua"]
 [ext_resource type="PackedScene" uid="uid://dawsk28a6rcs6" path="res://utils/fps.tscn" id="5_3qrgs"]
 
@@ -69,11 +69,7 @@ offset_left = 376.0
 offset_top = 2.0
 offset_right = 633.0
 offset_bottom = 67.0
-theme_override_colors/font_outline_color = Color(0.227451, 0.266667, 0.4, 1)
-theme_override_constants/outline_size = 4
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("3_mh5td")
-theme_override_font_sizes/font_size = 31
+theme = ExtResource("4_ll6id")
 text = "HIGH SCORE: 1234567
 1234567"
 horizontal_alignment = 2

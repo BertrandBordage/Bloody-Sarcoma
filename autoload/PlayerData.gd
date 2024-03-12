@@ -23,6 +23,8 @@ var is_nintendo_gamepad: bool = false
 var use_keyboard: bool = false
 var use_touch: bool = false
 var game_over: bool = false
+var points_container: Node2D
+var points_scene: PackedScene = load("res://ui/points.tscn")
 
 
 func initial_zoom_tween():
@@ -169,3 +171,13 @@ func metastasize():
     SpawnedFlow.spawn_container.add_child(dropped_cell)
     cell.queue_free()
     score += 100
+
+
+func add_points(value: int, from_body: RigidBody2D):
+    PlayerData.score += value
+    var points = points_scene.instantiate()
+    points.value = value
+    points_container.add_child(points)
+    points.global_position = from_body.global_position
+    points.velocity = from_body.linear_velocity
+    points.start_tween.call_deferred()
