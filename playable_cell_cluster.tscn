@@ -55,7 +55,7 @@ autoplay = true
 
 [node name="ThreatLevelCooldown" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 30.0
+wait_time = 60.0
 one_shot = true
 script = ExtResource("3_21bpp")
 
@@ -102,7 +102,6 @@ text = "- 1 cell + 100 points"
 horizontal_alignment = 1
 
 [node name="HelpNotification" type="CanvasLayer" parent="."]
-unique_name_in_owner = true
 script = ExtResource("3_pwehu")
 
 [node name="PanelContainer" type="PanelContainer" parent="HelpNotification"]

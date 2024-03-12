@@ -15,6 +15,10 @@ func _ready():
 ]
 
 
+func _physics_process(delta):
+    %ScrollContainer.scroll_vertical += Input.get_axis("up", "down") * delta * 200
+
+
 func _on_close_button_pressed():
     queue_free()
     closed.emit()

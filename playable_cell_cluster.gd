@@ -20,14 +20,14 @@ func trigger_pause():
     if pause_overlay:
         pause_overlay.queue_free()
     else:
-        if %HelpNotification:
+        if has_node("HelpNotification"):
             %HelpNotification.queue_free()
         pause_overlay = pause_overlay_scene.instantiate()
         add_child(pause_overlay)
 
 
 func _input(event):
-    if event is InputEventKey and event.is_action_pressed("pause"):
+    if event.is_action_pressed("pause"):
         trigger_pause()
 
 

@@ -27,8 +27,8 @@ var spawnable_scene_names: Array[String] = [
 var spawnable_probabilities: Array[float] = [
     0.0,
     100.0,
-    0.25,
     0.5,
+    1.0,
 ]
 var lymphocyte_probability: float:
     get:

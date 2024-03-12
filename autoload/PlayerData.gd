@@ -122,7 +122,8 @@ func raise_threat_level(amount: float):
     if threat_level >= MAX_THREAT_LEVEL:
         return
     var previous_threat_level = threat_level
-    threat_level += amount
+    # Increases the threat level with an exponential difficulty.
+    threat_level += amount / (1.0 + floor(threat_level) / 2)
     if floor(threat_level) == floor(previous_threat_level):
         return
     threat_level = floor(threat_level)
@@ -133,7 +134,7 @@ func raise_threat_level(amount: float):
     SpawnedFlow.lymphocyte_probability_tween.tween_property(
         SpawnedFlow, "lymphocyte_probability",
         PlayerData.threat_level,
-        30,
+        60,
     )
     cooldown_timer.start()
 

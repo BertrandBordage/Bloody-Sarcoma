@@ -15,7 +15,7 @@ func _exit_tree():
 
 
 func _input(event):
-    if event is InputEventKey and event.is_action_pressed("pause"):
+    if event.is_action_pressed("pause"):
         queue_free()
 
 
