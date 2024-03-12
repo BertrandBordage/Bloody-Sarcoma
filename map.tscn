@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dm0f3yccbu33i"]
 
-[ext_resource type="Script" path="res://blood_vessel.gd" id="1_nhmg3"]
+[ext_resource type="Script" path="res://map.gd" id="1_nhmg3"]
 [ext_resource type="PackedScene" uid="uid://dy3e4xaaoxhfd" path="res://chunks/muscle_vertical.tscn" id="2_24v0p"]
 [ext_resource type="PackedScene" uid="uid://bh7fnugfbxwj4" path="res://chunks/skin_vertical.tscn" id="3_4y83j"]
 [ext_resource type="TileSet" uid="uid://cam6mcjtpi8os" path="res://sprites/tileset.tres" id="3_lbnsq"]
@@ -22,7 +22,7 @@ _data = {
 }
 point_count = 4
 
-[node name="BloodVessel" type="Node2D"]
+[node name="Map" type="Node2D"]
 script = ExtResource("1_nhmg3")
 
 [node name="Muscles" type="Node2D" parent="."]

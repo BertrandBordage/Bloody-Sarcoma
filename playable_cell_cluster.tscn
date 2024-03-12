@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
 [ext_resource type="Script" path="res://ThreatLevelCooldown.gd" id="3_21bpp"]
 [ext_resource type="AudioStream" uid="uid://b4flvaln2as1g" path="res://sounds/background_noise.wav" id="3_owkcr"]
-[ext_resource type="Script" path="res://HelpNotification.gd" id="3_pwehu"]
 [ext_resource type="PackedScene" uid="uid://0ufhn1vj785r" path="res://ui/overlay.tscn" id="7_wvqnc"]
+[ext_resource type="Script" path="res://ui/HelpNotification.gd" id="9_t643p"]
 [ext_resource type="Script" path="res://MetastasizeButton.gd" id="10_sccpc"]
 [ext_resource type="PackedScene" uid="uid://cr2jltd2x05do" path="res://ui/pause_overlay.tscn" id="13_yk1py"]
 [ext_resource type="PackedScene" uid="uid://bdje3lr1njbve" path="res://ui/game_over.tscn" id="14_jw6rb"]
@@ -114,7 +114,7 @@ horizontal_alignment = 1
 
 [node name="HelpNotification" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-script = ExtResource("3_pwehu")
+script = ExtResource("9_t643p")
 
 [node name="PanelContainer" type="PanelContainer" parent="HelpNotification"]
 anchors_preset = 7
