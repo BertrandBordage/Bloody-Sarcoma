@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://baaornf0fahmw"]
+
+[ext_resource type="AudioStream" uid="uid://l4wemep7mccx" path="res://music/instrumental.mp3" id="1_i3lw2"]
+[ext_resource type="Script" path="res://music/music.gd" id="1_k6c1g"]
+[ext_resource type="AudioStream" uid="uid://m52ft2jo5tl1" path="res://music/voice.mp3" id="2_lq7da"]
+
+[sub_resource type="Animation" id="Animation_1gqer"]
+resource_name = "Lyrics"
+length = 250.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 29.3, 31.1, 35.2, 36.8, 41.3, 46.7, 50.2, 56.5, 62.2, 67, 74.1, 83.4, 85.4, 89.4, 91.2, 95.4, 101.5, 104.5, 110.8, 116.4, 121.1, 128.1, 137.3, 143.2, 149.5, 155.4, 164.6, 170.2, 174.9, 181.9, 191.3, 193.1, 197.5, 199.2, 203.6, 209.9, 218.8, 224.3, 229, 236.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "My little cell,", "You were meant to be in a muscle,", "My little cell,", "You could be part of the team,", "But no, you’ve decided to act all weird,", "But why?", "Just give up, you cannot win this!", "Sarcoma, please don’t be my cancer,", "You’re nothing, only", "an aberration!", "My natural killer cells will get you.", "I see you there,", "Feeding on my red blood cells,", "I see you there,", "Swimming in my blood vessels,", "Did you mutate those flagellums,", "By stealing,", "stealing them from dead bacteria?", "Sarcoma, please don’t be my cancer,", "You’re nothing, only", "an aberration!", "My natural killer cells will get you.", "You think your “mouth” is what makes you powerful?", "You think your “mouth” is what makes you so unique?", "Have you noticed my neutrophils,", "All, all 12 billion of them can chew you!", "Sarcoma, please don’t be my cancer,", "You’re nothing, only", "an aberration!", "My natural killer cells will get you.", "By any chance,", "Could you tell me your long-term plans?", "By any chance,", "Could you not spread everywhere?", "I know it’s tempting to metastasize,", "Think, if you kill me, you cannot survive!", "Sarcoma, please don’t be my cancer,", "You’re nothing, only", "an aberration!", "My natural killer cells will get you."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/PanelContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 29.3, 80, 83.4, 133.9, 137.3, 187.6, 191.3, 241.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_y02ru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/PanelContainer/MarginContainer/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/PanelContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mcimd"]
+_data = {
+"Lyrics": SubResource("Animation_1gqer"),
+"RESET": SubResource("Animation_y02ru")
+}
+
+[node name="Music" type="Node"]
+script = ExtResource("1_k6c1g")
+
+[node name="Instrumental" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("1_i3lw2")
+
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_lq7da")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mcimd")
+}
+autoplay = "Lyrics"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -112.0
+offset_right = 54.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[connection signal="finished" from="Instrumental" to="." method="_on_instrumental_finished"]
