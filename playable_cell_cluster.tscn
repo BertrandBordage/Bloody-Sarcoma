@@ -138,7 +138,7 @@ theme_override_constants/margin_bottom = 10
 [node name="PauseForHelp" type="RichTextLabel" parent="HelpNotification/PanelContainer/MarginContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]Press [b]Pause[/b] for help[/center]"
+text = "[center]Pause for help[/center]"
 fit_content = true
 
 [node name="TouchJoystick" type="CanvasLayer" parent="."]

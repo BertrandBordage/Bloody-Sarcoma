@@ -5,6 +5,8 @@ extends VisibleOnScreenNotifier2D
 
 
 func toggle(enabled: bool):
+    if not parent:
+        return
     parent.process_mode = PROCESS_MODE_INHERIT if enabled else PROCESS_MODE_DISABLED
     for layer_index in range(parent.get_layers_count()):
         parent.set_layer_enabled(layer_index, enabled)

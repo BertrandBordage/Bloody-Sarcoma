@@ -24,6 +24,7 @@ Math="*res://autoload/Math.gd"
 SpawnedFlow="*res://autoload/SpawnedFlow.gd"
 Utils="*res://autoload/Utils.gd"
 PlayerData="*res://autoload/PlayerData.gd"
+Ui="*res://autoload/Ui.gd"
 
 [display]
 

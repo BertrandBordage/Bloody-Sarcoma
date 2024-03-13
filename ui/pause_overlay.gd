@@ -10,6 +10,12 @@ func _ready():
     %ShowFPS.button_pressed = PlayerData.show_fps
     if OS.get_name() == "Web":
         %QuitButton.queue_free()
+    %GlobalVolume.value = Ui.global_volume
+    %MusicVolume.value = Ui.music_volume
+    %VoiceVolume.value = Ui.voice_volume
+    %GlobalVolume.value_changed.connect(Ui._on_global_volume_changed)
+    %MusicVolume.value_changed.connect(Ui._on_music_volume_changed)
+    %VoiceVolume.value_changed.connect(Ui._on_voice_volume_changed)
 
 
 func _exit_tree():

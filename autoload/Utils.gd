@@ -28,3 +28,15 @@ func get_key_name(action_name: String, event_index_in_action: int = 0) -> String
             event.physical_keycode
         )
     )
+
+
+func read_float(path: String, default: float = 0.0):
+    if FileAccess.file_exists(path):
+        return FileAccess.open(
+            path, FileAccess.READ,
+        ).get_float()
+    return default
+
+
+func write_float(path: String, value: float):
+    FileAccess.open(path, FileAccess.WRITE).store_float(value)
