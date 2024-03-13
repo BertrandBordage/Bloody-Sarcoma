@@ -104,6 +104,7 @@ pause={
 2d_physics/layer_5="Permeable vessel membranes"
 2d_physics/layer_6="Bacteria"
 2d_physics/layer_7="Neutrophils"
+2d_physics/layer_16="Loaded area"
 
 [physics]
 

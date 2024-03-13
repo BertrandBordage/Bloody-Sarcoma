@@ -1,15 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://blxa6cowlkfxu"]
+[gd_scene load_steps=7 format=3 uid="uid://blxa6cowlkfxu"]
 
+[ext_resource type="PackedScene" uid="uid://bha4gwnq4se7k" path="res://utils/region_loader.tscn" id="1_fucok"]
 [ext_resource type="PackedScene" uid="uid://dm0f3yccbu33i" path="res://map.tscn" id="2_wp7vq"]
 [ext_resource type="PackedScene" uid="uid://11qi1e3xb58u" path="res://playable_cell_cluster.tscn" id="3_43usx"]
 [ext_resource type="PackedScene" uid="uid://bjbr38whylxgv" path="res://regions/left_foot.tscn" id="4_m2buo"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywvij"]
+size = Vector2(2304, 2304)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jej24"]
+size = Vector2(3664, 2392)
+
 [node name="Game" type="Node2D"]
 
-[node name="Map" parent="." instance=ExtResource("2_wp7vq")]
+[node name="RegionLoader" parent="." instance=ExtResource("1_fucok")]
+region_name = "Level 0"
+region_scene = ExtResource("2_wp7vq")
 
-[node name="LeftFoot" parent="." instance=ExtResource("4_m2buo")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RegionLoader"]
+position = Vector2(640, 384)
+shape = SubResource("RectangleShape2D_ywvij")
+
+[node name="LeftFootLoader" parent="." instance=ExtResource("1_fucok")]
 position = Vector2(-1949, 5372)
+region_name = "Left foot"
+region_scene = ExtResource("4_m2buo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftFootLoader"]
+position = Vector2(1445, -616)
+shape = SubResource("RectangleShape2D_jej24")
 
 [node name="PlayableCellCluster" parent="." instance=ExtResource("3_43usx")]
 position = Vector2(46, 4928)

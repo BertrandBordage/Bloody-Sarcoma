@@ -1,5 +1,6 @@
 extends Node
 
+signal region_change(new_value: String)
 signal global_volume_changed(new_value: float)
 signal music_volume_changed(new_value: float)
 signal voice_volume_changed(new_value: float)
@@ -7,6 +8,7 @@ signal voice_volume_changed(new_value: float)
 const GLOBAL_VOLUME_PATH: String = "user://global-volume.save"
 const MUSIC_VOLUME_PATH: String = "user://music-volume.save"
 const VOICE_VOLUME_PATH: String = "user://voice-volume.save"
+var current_region_name: String
 var global_volume: float
 var music_volume: float
 var voice_volume: float
