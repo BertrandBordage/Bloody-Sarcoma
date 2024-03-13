@@ -70,7 +70,7 @@ class FlowPath:
         var bottom: float = -INF
         var curve_transform: Transform2D = path.global_transform
         for point in curve.get_baked_points():
-            point *= curve_transform
+            point += curve_transform.origin
             if point.x < left:
                 left = point.x
             if point.x > right:
@@ -87,7 +87,7 @@ class FlowPath:
         ])
 
     func get_closest_offset(point: Vector2):
-        var offset = curve.get_closest_offset(point)
+        var offset = curve.get_closest_offset(point - path.global_position)
         return round(offset / offset_rounding) * offset_rounding
 
     func get_point_and_direction(from_point: Vector2):
@@ -129,13 +129,13 @@ func find_closest_point_outside_spawn_exclusion(
 
 func get_spawn_position(downstream: bool = false):
     # Take a path randomly.
-    visible_paths.shuffle()
-    for path in visible_paths:
-        var curve = path.curve
+    visible_flow_paths.shuffle()
+    for flow_path in visible_flow_paths:
+        var curve = flow_path.curve
         var point_with_rotation = find_closest_point_outside_spawn_exclusion(
             curve,
-            path.global_position,
-            curve.get_closest_offset(spawn_exclusion_global_position),
+            flow_path.path.global_position,
+            flow_path.get_closest_offset(spawn_exclusion_global_position),
             downstream,
         )
         if point_with_rotation is String and point_with_rotation == "outside":
@@ -145,7 +145,7 @@ func get_spawn_position(downstream: bool = false):
             # Start from the end, in case the curve was looping.
             point_with_rotation = find_closest_point_outside_spawn_exclusion(
                 curve,
-                path.global_position,
+                flow_path.path.global_position,
                 0.0 if downstream else curve.get_baked_length(),  # End offset.
                 downstream,
             )
@@ -195,8 +195,8 @@ func spawn_random(body_to_respawn = null):
         spawned.reset_for_respawn()
         # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
         spawned.global_transform.origin = spawn.origin
-        spawned.rotation = randf_range(-PI, PI)
 
+    spawned.rotation = randf_range(-PI, PI)
     spawned.linear_velocity = Vector2.UP.rotated(
         spawn.get_rotation() + randf_range(-PI / 4, PI / 4)
     ) * Heartbeat.blood_pressure * (

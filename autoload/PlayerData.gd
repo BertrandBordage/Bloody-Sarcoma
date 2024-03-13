@@ -151,10 +151,11 @@ func raise_threat_level(amount: float):
     if SpawnedFlow.lymphocyte_probability_tween:
         SpawnedFlow.lymphocyte_probability_tween.stop()
     SpawnedFlow.lymphocyte_probability_tween = create_tween()
+    cooldown_timer.wait_time = 30 * (1.0 + threat_level)
     SpawnedFlow.lymphocyte_probability_tween.tween_property(
         SpawnedFlow, "lymphocyte_probability",
-        PlayerData.threat_level,
-        60,
+        threat_level,
+        cooldown_timer.wait_time,
     )
     cooldown_timer.start()
 
@@ -174,6 +175,8 @@ func get_worst_cell():
     var mouth_count: int = 0
     var top_flagellum_count: int = 0
     var bottom_flagellum_count: int = 0
+    if cluster == null:
+        return null
     for cell in cluster.get_children():
         if cell.worth <= 0:
             return cell
@@ -186,6 +189,9 @@ func get_worst_cell():
         if cell.worth < min_worth:
             min_worth = cell.worth
             candidate = cell
+    if mouth_count == 0:
+        # No mouth left, player is screwed, propose a last metastasis.
+        return candidate
     if (
         mouth_count == 1 and candidate.has_mouth
     ) or (

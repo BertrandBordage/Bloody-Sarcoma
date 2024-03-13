@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs3tyepc1rr76"]
+
+[ext_resource type="TileSet" uid="uid://cam6mcjtpi8os" path="res://sprites/tileset.tres" id="1_u8ihh"]
+[ext_resource type="PackedScene" uid="uid://j5hfgs5vldnb" path="res://utils/tilemap_enabler.tscn" id="2_sr5oi"]
+
+[node name="SmallVessel90Deg" type="TileMap"]
+tile_set = ExtResource("1_u8ihh")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 2752513, 20, 65538, 2883585, 20, 131074, 2883585, 21, 131075, 2949121, 21, 196611, 2949121, 22, 196612, 3014657, 22, 262148, 2949121, 22, 65539, 2949121, 20, 131076, 3014657, 21, 196613, 3014657, 21, 262149, 3014657, 22, 65536, 2555905, 20, 196609, 2293761, 29, 196610, 2359297, 29, 262145, 2293761, 30, 262146, 2293761, 28, 262147, 2621441, 28, 131072, 2752513, 31, 131073, 2359297, 29, 196608, 2293761, 30)
+layer_1/tile_data = PackedInt32Array(0, 2490370, 19, 196608, 2752514, 23, 262144, 2752514, 24, 196609, 2818050, 23, 262145, 2818050, 24, 2, 2883586, 19, 65538, 2883586, 20, 65539, 2949122, 20, 131075, 2949122, 21, 131076, 3014658, 21, 196612, 2949122, 21, 196613, 3014658, 21, 262149, 3014658, 22, 3, 2949122, 19, 65540, 3014658, 20, 131077, 3080194, 21, 196614, 3080194, 21, 262150, 3080194, 22, 1, 2490370, 19)
+
+[node name="TilemapEnabler" parent="." instance=ExtResource("2_sr5oi")]
+position = Vector2(56, 40.0001)
+scale = Vector2(37.6, 36)

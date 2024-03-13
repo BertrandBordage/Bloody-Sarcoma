@@ -9,7 +9,7 @@ func create_flow_path(path: Path2D):
 
 
 func _ready():
-    current_flow_paths = %Paths.get_children().map(create_flow_path)
+    current_flow_paths = get_children().map(create_flow_path)
     SpawnedFlow.flow_paths.append_array(current_flow_paths)
 
 

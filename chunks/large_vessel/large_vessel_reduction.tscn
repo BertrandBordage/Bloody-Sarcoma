@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bte3urkxc1227"]
+
+[ext_resource type="TileSet" uid="uid://cam6mcjtpi8os" path="res://sprites/tileset.tres" id="1_l7xsk"]
+[ext_resource type="PackedScene" uid="uid://j5hfgs5vldnb" path="res://utils/tilemap_enabler.tscn" id="2_qstxh"]
+
+[node name="LargeVesselReduction" type="TileMap"]
+tile_set = ExtResource("1_l7xsk")
+format = 2
+layer_0/tile_data = PackedInt32Array(131072, 2883585, 21, 196608, 2818049, 24, 262144, 2818049, 24, 327680, 2883585, 30, 131073, 2555905, 20, 196609, 2818049, 24, 262145, 2818049, 24, 327681, 2555905, 31, 393216, 2883585, 31, 65536, 2883585, 20, 65537, 2949121, 20, 393217, 2949121, 31)
+layer_1/tile_data = PackedInt32Array(0, 2883586, 19, 65536, 2883586, 20, 393216, 2883586, 31, 458752, 2883586, 32, 1, 2555906, 27, 65537, 2555906, 28, 393217, 2555906, 23, 458753, 2555906, 24)
+
+[node name="TilemapEnabler" parent="." instance=ExtResource("2_qstxh")]
+position = Vector2(16, 64)
+scale = Vector2(33.6, 38.4)

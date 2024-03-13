@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://dm0f3yccbu33i"]
 
-[ext_resource type="Script" path="res://map.gd" id="1_nhmg3"]
-[ext_resource type="PackedScene" uid="uid://dy3e4xaaoxhfd" path="res://chunks/muscle_vertical.tscn" id="2_24v0p"]
-[ext_resource type="PackedScene" uid="uid://bh7fnugfbxwj4" path="res://chunks/skin_vertical.tscn" id="3_4y83j"]
+[ext_resource type="PackedScene" uid="uid://dy3e4xaaoxhfd" path="res://chunks/muscle.tscn" id="2_oij3y"]
+[ext_resource type="PackedScene" uid="uid://bh7fnugfbxwj4" path="res://chunks/skins/hairy_skin.tscn" id="3_4f64t"]
 [ext_resource type="TileSet" uid="uid://cam6mcjtpi8os" path="res://sprites/tileset.tres" id="3_lbnsq"]
 [ext_resource type="PackedScene" uid="uid://dex5aieyte4wb" path="res://chunks/medium_vessel/medium_vessel_horizontal.tscn" id="5_4dxfg"]
 [ext_resource type="PackedScene" uid="uid://cewyrw7by6scq" path="res://chunks/small_vessel/small_vessel_45deg.tscn" id="5_g2fam"]
 [ext_resource type="PackedScene" uid="uid://c6w1a4wok5hq0" path="res://chunks/large_vessel/large_vessel_45deg.tscn" id="7_fq550"]
 [ext_resource type="PackedScene" uid="uid://cibyorvhtumk4" path="res://chunks/large_vessel/large_vessel_vertical.tscn" id="8_tjqt8"]
 [ext_resource type="PackedScene" uid="uid://uilbkffw1qqk" path="res://chunks/large_vessel/large_vessel_horizontal.tscn" id="9_1jvoh"]
+[ext_resource type="PackedScene" uid="uid://bv0u0lv4di43d" path="res://flow_paths_container.tscn" id="9_eve52"]
 
 [sub_resource type="Curve2D" id="Curve2D_eceop"]
 _data = {
@@ -23,187 +23,186 @@ _data = {
 point_count = 4
 
 [node name="Map" type="Node2D"]
-script = ExtResource("1_nhmg3")
 
 [node name="Muscles" type="Node2D" parent="."]
 
-[node name="MuscleVertical" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-1, -256)
 
-[node name="MuscleVertical18" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical18" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-257, -256)
 
-[node name="MuscleVertical2" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical2" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(255, -256)
 
-[node name="MuscleVertical3" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical3" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(511, -256)
 
-[node name="MuscleVertical4" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical4" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(767, -512)
 
-[node name="MuscleVertical5" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical5" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1023, -768)
 
-[node name="MuscleVertical6" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical6" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1279, -768)
 
-[node name="MuscleVertical7" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical7" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1535, -768)
 
-[node name="MuscleVertical8" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical8" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1535, -512)
 
-[node name="MuscleVertical9" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical9" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1535, -256)
 
-[node name="MuscleVertical10" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical10" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1535, 0)
 
-[node name="MuscleVertical11" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical11" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1535, 256)
 
-[node name="MuscleVertical12" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical12" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1535, 512)
 
-[node name="MuscleVertical13" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical13" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1023, 768)
 
-[node name="MuscleVertical14" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical14" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1279, 768)
 
-[node name="MuscleVertical15" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical15" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(767, 768)
 
-[node name="MuscleVertical16" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical16" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(511, 768)
 
-[node name="MuscleVertical17" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical17" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(255, 1024)
 
-[node name="MuscleVertical19" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical19" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1279, 512)
 
-[node name="MuscleVertical20" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical20" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1279, 512)
 
-[node name="MuscleVertical21" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical21" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1023, 512)
 
-[node name="MuscleVertical22" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical22" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(767, 512)
 
-[node name="MuscleVertical23" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical23" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(511, 512)
 
-[node name="MuscleVertical24" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical24" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(255, 768)
 
-[node name="MuscleVertical25" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical25" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(255, 512)
 
-[node name="MuscleVertical26" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical26" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-1, 512)
 
-[node name="MuscleVertical27" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical27" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-257, 512)
 
-[node name="MuscleVertical28" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical28" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-257, 768)
 
-[node name="MuscleVertical29" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical29" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-1, 768)
 
-[node name="MuscleVertical30" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical30" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-1, 1024)
 
-[node name="MuscleVertical31" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical31" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-257, 1024)
 
-[node name="MuscleVertical32" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical32" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-257, 1280)
 
-[node name="MuscleVertical33" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical33" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(0, 1280)
 
-[node name="MuscleVertical34" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical34" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-257, 256)
 
-[node name="MuscleVertical35" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical35" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-257, 0)
 
-[node name="MuscleVertical36" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical36" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-1, 0)
 
-[node name="MuscleVertical37" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical37" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(255, 0)
 
-[node name="MuscleVertical38" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical38" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(511, 0)
 
-[node name="MuscleVertical39" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical39" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(767, -256)
 
-[node name="MuscleVertical40" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical40" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(767, 0)
 
-[node name="MuscleVertical41" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical41" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1023, -512)
 
-[node name="MuscleVertical42" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical42" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1279, -512)
 
-[node name="MuscleVertical43" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical43" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1279, -256)
 
-[node name="MuscleVertical44" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical44" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1023, -256)
 
-[node name="MuscleVertical45" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical45" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1023, 0)
 
-[node name="MuscleVertical46" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical46" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1279, 0)
 
-[node name="MuscleVertical47" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical47" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1279, 256)
 
-[node name="MuscleVertical48" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical48" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(1023, 256)
 
-[node name="MuscleVertical49" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical49" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(767, 256)
 
-[node name="MuscleVertical50" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical50" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(511, 256)
 
-[node name="MuscleVertical51" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical51" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(255, 256)
 
-[node name="MuscleVertical52" parent="Muscles" instance=ExtResource("2_24v0p")]
+[node name="MuscleVertical52" parent="Muscles" instance=ExtResource("2_oij3y")]
 position = Vector2(-1, 256)
 
 [node name="Skin" type="Node2D" parent="."]
 
-[node name="SkinVertical" parent="Skin" instance=ExtResource("3_4y83j")]
+[node name="SkinVertical" parent="Skin" instance=ExtResource("3_4f64t")]
 position = Vector2(-513, -256)
 
-[node name="SkinVertical2" parent="Skin" instance=ExtResource("3_4y83j")]
+[node name="SkinVertical2" parent="Skin" instance=ExtResource("3_4f64t")]
 position = Vector2(-513, 0)
 
-[node name="SkinVertical3" parent="Skin" instance=ExtResource("3_4y83j")]
+[node name="SkinVertical3" parent="Skin" instance=ExtResource("3_4f64t")]
 position = Vector2(-513, 256)
 
-[node name="SkinVertical4" parent="Skin" instance=ExtResource("3_4y83j")]
+[node name="SkinVertical4" parent="Skin" instance=ExtResource("3_4f64t")]
 position = Vector2(-513, 512)
 
-[node name="SkinVertical5" parent="Skin" instance=ExtResource("3_4y83j")]
+[node name="SkinVertical5" parent="Skin" instance=ExtResource("3_4f64t")]
 position = Vector2(-513, 768)
 
-[node name="SkinVertical6" parent="Skin" instance=ExtResource("3_4y83j")]
+[node name="SkinVertical6" parent="Skin" instance=ExtResource("3_4f64t")]
 position = Vector2(-513, 1024)
 
-[node name="SkinVertical7" parent="Skin" instance=ExtResource("3_4y83j")]
+[node name="SkinVertical7" parent="Skin" instance=ExtResource("3_4f64t")]
 position = Vector2(-513, 1280)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -253,11 +252,10 @@ position = Vector2(319, 192)
 [node name="LargeVesselHorizontal2" parent="Vessels" instance=ExtResource("9_1jvoh")]
 position = Vector2(63, 192)
 
-[node name="Paths" type="Node2D" parent="."]
-unique_name_in_owner = true
+[node name="FlowPathsContainer" parent="." instance=ExtResource("9_eve52")]
 
-[node name="Path2D" type="Path2D" parent="Paths"]
+[node name="Path2D" type="Path2D" parent="FlowPathsContainer"]
 curve = SubResource("Curve2D_eceop")
 
-[node name="Path2D2" type="Path2D" parent="Paths"]
+[node name="Path2D2" type="Path2D" parent="FlowPathsContainer"]
 curve = SubResource("Curve2D_v55or")
