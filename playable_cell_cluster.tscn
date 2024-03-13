@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://11qi1e3xb58u"]
+[gd_scene load_steps=14 format=3 uid="uid://11qi1e3xb58u"]
 
 [ext_resource type="Script" path="res://playable_cell_cluster.gd" id="1_0yc8o"]
 [ext_resource type="PackedScene" uid="uid://0irp083fvy7v" path="res://cancer_cell_cluster.tscn" id="2_h8kyo"]
 [ext_resource type="Script" path="res://ThreatLevelCooldown.gd" id="3_21bpp"]
 [ext_resource type="AudioStream" uid="uid://b4flvaln2as1g" path="res://sounds/background_noise.wav" id="3_owkcr"]
+[ext_resource type="PackedScene" uid="uid://baaornf0fahmw" path="res://music/music.tscn" id="7_28onp"]
 [ext_resource type="PackedScene" uid="uid://0ufhn1vj785r" path="res://ui/overlay.tscn" id="7_wvqnc"]
 [ext_resource type="Script" path="res://ui/HelpNotification.gd" id="9_t643p"]
 [ext_resource type="Script" path="res://MetastasizeButton.gd" id="10_sccpc"]
@@ -73,6 +74,8 @@ script = ExtResource("3_21bpp")
 [node name="SaveTimer" type="Timer" parent="."]
 wait_time = 60.0
 autostart = true
+
+[node name="Music" parent="." instance=ExtResource("7_28onp")]
 
 [node name="Overlay" parent="." instance=ExtResource("7_wvqnc")]
 

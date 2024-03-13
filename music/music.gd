@@ -10,10 +10,14 @@ func update_volume(_new_value):
 
 func _ready():
     update_volume(1.0)
-    %Instrumental.play()
-    %Voice.play()
     Ui.music_volume_changed.connect(update_volume)
     Ui.voice_volume_changed.connect(update_volume)
+    var delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
+    %Instrumental.play()
+    %Voice.play()
+    await get_tree().create_timer(delay).timeout
+    %AnimationPlayer.current_animation = "Lyrics"
+    Heartbeat.start()
 
 
 func _on_instrumental_finished():
