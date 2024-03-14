@@ -36,7 +36,7 @@ polygon = PackedVector2Array(256, -80, 256, 5768, 2464, 5768, 2888, -80)
 
 [node name="MusclePolygon" parent="." instance=ExtResource("2_ehtxe")]
 position = Vector2(992, 0)
-polygon = PackedVector2Array(0, 0, 0, 5848, 512, 5848, 512, 2272, 768, 2272, 768, 224, 1280, 224, 1280, 0)
+polygon = PackedVector2Array(0, 0, 0, 5848, 512, 5848, 512, 2272, 768, 2272, 768, 256, 1024, 256, 1024, 0)
 
 [node name="Skin" type="Node2D" parent="."]
 
@@ -206,12 +206,16 @@ position = Vector2(1760, 2528)
 rotation = -1.5708
 
 [node name="BareSkin270Deg4" parent="Skin" instance=ExtResource("4_vdajf")]
-position = Vector2(2016, 480)
+position = Vector2(2016, 512)
 rotation = -3.14159
 
-[node name="BareSkin12" parent="Skin" instance=ExtResource("6_nkh6s")]
-position = Vector2(2016, 480)
+[node name="BareSkin90Deg4" parent="Skin" instance=ExtResource("5_vmm7m")]
+position = Vector2(2016, 512)
 rotation = -1.5708
+
+[node name="BareSkin270Deg5" parent="Skin" instance=ExtResource("4_vdajf")]
+position = Vector2(2272, 256)
+rotation = -3.14159
 
 [node name="Vessels" type="Node2D" parent="."]
 

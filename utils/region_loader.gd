@@ -7,6 +7,7 @@ var region: Node
 
 
 func _on_area_entered(_area):
+    %RecentlyExitedTimer.stop()
     if region:
         return
 
