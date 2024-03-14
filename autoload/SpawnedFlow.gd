@@ -2,7 +2,7 @@ extends Node
 
 
 const MAX_SPAWNED = 500
-const PATH_SEARCH_OFFSET_INTERVAL: float = 10.0
+const PATH_SEARCH_OFFSET_INTERVAL: float = 100.0
 const UPSTREAM_VELOCITY_MULTIPLIER = 10.0
 const DOWNSTREAM_VELOCITY_MULTIPLIER = 5.0
 const CLOSEST_CURVE_QUANTIZATION = 20  # pixels
@@ -70,7 +70,7 @@ class FlowPath:
         var bottom: float = -INF
         var curve_transform: Transform2D = path.global_transform
         for point in curve.get_baked_points():
-            point += curve_transform.origin
+            point = curve_transform * point
             if point.x < left:
                 left = point.x
             if point.x > right:
@@ -87,13 +87,15 @@ class FlowPath:
         ])
 
     func get_closest_offset(point: Vector2):
-        var offset = curve.get_closest_offset(point - path.global_position)
+        var offset = curve.get_closest_offset(
+            path.global_transform.affine_inverse() * point
+        )
         return round(offset / offset_rounding) * offset_rounding
 
     func get_point_and_direction(from_point: Vector2):
         var offset = get_closest_offset(from_point)
         var transform = curve.sample_baked_with_rotation(offset)
-        var point = path.global_position + transform.origin
+        var point = path.global_transform * transform.origin
         var direction = Vector2.UP.rotated(transform.get_rotation())
         return [point, direction]
 
@@ -107,13 +109,15 @@ class FlowPath:
 
 
 func find_closest_point_outside_spawn_exclusion(
-    curve: Curve2D, from_position: Vector2, offset: float, downstream: bool = false,
+    flow_path: FlowPath, offset: float, downstream: bool = false,
 ):
+    var curve: Curve2D = flow_path.curve
     var is_start: bool = true
     var point_with_rotation: Transform2D
     var max_offset = curve.get_baked_length()
     while offset < max_offset if downstream else offset > 0:
-        point_with_rotation = curve.sample_baked_with_rotation(offset).translated(from_position)
+        point_with_rotation = curve.sample_baked_with_rotation(offset)
+        point_with_rotation.origin = flow_path.path.global_transform * point_with_rotation.origin
         if not Geometry2D.is_point_in_polygon(
             point_with_rotation.origin, spawn_exclusion_polygon,
         ):
@@ -133,8 +137,7 @@ func get_spawn_position(downstream: bool = false):
     for flow_path in visible_flow_paths:
         var curve = flow_path.curve
         var point_with_rotation = find_closest_point_outside_spawn_exclusion(
-            curve,
-            flow_path.path.global_position,
+            flow_path,
             flow_path.get_closest_offset(spawn_exclusion_global_position),
             downstream,
         )
@@ -144,8 +147,7 @@ func get_spawn_position(downstream: bool = false):
         if point_with_rotation == null:
             # Start from the end, in case the curve was looping.
             point_with_rotation = find_closest_point_outside_spawn_exclusion(
-                curve,
-                flow_path.path.global_position,
+                flow_path,
                 0.0 if downstream else curve.get_baked_length(),  # End offset.
                 downstream,
             )
@@ -187,15 +189,13 @@ func spawn_random(body_to_respawn = null):
                 push_warning("Unknown scene name %s" % scene_name)
                 return
         spawned = scene.instantiate()
-        spawn_container.add_child.call_deferred(spawned)
-        # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
-        spawned.set_deferred("global_transform", Transform2D(randf_range(-PI, PI), spawn.origin))
+        spawn_container.add_child(spawned)
     else:
         spawned = body_to_respawn
         spawned.reset_for_respawn()
-        # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
-        spawned.global_transform.origin = spawn.origin
 
+    # We don’t use global_position due to this bug: https://github.com/godotengine/godot/issues/74323
+    spawned.global_transform.origin = spawn.origin
     spawned.rotation = randf_range(-PI, PI)
     spawned.linear_velocity = Vector2.UP.rotated(
         spawn.get_rotation() + randf_range(-PI / 4, PI / 4)

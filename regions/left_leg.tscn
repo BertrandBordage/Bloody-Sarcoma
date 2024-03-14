@@ -1,0 +1,468 @@
+[gd_scene load_steps=18 format=3 uid="uid://cy8nhs8dgrkut"]
+
+[ext_resource type="PackedScene" uid="uid://bv0u0lv4di43d" path="res://flow_paths_container.tscn" id="1_mwubp"]
+[ext_resource type="PackedScene" uid="uid://cigrcmyega70i" path="res://chunks/air.tscn" id="1_vmma2"]
+[ext_resource type="PackedScene" uid="uid://dq45nx0qgb4c3" path="res://chunks/muscle_polygon.tscn" id="2_ehtxe"]
+[ext_resource type="PackedScene" uid="uid://bh7fnugfbxwj4" path="res://chunks/skins/hairy_skin.tscn" id="3_mnq5h"]
+[ext_resource type="PackedScene" uid="uid://bepswyw66jof0" path="res://chunks/skins/bare_skin_270deg.tscn" id="4_vdajf"]
+[ext_resource type="PackedScene" uid="uid://dfbyyd35hna1p" path="res://chunks/skins/bare_skin_90deg.tscn" id="5_vmm7m"]
+[ext_resource type="PackedScene" uid="uid://ditqsbxpdsb8b" path="res://chunks/skins/bare_skin.tscn" id="6_nkh6s"]
+[ext_resource type="PackedScene" uid="uid://cibyorvhtumk4" path="res://chunks/large_vessel/large_vessel_vertical.tscn" id="9_ww4cv"]
+[ext_resource type="PackedScene" uid="uid://d2irpv56wig0o" path="res://chunks/large_vessel/large_vessel_split.tscn" id="10_20ty7"]
+[ext_resource type="PackedScene" uid="uid://cnglgldk133t4" path="res://chunks/medium_vessel/medium_vessel_45deg.tscn" id="11_jcwpq"]
+[ext_resource type="PackedScene" uid="uid://biqgekh4g1idd" path="res://chunks/medium_vessel/medium_vessel_45deg_corner.tscn" id="12_ox73p"]
+[ext_resource type="PackedScene" uid="uid://btxqgutksx4cy" path="res://chunks/medium_vessel/medium_vessel_reduction.tscn" id="13_d72mc"]
+[ext_resource type="PackedScene" uid="uid://133ks8abep1o" path="res://chunks/small_vessel/small_vessel_45deg_corner.tscn" id="14_ugrmp"]
+[ext_resource type="PackedScene" uid="uid://dc70ieidgmcuw" path="res://chunks/large_vessel/large_vessel_reduction_down.tscn" id="14_xqrwd"]
+[ext_resource type="PackedScene" uid="uid://dex5aieyte4wb" path="res://chunks/medium_vessel/medium_vessel_horizontal.tscn" id="15_wulaj"]
+
+[sub_resource type="Curve2D" id="Curve2D_dav1r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2488, -1184, 0, 0, 0, 0, 2488, -3360, 0, 0, 0, 0, 2096, -3776, 0, 0, 0, 0, 2096, -7208)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_xs3x5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2904, -7224, 0, 0, 0, 0, 2560, -6872, 0, 0, 0, 0, 2576, -3808, 0, 0, 0, 0, 2120, -3344, 0, 0, 0, 0, 1864, -3584, 0, 0, 0, 0, 1784, -3584, 0, 0, 0, 0, 1744, -3552, 0, 0, 0, 0, 1808, -3520, 0, 0, 0, 0, 1880, -3544, 0, 0, 0, 0, 2112, -3312, 0, 0, 0, 0, 2112, -1176)
+}
+point_count = 11
+
+[node name="LeftLeg" type="Node2D"]
+
+[node name="Air" parent="." instance=ExtResource("1_vmma2")]
+position = Vector2(-256, 80)
+polygon = PackedVector2Array(256, -80, 256, 5768, 2464, 5768, 2888, -80)
+
+[node name="MusclePolygon" parent="." instance=ExtResource("2_ehtxe")]
+position = Vector2(992, 0)
+polygon = PackedVector2Array(0, 0, 0, 5848, 512, 5848, 512, 2272, 768, 2272, 768, 224, 1280, 224, 1280, 0)
+
+[node name="Skin" type="Node2D" parent="."]
+
+[node name="HairySkin" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 5592)
+
+[node name="HairySkin2" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 5336)
+
+[node name="HairySkin3" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 5080)
+
+[node name="HairySkin4" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 4824)
+
+[node name="HairySkin5" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 4568)
+
+[node name="HairySkin6" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 4312)
+
+[node name="HairySkin7" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 4064)
+
+[node name="HairySkin8" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 3808)
+
+[node name="BareSkin270Deg" parent="Skin" instance=ExtResource("4_vdajf")]
+position = Vector2(736, 3808)
+rotation = -1.5708
+
+[node name="BareSkin90Deg" parent="Skin" instance=ExtResource("5_vmm7m")]
+position = Vector2(480, 3552)
+
+[node name="BareSkin90Deg2" parent="Skin" instance=ExtResource("5_vmm7m")]
+position = Vector2(736, 3296)
+rotation = 1.5708
+
+[node name="BareSkin270Deg2" parent="Skin" instance=ExtResource("4_vdajf")]
+position = Vector2(736, 3296)
+
+[node name="HairySkin9" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 3040)
+
+[node name="HairySkin10" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 2792)
+
+[node name="HairySkin11" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 2536)
+
+[node name="HairySkin12" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 2280)
+
+[node name="HairySkin13" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 2024)
+
+[node name="HairySkin14" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 1776)
+
+[node name="HairySkin15" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 1520)
+
+[node name="HairySkin16" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 1272)
+
+[node name="HairySkin17" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 1016)
+
+[node name="HairySkin18" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 760)
+
+[node name="HairySkin19" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 504)
+
+[node name="HairySkin20" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 248)
+
+[node name="HairySkin21" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(736, 0)
+
+[node name="HairySkin22" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 5848)
+rotation = -3.14159
+
+[node name="HairySkin23" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 5592)
+rotation = -3.14159
+
+[node name="HairySkin24" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 5336)
+rotation = -3.14159
+
+[node name="HairySkin25" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 5080)
+rotation = -3.14159
+
+[node name="HairySkin26" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 4824)
+rotation = -3.14159
+
+[node name="HairySkin27" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 4568)
+rotation = -3.14159
+
+[node name="HairySkin28" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 4312)
+rotation = -3.14159
+
+[node name="HairySkin29" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 4056)
+rotation = -3.14159
+
+[node name="HairySkin30" parent="Skin" instance=ExtResource("3_mnq5h")]
+position = Vector2(1760, 3800)
+rotation = -3.14159
+
+[node name="BareSkin" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(1760, 3552)
+rotation = -3.14159
+
+[node name="BareSkin2" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(1760, 3296)
+rotation = -3.14159
+
+[node name="BareSkin3" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(1760, 3040)
+rotation = -3.14159
+
+[node name="BareSkin4" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(1760, 2784)
+rotation = -3.14159
+
+[node name="BareSkin5" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(2016, 2272)
+rotation = -3.14159
+
+[node name="BareSkin6" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(2016, 2016)
+rotation = -3.14159
+
+[node name="BareSkin7" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(2016, 1760)
+rotation = -3.14159
+
+[node name="BareSkin8" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(2016, 1504)
+rotation = -3.14159
+
+[node name="BareSkin9" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(2016, 1248)
+rotation = -3.14159
+
+[node name="BareSkin10" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(2016, 992)
+rotation = -3.14159
+
+[node name="BareSkin11" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(2016, 736)
+rotation = -3.14159
+
+[node name="BareSkin270Deg3" parent="Skin" instance=ExtResource("4_vdajf")]
+position = Vector2(1760, 2528)
+rotation = -3.14159
+
+[node name="BareSkin90Deg3" parent="Skin" instance=ExtResource("5_vmm7m")]
+position = Vector2(1760, 2528)
+rotation = -1.5708
+
+[node name="BareSkin270Deg4" parent="Skin" instance=ExtResource("4_vdajf")]
+position = Vector2(2016, 480)
+rotation = -3.14159
+
+[node name="BareSkin12" parent="Skin" instance=ExtResource("6_nkh6s")]
+position = Vector2(2016, 480)
+rotation = -1.5708
+
+[node name="Vessels" type="Node2D" parent="."]
+
+[node name="LargeVesselVertical" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(992, 5592)
+
+[node name="LargeVesselVertical2" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(1376, 5592)
+
+[node name="LargeVesselVertical3" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(992, 5336)
+
+[node name="LargeVesselVertical4" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(1376, 5336)
+
+[node name="LargeVesselVertical5" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(992, 5080)
+
+[node name="LargeVesselVertical6" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(1376, 5080)
+
+[node name="LargeVesselVertical7" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(1376, 4824)
+
+[node name="LargeVesselVertical8" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(992, 4824)
+
+[node name="LargeVesselVertical9" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(992, 4568)
+
+[node name="LargeVesselVertical10" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(1376, 4568)
+
+[node name="LargeVesselVertical11" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(1376, 4312)
+
+[node name="LargeVesselVertical12" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(992, 4312)
+
+[node name="LargeVesselVertical13" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(992, 4056)
+
+[node name="LargeVesselVertical14" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(1376, 4056)
+
+[node name="LargeVesselVertical15" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(1376, 3800)
+
+[node name="LargeVesselVertical16" parent="Vessels" instance=ExtResource("9_ww4cv")]
+position = Vector2(992, 3800)
+
+[node name="LargeVesselSplit" parent="Vessels" instance=ExtResource("10_20ty7")]
+position = Vector2(992, 3800)
+rotation = -1.5708
+
+[node name="MediumVessel45Deg" parent="Vessels" instance=ExtResource("11_jcwpq")]
+position = Vector2(1056, 3608)
+layer_0/tile_data = PackedInt32Array(458753, 2293761, 21, 393218, 2293761, 21, 458754, 2359297, 21, 327683, 2293761, 21, 393219, 2359297, 21, 458755, 2424833, 21, 262148, 2293761, 21, 327684, 2359297, 21, 393220, 2424833, 21, 196613, 2293761, 21, 262149, 2359297, 21, 327685, 2424833, 21, 131078, 2293761, 21, 196614, 2359297, 21, 262150, 2424833, 21, 65543, 2293761, 21, 131079, 2359297, 21, 196615, 2424833, 21, 8, 2293761, 21, 65544, 2359297, 21, 131080, 2424833, 21, 9, 2359297, 21, 65545, 2424833, 21, 10, 2424833, 21, 458757, 2883585, 30, 393222, 2883585, 30, 458758, 2949121, 30, 327687, 2883585, 30, 393223, 2949121, 30, 262152, 2883585, 30, 327688, 2949121, 30, 196617, 2883585, 30, 262153, 2949121, 30, 131082, 2883585, 30, 196618, 2949121, 30, 65547, 2883585, 30, 131083, 2949121, 30, 458759, 3014657, 30, 393224, 3014657, 30, 327689, 3014657, 30, 262154, 3014657, 30, 196619, 3014657, 30, 131084, 3014657, 30, 458756, 2883585, 23, 393221, 2883585, 23, 327686, 2883585, 23, 262151, 2883585, 23, 196616, 2883585, 23, 131081, 2883585, 23, 65546, 2883585, 23, 11, 2883585, 23)
+layer_1/tile_data = PackedInt32Array(458754, 2359298, 21, 393219, 2359298, 21, 327684, 2359298, 21, 262149, 2359298, 21, 196614, 2359298, 21, 131079, 2359298, 21, 458760, 3014658, 31, 393225, 3014658, 31, 327690, 3014658, 31, 262155, 3014658, 31, 458752, 2293762, 20, 393217, 2293762, 20, 458753, 2359298, 20, 327682, 2293762, 20, 393218, 2359298, 20, 262147, 2293762, 20, 327683, 2359298, 20, 196612, 2293762, 20, 262148, 2359298, 20, 131077, 2293762, 20, 196613, 2359298, 20, 65542, 2293762, 20, 131078, 2359298, 20, 458758, 2949122, 30, 7, 2293762, 20, 65543, 2359298, 20, 393223, 2949122, 30, 458759, 3014658, 30, 8, 2359298, 20, 65544, 2359298, 21, 327688, 2949122, 30, 393224, 3014658, 30, 9, 2359298, 21, 262153, 2949122, 30, 327689, 3014658, 30, 196618, 2949122, 30, 262154, 3014658, 30, 131083, 2949122, 30, 196619, 3014658, 30, 65550, 3014658, 31)
+
+[node name="MediumVessel45Deg2" parent="Vessels" instance=ExtResource("11_jcwpq")]
+position = Vector2(1056, 3608)
+rotation = 3.14159
+scale = Vector2(1, -1)
+layer_1/tile_data = PackedInt32Array(458754, 2359298, 21, 393219, 2359298, 21, 327684, 2359298, 21, 262149, 2359298, 21, 196614, 2359298, 21, 131079, 2359298, 21, 458760, 3014658, 31, 393225, 3014658, 31, 327690, 3014658, 31, 262155, 3014658, 31, 196620, 3014658, 31, 131085, 3014658, 31, 458752, 2293762, 20, 393217, 2293762, 20, 458753, 2359298, 20, 327682, 2293762, 20, 393218, 2359298, 20, 262147, 2293762, 20, 327683, 2359298, 20, 196612, 2293762, 20, 262148, 2359298, 20, 131077, 2293762, 20, 196613, 2359298, 20, 65542, 2293762, 20, 131078, 2359298, 20, 458758, 2949122, 30, 7, 2293762, 20, 65543, 2359298, 20, 393223, 2949122, 30, 458759, 3014658, 30, 8, 2359298, 20, 65544, 2359298, 21, 327688, 2949122, 30, 393224, 3014658, 30, 9, 2359298, 21, 262153, 2949122, 30, 327689, 3014658, 30, 196618, 2949122, 30, 262154, 3014658, 30, 131083, 2949122, 30, 196619, 3014658, 30, 65548, 2949122, 30, 131084, 3014658, 30, 13, 2949122, 30, 65549, 3014658, 30, 65550, 3014658, 31)
+
+[node name="MediumVessel45DegCorner" parent="Vessels" instance=ExtResource("12_ox73p")]
+position = Vector2(928, 3480)
+rotation = 3.14159
+scale = Vector2(1, -1)
+layer_0/tile_data = PackedInt32Array(458753, 2293761, 21, 393218, 2293761, 21, 458754, 2359297, 21, 327683, 2293761, 21, 393219, 2359297, 21, 458755, 2424833, 21, 262148, 2293761, 21, 327684, 2359297, 21, 393220, 2424833, 21, 196613, 2293761, 21, 262149, 2359297, 21, 327685, 2424833, 21, 196614, 2359297, 21, 262150, 2424833, 21, 196615, 2686977, 20, 458757, 2883585, 30, 393222, 2555905, 26, 458758, 2555905, 31, 327687, 2555905, 26, 393223, 2555905, 26, 262152, 2424833, 27, 327688, 2883585, 30, 458759, 2555905, 31, 393224, 2883585, 1610612766, 458756, 2883585, 23, 393221, 2883585, 23, 327686, 2883585, 23, 262151, 2883585, 23, 196616, 2686977, 20, 524298, 2621441, 31, 458762, 2555905, 20, 458761, 2883585, 1610612766, 393225, 2424833, 268435476, 393226, 2359297, 1342177300, 524297, 2293761, 1610612764, 524296, 2424833, 536870932, 458760, 2424833, 536870933, 524295, 2949121, 268435487)
+layer_1/tile_data = PackedInt32Array(458754, 2359298, 21, 393219, 2359298, 21, 327684, 2359298, 21, 262149, 2359298, 21, 196614, 2424834, 20, 131079, 2490370, 19, 458752, 2293762, 20, 393217, 2293762, 20, 458753, 2359298, 20, 327682, 2293762, 20, 393218, 2359298, 20, 262147, 2293762, 20, 327683, 2359298, 20, 196612, 2293762, 20, 262148, 2359298, 20, 131077, 2359298, 19, 196613, 2359298, 20, 131078, 2424834, 19, 589834, 2818050, 32, 524294, 2752514, 268435479, 589830, 2752514, 268435480, 524295, 2555906, 268435479, 393226, 2555906, 28, 393225, 2490370, 28, 524296, 2883586, 268435487, 589832, 2883586, 268435488, 589831, 2555906, 268435480, 589833, 2818050, 32, 131080, 2490370, 19)
+
+[node name="MediumVesselReduction" parent="Vessels" instance=ExtResource("13_d72mc")]
+position = Vector2(784, 3496)
+rotation = 3.14159
+scale = Vector2(1, -1)
+layer_0/tile_data = PackedInt32Array(262144, 2949121, 30, 262145, 3014657, 30, 131072, 2555905, 20, 196608, 2949121, 29, 131073, 2752513, 20, 196609, 2752513, 31)
+layer_1/tile_data = PackedInt32Array(65536, 2490370, 19, 65537, 2490370, 19, 262145, 2555906, 23, 262144, 2490370, 23)
+
+[node name="SmallVessel45DegCorner" parent="Vessels" instance=ExtResource("14_ugrmp")]
+position = Vector2(752, 3512)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="SmallVessel45DegCorner2" parent="Vessels" instance=ExtResource("14_ugrmp")]
+position = Vector2(752, 3640)
+rotation = 3.14159
+
+[node name="LargeVesselReductionDown" parent="Vessels" instance=ExtResource("14_xqrwd")]
+position = Vector2(1504, 3800)
+rotation = -1.5708
+scale = Vector2(1, -1)
+
+[node name="MediumVessel45DegCorner2" parent="Vessels" instance=ExtResource("12_ox73p")]
+position = Vector2(1488, 3608)
+rotation = 1.5708
+
+[node name="MediumVessel45Deg3" parent="Vessels" instance=ExtResource("11_jcwpq")]
+position = Vector2(1184, 3480)
+layer_0/tile_data = PackedInt32Array(458753, 2293761, 21, 458754, 2359297, 21, 327683, 2424833, 28, 458755, 2490369, 24, 262148, 2424833, 28, 327684, 2424833, 28, 393220, 2424833, 28, 262149, 2424833, 28, 327685, 2424833, 28, 262150, 2424833, 28, 65543, 2293761, 21, 131079, 2359297, 21, 196615, 2424833, 28, 8, 2293761, 21, 65544, 2359297, 21, 131080, 2424833, 21, 9, 2359297, 21, 65545, 2424833, 21, 10, 2424833, 21, 458757, 2424833, 28, 393222, 2424833, 28, 458758, 2424833, 28, 327687, 2424833, 28, 393223, 2424833, 28, 262152, 2883585, 30, 327688, 3014657, 25, 196617, 2883585, 30, 262153, 2949121, 30, 131082, 2883585, 30, 196618, 2949121, 30, 65547, 2883585, 30, 131083, 2949121, 30, 12, 2883585, 30, 65548, 2949121, 30, 13, 2949121, 30, 458759, 2424833, 28, 393224, 3014657, 25, 327689, 3014657, 30, 262154, 3014657, 30, 196619, 3014657, 30, 131084, 3014657, 30, 65549, 3014657, 30, 14, 3014657, 30, 458756, 2883585, 23, 393221, 2424833, 28, 327686, 2424833, 28, 262151, 2424833, 28, 196616, 2883585, 23, 131081, 2883585, 23, 65546, 2883585, 23, 11, 2883585, 23, 458760, 3014657, 25)
+layer_1/tile_data = PackedInt32Array(458754, 2359298, 21, 131079, 2359298, 21, 393225, 3014658, 31, 262155, 3014658, 31, 196620, 3014658, 31, 131085, 3014658, 31, 458752, 2293762, 20, 393217, 2293762, 20, 65542, 2293762, 20, 7, 2293762, 20, 65543, 2359298, 20, 8, 2359298, 20, 65544, 2359298, 21, 9, 2359298, 21, 262153, 2949122, 30, 196618, 2949122, 30, 262154, 3014658, 30, 131083, 2949122, 30, 196619, 3014658, 30, 65548, 2949122, 30, 131084, 3014658, 30, 13, 2949122, 30, 65549, 3014658, 30, 14, 3014658, 30, 65550, 3014658, 31, 15, 3014658, 31)
+
+[node name="MediumVessel45Deg4" parent="Vessels" instance=ExtResource("11_jcwpq")]
+position = Vector2(1360, 3480)
+rotation = 1.5708
+layer_0/tile_data = PackedInt32Array(458753, 2293761, 21, 393218, 2293761, 21, 458754, 2359297, 21, 327683, 2293761, 25, 393219, 2293761, 25, 458755, 2424833, 21, 65543, 2293761, 21, 8, 2293761, 21, 65544, 2359297, 21, 131080, 2424833, 21, 9, 2359297, 21, 65545, 2424833, 21, 10, 2424833, 21, 262152, 2686977, 29, 327688, 2686977, 29, 196617, 2883585, 30, 262153, 2621441, 1610612767, 131082, 2883585, 30, 196618, 2949121, 30, 65547, 2883585, 30, 131083, 2949121, 30, 12, 2883585, 30, 65548, 2949121, 30, 13, 2949121, 30, 393224, 2686977, 29, 327689, 2621441, 1610612767, 262154, 3014657, 30, 196619, 3014657, 30, 131084, 3014657, 30, 65549, 3014657, 30, 14, 3014657, 30, 458756, 2883585, 23, 196616, 2555905, 23, 131081, 2883585, 23, 65546, 2883585, 23, 11, 2883585, 23, 393225, 2621441, 1610612767, 262147, 2293761, 25, 196611, 2883585, 805306389, 262146, 2293761, 1610612757)
+layer_1/tile_data = PackedInt32Array(458754, 2359298, 21, 327690, 2490370, 25, 262155, 2555906, 24, 196620, 3014658, 31, 131085, 3014658, 31, 458752, 2293762, 20, 393217, 2752514, 27, 458753, 2359298, 20, 327682, 2818050, 25, 393218, 2818050, 27, 65542, 2490370, 1610612761, 7, 2555906, 1610612763, 65543, 2490370, 1610612763, 8, 2359298, 20, 65544, 2359298, 21, 9, 2359298, 21, 196618, 2490370, 23, 262154, 2490370, 24, 131083, 2949122, 30, 196619, 3014658, 30, 65548, 2949122, 30, 131084, 3014658, 30, 13, 2949122, 30, 65549, 3014658, 30, 14, 3014658, 30, 65550, 3014658, 31, 15, 3014658, 31, 65541, 2490370, 1610612760, 5, 2555906, 1610612760, 393226, 2555906, 1610612759, 393227, 2555906, 1610612760, 262145, 2752514, 24, 262146, 2818050, 24)
+
+[node name="MediumVessel45Deg5" parent="Vessels" instance=ExtResource("11_jcwpq")]
+position = Vector2(1232, 3352)
+rotation = 1.5708
+layer_0/tile_data = PackedInt32Array(458753, 2293761, 21, 393218, 2293761, 21, 458754, 2359297, 21, 327683, 2293761, 21, 393219, 2359297, 21, 458755, 2424833, 21, 262148, 2293761, 21, 327684, 2359297, 21, 393220, 2424833, 21, 196613, 2293761, 21, 262149, 2359297, 21, 327685, 2424833, 21, 131078, 2293761, 21, 196614, 2359297, 21, 262150, 2424833, 21, 65543, 2293761, 21, 131079, 2359297, 21, 196615, 2424833, 21, 8, 2293761, 21, 65544, 2359297, 21, 131080, 2424833, 21, 9, 2359297, 21, 65545, 2424833, 21, 10, 2424833, 21, 458757, 2883585, 30, 393222, 2883585, 30, 458758, 2949121, 30, 327687, 2883585, 30, 393223, 2949121, 30, 262152, 2883585, 30, 327688, 2949121, 30, 196617, 2883585, 30, 262153, 2949121, 30, 131082, 2883585, 30, 196618, 2949121, 30, 65547, 2883585, 30, 131083, 2949121, 30, 12, 2883585, 30, 65548, 2949121, 30, 13, 2555905, 31, 458759, 3014657, 30, 393224, 3014657, 30, 327689, 3014657, 30, 262154, 3014657, 30, 196619, 3014657, 30, 131084, 3014657, 30, 65549, 3014657, 30, 14, 2555905, 31, 458756, 2883585, 23, 393221, 2883585, 23, 327686, 2883585, 23, 262151, 2883585, 23, 196616, 2883585, 23, 131081, 2883585, 23, 65546, 2883585, 23, 11, 2883585, 23, -65522, 2555905, 24, -65523, 2555905, 24, 15, 2555905, 31)
+layer_1/tile_data = PackedInt32Array(458754, 2359298, 21, 393219, 2359298, 21, 327684, 2359298, 21, 262149, 2359298, 21, 196614, 2359298, 21, 131079, 2359298, 21, 458760, 3014658, 31, 393225, 3014658, 31, 327690, 3014658, 31, 262155, 3014658, 31, 196620, 3014658, 31, 131085, 2555906, 24, 458752, 2293762, 20, 393217, 2293762, 20, 458753, 2359298, 20, 327682, 2293762, 20, 393218, 2359298, 20, 262147, 2293762, 20, 327683, 2359298, 20, 196612, 2293762, 20, 262148, 2359298, 20, 131077, 2293762, 20, 196613, 2359298, 20, 65542, 2293762, 20, 131078, 2359298, 20, 458758, 2949122, 30, 7, 2293762, 20, 65543, 2359298, 20, 393223, 2949122, 30, 458759, 3014658, 30, 8, 2359298, 20, 65544, 2359298, 21, 327688, 2949122, 30, 393224, 3014658, 30, 9, 2359298, 21, 262153, 2949122, 30, 327689, 3014658, 30, 196618, 2949122, 30, 262154, 3014658, 30, 131083, 2949122, 30, 196619, 3014658, 30, 65548, 2949122, 30, 131084, 3014658, 30, 65549, 2555906, 23, 65550, 2621442, 23, 65551, 2555906, 805306396, 131087, 2555906, 805306395)
+
+[node name="MediumVessel45DegCorner3" parent="Vessels" instance=ExtResource("12_ox73p")]
+position = Vector2(976, 3480)
+rotation = -1.5708
+
+[node name="MediumVesselHorizontal" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 3080)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal2" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 2824)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal3" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 2568)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal4" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 2312)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal5" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 2056)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal6" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 1808)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal7" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 1552)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal8" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 1296)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal9" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 1040)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal10" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 784)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal11" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 528)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal12" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 272)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal13" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1088, 16)
+rotation = 1.5708
+layer_0/tile_data = PackedInt32Array(0, 2490370, 19, 1, 2490370, 19, 2, 2490370, 19, 3, 2490370, 19, 4, 2490370, 19, 5, 2490370, 19, 6, 2490370, 19, 7, 2490370, 19, 8, 2490370, 19, 9, 2490370, 19, 10, 2490370, 19, 11, 2490370, 19, 12, 2490370, 19, 13, 2490370, 19, 14, 2490370, 19, 15, 2490370, 19, 65536, 2490369, 20, 65537, 2555905, 20, 65538, 2621441, 20, 65539, 2686977, 20, 65540, 2752513, 20, 65541, 2818049, 20, 65542, 2490369, 20, 65543, 2555905, 20, 65544, 2621441, 20, 65545, 2686977, 20, 65546, 2490369, 20, 65547, 2555905, 20, 65548, 2621441, 20, 65549, 2686977, 20, 65550, 2752513, 20, 65551, 2818049, 20, 262144, 2490369, 31, 327680, 2490370, 32, 262145, 2555905, 31, 327681, 2490370, 32, 262146, 2621441, 31, 327682, 2490370, 32, 262147, 2686977, 31, 327683, 2490370, 32, 262148, 2752513, 31, 327684, 2490370, 32, 262149, 2818049, 31, 327685, 2490370, 32, 262150, 2490369, 31, 327686, 2490370, 32, 262151, 2555905, 31, 327687, 2490370, 32, 262152, 2621441, 31, 327688, 2490370, 32, 262153, 2686977, 31, 327689, 2490370, 32, 262154, 2490369, 31, 327690, 2490370, 32, 262155, 2555905, 31, 327691, 2490370, 32, 262156, 2621441, 31, 327692, 2490370, 32, 262157, 2686977, 31, 327693, 2490370, 32, 262158, 2752513, 31, 327694, 2490370, 32, 262159, 2818049, 31, 327695, 2490370, 32, 131072, 2686977, 24, 196608, 2686977, 24, 131073, 2686977, 24, 196609, 2686977, 24, 131074, 2686977, 24, 196610, 2686977, 24, 131075, 2686977, 24, 196611, 2686977, 24, 131076, 2686977, 24, 196612, 2686977, 24, 131077, 2686977, 24, 196613, 2686977, 24, 131078, 2686977, 24, 196614, 2686977, 24, 131079, 2686977, 24, 196615, 2686977, 24, 131080, 2686977, 24, 196616, 2686977, 24, 131081, 2686977, 24, 196617, 2686977, 24, 131082, 2686977, 24, 196618, 2686977, 24, 131083, 2686977, 24, 196619, 2686977, 24, 131084, 2686977, 24, 196620, 2686977, 24, 131085, 2686977, 24, 196621, 2686977, 24, 131086, 2686977, 24, 196622, 2686977, 24, 131087, 2686977, 24, 196623, 2686977, 24, 393215, 2228226, 1610612764, 65535, 3080194, 1610612759, 131071, 2490369, 20, 196607, 2686977, 24, 262143, 2686977, 24, 327679, 2490369, 31)
+
+[node name="MediumVessel45Deg6" parent="Vessels" instance=ExtResource("11_jcwpq")]
+position = Vector2(1312, 3352)
+layer_0/tile_data = PackedInt32Array(458753, 2293761, 21, 393218, 2293761, 21, 458754, 2359297, 21, 327683, 2293761, 21, 393219, 2359297, 21, 458755, 2424833, 21, 262148, 2293761, 21, 327684, 2359297, 21, 393220, 2424833, 21, 196613, 2293761, 21, 262149, 2359297, 21, 327685, 2424833, 21, 131078, 2293761, 21, 196614, 2359297, 21, 262150, 2424833, 21, 65543, 2293761, 21, 131079, 2359297, 21, 196615, 2424833, 21, 458757, 2883585, 30, 393222, 2883585, 30, 458758, 2949121, 30, 327687, 2883585, 30, 393223, 2949121, 30, 458759, 3014657, 30, 458756, 2883585, 23, 393221, 2883585, 23, 327686, 2883585, 23, 262151, 2883585, 23)
+layer_1/tile_data = PackedInt32Array(458754, 2359298, 21, 393219, 2359298, 21, 327684, 2359298, 21, 262149, 2359298, 21, 196614, 2359298, 21, 131079, 2359298, 21, 458752, 2293762, 20, 393217, 2293762, 20, 458753, 2359298, 20, 327682, 2293762, 20, 393218, 2359298, 20, 262147, 2293762, 20, 327683, 2359298, 20, 196612, 2293762, 20, 262148, 2359298, 20, 131077, 2293762, 20, 196613, 2359298, 20, 65542, 2293762, 20, 131078, 2359298, 20, 458758, 2949122, 30, 7, 2293762, 20, 65543, 2359298, 20, 393223, 2949122, 30, 458759, 3014658, 30)
+
+[node name="MediumVesselHorizontal14" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 3088)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal15" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 2832)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal16" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 2576)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal17" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 2320)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal18" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 2064)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal19" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 1808)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal20" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 1552)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal21" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 1296)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal22" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 1040)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal23" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 784)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal24" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 528)
+rotation = 1.5708
+
+[node name="MediumVesselHorizontal25" parent="Vessels" instance=ExtResource("15_wulaj")]
+position = Vector2(1544, 272)
+rotation = 1.5708
+
+[node name="MediumVessel45DegCorner4" parent="Vessels" instance=ExtResource("12_ox73p")]
+position = Vector2(1560, 3488)
+rotation = -1.5708
+scale = Vector2(1, -1)
+
+[node name="MediumVessel45DegCorner5" parent="Vessels" instance=ExtResource("12_ox73p")]
+position = Vector2(1432, 128)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="MediumVessel45Deg7" parent="Vessels" instance=ExtResource("11_jcwpq")]
+position = Vector2(1688, 256)
+rotation = -1.5708
+scale = Vector2(1, -1)
+
+[node name="MediumVessel45Deg8" parent="Vessels" instance=ExtResource("11_jcwpq")]
+position = Vector2(1816, 128)
+rotation = -1.5708
+scale = Vector2(1, -1)
+
+[node name="FlowPathsContainer" parent="." instance=ExtResource("1_mwubp")]
+
+[node name="Path2D" type="Path2D" parent="FlowPathsContainer"]
+position = Vector2(-1056, 7128)
+curve = SubResource("Curve2D_dav1r")
+
+[node name="Path2D2" type="Path2D" parent="FlowPathsContainer"]
+position = Vector2(-1056, 7128)
+curve = SubResource("Curve2D_xs3x5")

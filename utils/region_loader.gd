@@ -6,7 +6,7 @@ extends Area2D
 var region: Node
 
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
     if region:
         return
 
@@ -15,7 +15,7 @@ func _on_area_entered(area):
     Ui.region_change.emit(region_name)
 
 
-func _on_area_exited(area):
+func _on_area_exited(_area):
     %RecentlyExitedTimer.start()
 
 

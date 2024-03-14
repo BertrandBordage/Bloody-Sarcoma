@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq45nx0qgb4c3"]
+
+[ext_resource type="Texture2D" uid="uid://cxfqiy8nnqmrh" path="res://sprites/muscle-texture.png" id="1_6y2wh"]
+
+[node name="MusclePolygon" type="Polygon2D"]
+texture_repeat = 2
+texture = ExtResource("1_6y2wh")
+polygon = PackedVector2Array(0, 0, 0, 128, 128, 128, 128, 0)
