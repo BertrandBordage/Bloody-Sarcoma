@@ -6,25 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://bjbr38whylxgv" path="res://regions/left_foot.tscn" id="4_m2buo"]
 [ext_resource type="PackedScene" uid="uid://cy8nhs8dgrkut" path="res://regions/left_leg.tscn" id="5_ncsxi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o820r"]
-size = Vector2(4800, 2809)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqdux"]
 size = Vector2(2332, 5848)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jej24"]
 size = Vector2(3664, 1860)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o820r"]
+size = Vector2(4800, 2809)
+
 [node name="Game" type="Node2D"]
-
-[node name="LowerAbdomenLoader" parent="." instance=ExtResource("1_fucok")]
-position = Vector2(0, -2144)
-region_name = "Lower abdomen"
-region_scene = ExtResource("2_uni45")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerAbdomenLoader"]
-position = Vector2(2696, 1248)
-shape = SubResource("RectangleShape2D_o820r")
 
 [node name="LeftLegLoader" parent="." instance=ExtResource("1_fucok")]
 region_name = "Left leg"
@@ -63,5 +54,14 @@ region_scene = ExtResource("4_m2buo")
 position = Vector2(1448, -352)
 shape = SubResource("RectangleShape2D_jej24")
 
+[node name="LowerAbdomenLoader" parent="." instance=ExtResource("1_fucok")]
+position = Vector2(0, -2144)
+region_name = "Lower abdomen"
+region_scene = ExtResource("2_uni45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerAbdomenLoader"]
+position = Vector2(2696, 1248)
+shape = SubResource("RectangleShape2D_o820r")
+
 [node name="PlayableCellCluster" parent="." instance=ExtResource("3_43usx")]
-position = Vector2(1472, 842)
+position = Vector2(1432, 4746)
